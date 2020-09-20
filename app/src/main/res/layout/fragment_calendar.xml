@@ -10,13 +10,13 @@
     <CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="4"/>
+        android:numColumns="4" />
 
     <LinearLayout
         android:id="@+id/empty_view"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/empty_title_view"
-            app:drawableTopCompat="@drawable/ic_launcher_foreground"/>
+            app:drawableTopCompat="@drawable/ic_launcher_foreground" />
 
     </LinearLayout>
 

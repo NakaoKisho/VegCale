@@ -10,6 +10,6 @@
         android:id="@+id/next_update"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="TODO: add ads and information about next updates"/>
+        android:text="TODO: add ads and information about next updates" />
 
 </LinearLayout>
