@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796B</color>
+    <color name="colorAccent">#4CAF50</color>
+
+    <!-- Color of button -->
+    <color name="buttonColor">#B2DFDB</color>
+
+    <!-- Color of button's text -->
+    <color name="buttonTextColor">#ffffff</color>
+
+    <!-- Color of TipsActivity -->
+    <color name="TipsActivity">#ffffff</color>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="104dp"
+    android:layout_height="152dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/vegetable_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/buttonColor"
+        android:contentDescription="@string/vegetable_image_description" />
+
+    <TextView
+        android:id="@+id/vegetable_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        tools:text="ミニトマト"/>
+
+    <TextView
+        android:id="@+id/vegetable_description1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12sp"
+        tools:text="種まき" />
+
+    <TextView
+        android:id="@+id/vegetable_description2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12sp"
+        tools:text="発芽: 約一週間" />
+
+</LinearLayout>
