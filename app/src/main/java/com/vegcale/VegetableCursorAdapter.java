@@ -15,10 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vegcale.data.VegetableContract.VegetableEntry;
+
+import static com.vegcale.VegetableConstant.CHERRY_TOMATOES;
 import static com.vegcale.VegetableConstant.NOT_DEFINED;
+import static com.vegcale.VegetableConstant.RED_PEPPERS;
+import static com.vegcale.VegetableConstant.STRAWBERRIES;
 
 public class VegetableCursorAdapter extends CursorAdapter {
 
@@ -59,6 +64,9 @@ public class VegetableCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
+        // Find the image view
+        ImageView imageView = view.findViewById(R.id.vegetable_image);
+
         // Find the vegetable name
         TextView vegetableName = view.findViewById(R.id.vegetable_name);
 
@@ -85,6 +93,22 @@ public class VegetableCursorAdapter extends CursorAdapter {
             // Extract properties from the name cursor
             String name = cursor.getString(nameColumnIndex);
 
+            switch (name) {
+                // if name is cherry tomato
+                case CHERRY_TOMATOES:
+                    imageView.setImageResource(R.drawable.ic_cherry_tomato_circle);
+                    break;
+
+                // if name is strawberry
+                case STRAWBERRIES:
+                    imageView.setImageResource(R.drawable.ic_strawberry_circle);
+                    break;
+
+                // if name is red pepper
+                case RED_PEPPERS:
+                    imageView.setImageResource(R.drawable.ic_red_pepper_circle);
+                    break;
+            }
             // Extract properties from the description1 cursor
             String description1 = cursor.getString(description1ColumnIndex);
 

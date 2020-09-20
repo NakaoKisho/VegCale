@@ -15,10 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vegcale.data.VegetableTipContract.VegetableTipEntry;
+
+import static com.vegcale.VegetableConstant.CHERRY_TOMATOES;
 import static com.vegcale.VegetableConstant.NOT_DEFINED;
+import static com.vegcale.VegetableConstant.RED_PEPPERS;
+import static com.vegcale.VegetableConstant.STRAWBERRIES;
 
 public class VegetableTipCursorAdapter extends CursorAdapter {
 
@@ -49,6 +54,9 @@ public class VegetableTipCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
+        // Find the image view
+        ImageView imageView = view.findViewById(R.id.tip_image);
+
         // Find the tip title
         TextView tipTitle = view.findViewById(R.id.tip_title);
 
@@ -77,6 +85,23 @@ public class VegetableTipCursorAdapter extends CursorAdapter {
 
             // Extract properties from the description2 cursor
             String description2 = cursor.getString(description2ColumnIndex);
+
+            switch (title) {
+                // if name is cherry tomato
+                case CHERRY_TOMATOES:
+                    imageView.setImageResource(R.drawable.ic_cherry_tomato_circle);
+                    break;
+
+                // if name is strawberry
+                case STRAWBERRIES:
+                    imageView.setImageResource(R.drawable.ic_strawberry_circle);
+                    break;
+
+                // if name is red pepper
+                case RED_PEPPERS:
+                    imageView.setImageResource(R.drawable.ic_red_pepper_circle);
+                    break;
+            }
 
             // Set text to the tipTitle
             tipTitle.setText(title);

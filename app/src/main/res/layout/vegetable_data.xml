@@ -7,11 +7,10 @@
 
     <ImageView
         android:id="@+id/vegetable_image"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_margin="16dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="8dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/buttonColor"
         android:contentDescription="@string/vegetable_image_description" />
 
     <TextView
