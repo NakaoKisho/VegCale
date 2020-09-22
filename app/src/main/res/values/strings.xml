@@ -55,6 +55,8 @@
 
     <string name="empty_title_view">野菜のデータがありません</string>
 
+    <string name="empty_title_view_error">野菜のデータがありません\nアプリを再インストールしてください</string>
+
     <string name="vegetable_image_description">A vegetable image</string>
 
     <string name="vegetable_growing_tip_image">A vegetable growing tip image</string>
