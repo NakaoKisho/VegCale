@@ -18,6 +18,7 @@ import com.vegcale.data.VegetableTipContract.VegetableTipEntry;
 import static com.vegcale.VegetableConstant.CHERRY_TOMATOES;
 import static com.vegcale.VegetableConstant.SEEDING;
 import static com.vegcale.VegetableConstant.SPROUT_IN_A_WEEK;
+import static com.vegcale.VegetableConstant.STRAWBERRIES;
 
 public class VegetableTipDbHelper extends SQLiteOpenHelper {
 
@@ -61,7 +62,13 @@ public class VegetableTipDbHelper extends SQLiteOpenHelper {
         ContentValues tips = new ContentValues();
         tips.put(VegetableTipEntry.COLUMN_TITLE, CHERRY_TOMATOES);
         tips.put(VegetableTipEntry.COLUMN_DESCRIPTION1, SEEDING);
-        tips.put(VegetableTipEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
+        tips.put(VegetableTipEntry.COLUMN_DESCRIPTION2, "ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, tips);
+
+        ContentValues strawberry = new ContentValues();
+        strawberry.put(VegetableTipEntry.COLUMN_TITLE, STRAWBERRIES);
+        strawberry.put(VegetableTipEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberry.put(VegetableTipEntry.COLUMN_DESCRIPTION2, "ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
+        sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, strawberry);
     }
 }
