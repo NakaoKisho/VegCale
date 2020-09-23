@@ -20,12 +20,10 @@ import android.widget.TextView;
 
 import com.vegcale.data.VegetableTipContract.VegetableTipEntry;
 
-import static com.vegcale.VegetableConstant.CHERRY_TOMATOES;
-import static com.vegcale.VegetableConstant.NOT_DEFINED;
-import static com.vegcale.VegetableConstant.RED_PEPPERS;
-import static com.vegcale.VegetableConstant.STRAWBERRIES;
-
 public class VegetableTipCursorAdapter extends CursorAdapter {
+
+    /** Context */
+    private Context mContext;
 
     /**
      * Constructs a new {@link VegetableCursorAdapter}.
@@ -35,6 +33,7 @@ public class VegetableTipCursorAdapter extends CursorAdapter {
      */
     public VegetableTipCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
+        mContext = context;
     }
 
     /**
@@ -65,56 +64,35 @@ public class VegetableTipCursorAdapter extends CursorAdapter {
 
         // If these databases column are not null
         if(cursor.getColumnIndex(VegetableTipEntry.COLUMN_TITLE) > 0
-                && cursor.getColumnIndex(VegetableTipEntry.COLUMN_DESCRIPTION1) > 0
-                && cursor.getColumnIndex(VegetableTipEntry.COLUMN_DESCRIPTION2) > 0) {
+                && cursor.getColumnIndex(VegetableTipEntry.COLUMN_DESCRIPTION) > 0
+                && cursor.getColumnIndex(VegetableTipEntry.COLUMN_IMAGE) > 0) {
+
+            // Get the resource ID column index
+            int imageColumnIndex = cursor.getColumnIndex(VegetableTipEntry.COLUMN_IMAGE);
 
             // Get the title column index
             int titleColumnIndex = cursor.getColumnIndex(VegetableTipEntry.COLUMN_TITLE);
 
             // Get the description1 column index
-            int description1ColumnIndex = cursor.getColumnIndex(VegetableTipEntry.COLUMN_DESCRIPTION1);
+            int descriptionColumnIndex = cursor.getColumnIndex(VegetableTipEntry.COLUMN_DESCRIPTION);
 
-            // Get the description2 column index
-            int description2ColumnIndex = cursor.getColumnIndex(VegetableTipEntry.COLUMN_DESCRIPTION2);
+            // Extract resource ID from the image cursor
+            String resId = cursor.getString(imageColumnIndex);
 
             // Extract properties from the title cursor
             String title = cursor.getString(titleColumnIndex);
 
-            // Extract properties from the description1 cursor
-            String description1 = cursor.getString(description1ColumnIndex);
+            // Extract properties from the description cursor
+            String description = cursor.getString(descriptionColumnIndex);
 
-            // Extract properties from the description2 cursor
-            String description2 = cursor.getString(description2ColumnIndex);
-
-            switch (title) {
-                // if name is cherry tomato
-                case CHERRY_TOMATOES:
-                    imageView.setImageResource(R.drawable.ic_cherry_tomato_circle);
-                    break;
-
-                // if name is strawberry
-                case STRAWBERRIES:
-                    imageView.setImageResource(R.drawable.ic_strawberry_circle);
-                    break;
-
-                // if name is red pepper
-                case RED_PEPPERS:
-                    imageView.setImageResource(R.drawable.ic_red_pepper_circle);
-                    break;
-            }
+            // Set the image to the imageView
+            imageView.setImageResource(mContext.getResources().getIdentifier(resId, "drawable", mContext.getPackageName()));
 
             // Set text to the tipTitle
             tipTitle.setText(title);
 
             // Set text to the tipDescription
-            tipDescription.setText(description1);
-
-            // If the description2 is NOT_DEFINED, set the TextView to invisible
-            if(NOT_DEFINED.equals(description2)) {
-                tipDescription.setVisibility(View.GONE);
-            } else {
-                tipDescription.setText(description2);
-            }
+            tipDescription.setText(description);
 
             // If these databases column are null
         } else {

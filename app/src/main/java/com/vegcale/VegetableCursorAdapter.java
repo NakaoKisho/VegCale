@@ -20,12 +20,12 @@ import android.widget.TextView;
 
 import com.vegcale.data.VegetableContract.VegetableEntry;
 
-import static com.vegcale.VegetableConstant.CHERRY_TOMATOES;
 import static com.vegcale.VegetableConstant.NOT_DEFINED;
-import static com.vegcale.VegetableConstant.RED_PEPPERS;
-import static com.vegcale.VegetableConstant.STRAWBERRIES;
 
 public class VegetableCursorAdapter extends CursorAdapter {
+
+    /** Context */
+    private Context mContext;
 
     /**
      * Constructs a new {@link VegetableCursorAdapter}.
@@ -35,6 +35,7 @@ public class VegetableCursorAdapter extends CursorAdapter {
      */
     public VegetableCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
+        mContext = context;
     }
 
     /**
@@ -79,7 +80,11 @@ public class VegetableCursorAdapter extends CursorAdapter {
         // If these databases column are not null
         if(cursor.getColumnIndex(VegetableEntry.COLUMN_NAME) > 0
                 && cursor.getColumnIndex(VegetableEntry.COLUMN_DESCRIPTION1) > 0
-                && cursor.getColumnIndex(VegetableEntry.COLUMN_DESCRIPTION2) > 0) {
+                && cursor.getColumnIndex(VegetableEntry.COLUMN_DESCRIPTION2) > 0
+                && cursor.getColumnIndex(VegetableEntry.COLUMN_IMAGE) > 0) {
+
+            // Get the resource ID column index
+            int imageColumnIndex = cursor.getColumnIndex(VegetableEntry.COLUMN_IMAGE);
 
             // Get the name column index
             int nameColumnIndex = cursor.getColumnIndex(VegetableEntry.COLUMN_NAME);
@@ -90,41 +95,34 @@ public class VegetableCursorAdapter extends CursorAdapter {
             // Get the description2 column index
             int description2ColumnIndex = cursor.getColumnIndex(VegetableEntry.COLUMN_DESCRIPTION2);
 
+            // Extract resource ID from the image cursor
+            String resId = cursor.getString(imageColumnIndex);
+
             // Extract properties from the name cursor
             String name = cursor.getString(nameColumnIndex);
 
-            switch (name) {
-                // if name is cherry tomato
-                case CHERRY_TOMATOES:
-                    imageView.setImageResource(R.drawable.ic_cherry_tomato_circle);
-                    break;
-
-                // if name is strawberry
-                case STRAWBERRIES:
-                    imageView.setImageResource(R.drawable.ic_strawberry_circle);
-                    break;
-
-                // if name is red pepper
-                case RED_PEPPERS:
-                    imageView.setImageResource(R.drawable.ic_red_pepper_circle);
-                    break;
-            }
             // Extract properties from the description1 cursor
             String description1 = cursor.getString(description1ColumnIndex);
 
             // Extract properties from the description2 cursor
             String description2 = cursor.getString(description2ColumnIndex);
 
-            // Set text to the vegetableName
+            // Set the image to the imageView
+            imageView.setImageResource(mContext.getResources().getIdentifier(resId, "drawable", mContext.getPackageName()));
+
+            // Set the text to the vegetableName
             vegetableName.setText(name);
 
-            // Set text to the vegetableDescription1
+            // Set the text to the vegetableDescription1
             vegetableDescription1.setText(description1);
 
             // If the description2 is NOT_DEFINED, set the TextView to invisible
             if(NOT_DEFINED.equals(description2)) {
                 vegetableDescription2.setVisibility(View.GONE);
             } else {
+                //set the TextView to visible
+                vegetableDescription2.setVisibility(View.VISIBLE);
+
                 // Set text to the vegetableDescription2
                 vegetableDescription2.setText(description2);
             }

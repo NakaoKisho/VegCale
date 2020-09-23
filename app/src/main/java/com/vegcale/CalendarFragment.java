@@ -24,6 +24,8 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.vegcale.data.VegetableContract;
 
 import java.util.Calendar;
@@ -56,6 +58,15 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
+
+        // Find the adView
+        AdView mAdView = rootView.findViewById(R.id.adView);
+
+        // Hold runtime information
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        // Load an ad
+        mAdView.loadAd(adRequest);
 
         // Find calendarView
         CalendarView calendarView = rootView.findViewById(R.id.calendar_view);
@@ -124,6 +135,7 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
                         VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2,
                         VegetableContract.VegetableEntry.COLUMN_MONTH,
                         VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH,
+                        VegetableContract.VegetableEntry.COLUMN_IMAGE,
                 };
 
                 // Perform a query on the provider using the ContentResolver
@@ -142,6 +154,7 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
                         VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2,
                         VegetableContract.VegetableEntry.COLUMN_MONTH,
                         VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH,
+                        VegetableContract.VegetableEntry.COLUMN_IMAGE,
                 };
 
                 return new CursorLoader(getActivity(),

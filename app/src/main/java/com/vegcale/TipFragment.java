@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -25,6 +24,8 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.vegcale.data.VegetableTipContract;
 
 /**
@@ -44,6 +45,15 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tip, container, false);
+
+        // Find the adView
+        AdView mAdView = rootView.findViewById(R.id.adView);
+
+        // Hold runtime information
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        // Load an ad
+        mAdView.loadAd(adRequest);
 
         // Find the ListView
         ListView lvDataDisplay = rootView.findViewById(R.id.list_view);
@@ -72,7 +82,7 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
                 ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
                 if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
                     final float scale = getActivity().getResources().getDisplayMetrics().density;
-                    params.height = (int) (64 * scale + 0.5f);;
+                    params.height = (int) (64 * scale + 0.5f);
                 } else {
                     params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 }
@@ -91,8 +101,8 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
         String[] vegetableTipsProjection = {
                 VegetableTipContract.VegetableTipEntry._ID,
                 VegetableTipContract.VegetableTipEntry.COLUMN_TITLE,
-                VegetableTipContract.VegetableTipEntry.COLUMN_DESCRIPTION1,
-                VegetableTipContract.VegetableTipEntry.COLUMN_DESCRIPTION2,
+                VegetableTipContract.VegetableTipEntry.COLUMN_DESCRIPTION,
+                VegetableTipContract.VegetableTipEntry.COLUMN_IMAGE,
         };
 
         // Perform a query on the provider using the ContentResolver.

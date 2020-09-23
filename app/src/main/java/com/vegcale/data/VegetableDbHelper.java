@@ -14,6 +14,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.vegcale.R;
 import com.vegcale.data.VegetableContract.VegetableEntry;
 import static com.vegcale.VegetableConstant.ALL_WEEK_OF_MONTH;
 import static com.vegcale.VegetableConstant.CHERRY_TOMATOES;
@@ -42,8 +43,12 @@ public class VegetableDbHelper extends SQLiteOpenHelper {
     /** Database version. If we change the database schema, increase this number */
     public static final String DATABASE_NAME = "vegetable.db";
 
+    /** Context */
+    private Context mContext;
+
     public VegetableDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        mContext = context;
     }
 
     /**
@@ -63,7 +68,8 @@ public class VegetableDbHelper extends SQLiteOpenHelper {
                 + VegetableEntry.COLUMN_DESCRIPTION1 + " TEXT NOT NULL, "
                 + VegetableEntry.COLUMN_DESCRIPTION2 + " TEXT NOT NULL, "
                 + VegetableEntry.COLUMN_MONTH + " INTEGER NOT NULL, "
-                + VegetableEntry.COLUMN_WEEK_OF_MONTH + " INTEGER NOT NULL);";
+                + VegetableEntry.COLUMN_WEEK_OF_MONTH + " INTEGER NOT NULL, "
+                + VegetableEntry.COLUMN_IMAGE + " TEXT NOT NULL);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_VEGETABLES_TABLE);
 
@@ -98,115 +104,152 @@ public class VegetableDbHelper extends SQLiteOpenHelper {
      * @param sqLiteDatabase Database to prepopulate
      */
     public void prepopulateVegetablesData(SQLiteDatabase sqLiteDatabase) {
-
         // information of cherry tomatoes
         ContentValues cherryTomatoSeedingValues0 = new ContentValues();
-        cherryTomatoSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_NAME, CHERRY_TOMATOES);
-        cherryTomatoSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        cherryTomatoSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
-        cherryTomatoSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_MONTH, MARCH + 1);
-        cherryTomatoSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, cherryTomatoSeedingValues0);
+        cherryTomatoSeedingValues0.put(VegetableEntry.COLUMN_NAME, CHERRY_TOMATOES);
+        cherryTomatoSeedingValues0.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        cherryTomatoSeedingValues0.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
+        cherryTomatoSeedingValues0.put(VegetableEntry.COLUMN_MONTH, MARCH + 1);
+        cherryTomatoSeedingValues0.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        cherryTomatoSeedingValues0.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(CHERRY_TOMATOES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, cherryTomatoSeedingValues0);
 
         // information of cherry tomatoes
         ContentValues cherryTomatoSeedingValues1 = new ContentValues();
-        cherryTomatoSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_NAME, CHERRY_TOMATOES);
-        cherryTomatoSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        cherryTomatoSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
-        cherryTomatoSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_MONTH, APRIL + 1);
-        cherryTomatoSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, cherryTomatoSeedingValues1);
+        cherryTomatoSeedingValues1.put(VegetableEntry.COLUMN_NAME, CHERRY_TOMATOES);
+        cherryTomatoSeedingValues1.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        cherryTomatoSeedingValues1.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
+        cherryTomatoSeedingValues1.put(VegetableEntry.COLUMN_MONTH, APRIL + 1);
+        cherryTomatoSeedingValues1.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        cherryTomatoSeedingValues1.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(CHERRY_TOMATOES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, cherryTomatoSeedingValues1);
 
         // information of cherry tomatoes
         ContentValues cherryTomatoPlantingValues0 = new ContentValues();
-        cherryTomatoPlantingValues0.put(VegetableContract.VegetableEntry.COLUMN_NAME, CHERRY_TOMATOES);
-        cherryTomatoPlantingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, PLANTING);
-        cherryTomatoPlantingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, NOT_DEFINED);
-        cherryTomatoPlantingValues0.put(VegetableContract.VegetableEntry.COLUMN_MONTH, MAY + 1);
-        cherryTomatoPlantingValues0.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, FIRST_WEEK_OF_MOTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, cherryTomatoPlantingValues0);
+        cherryTomatoPlantingValues0.put(VegetableEntry.COLUMN_NAME, CHERRY_TOMATOES);
+        cherryTomatoPlantingValues0.put(VegetableEntry.COLUMN_DESCRIPTION1, PLANTING);
+        cherryTomatoPlantingValues0.put(VegetableEntry.COLUMN_DESCRIPTION2, NOT_DEFINED);
+        cherryTomatoPlantingValues0.put(VegetableEntry.COLUMN_MONTH, MAY + 1);
+        cherryTomatoPlantingValues0.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, FIRST_WEEK_OF_MOTH);
+        cherryTomatoPlantingValues0.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(CHERRY_TOMATOES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, cherryTomatoPlantingValues0);
 
 
         // information of strawberries
         ContentValues strawberriesSeedingValues0 = new ContentValues();
-        strawberriesSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_MONTH, MARCH + 1);
-        strawberriesSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues0);
+        strawberriesSeedingValues0.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues0.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues0.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues0.put(VegetableEntry.COLUMN_MONTH, MARCH + 1);
+        strawberriesSeedingValues0.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues0.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues0);
 
         // information of strawberries
         ContentValues strawberriesSeedingValues1 = new ContentValues();
-        strawberriesSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_MONTH, APRIL + 1);
-        strawberriesSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues1);
+        strawberriesSeedingValues1.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues1.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues1.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues1.put(VegetableEntry.COLUMN_MONTH, APRIL + 1);
+        strawberriesSeedingValues1.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues1.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues1);
 
         // information of strawberries
         ContentValues strawberriesSeedingValues2 = new ContentValues();
-        strawberriesSeedingValues2.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues2.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues2.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues2.put(VegetableContract.VegetableEntry.COLUMN_MONTH, MAY + 1);
-        strawberriesSeedingValues2.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues2);
+        strawberriesSeedingValues2.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues2.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues2.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues2.put(VegetableEntry.COLUMN_MONTH, MAY + 1);
+        strawberriesSeedingValues2.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues2.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues2);
 
         // information of strawberries
         ContentValues strawberriesSeedingValues3 = new ContentValues();
-        strawberriesSeedingValues3.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues3.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues3.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues3.put(VegetableContract.VegetableEntry.COLUMN_MONTH, JUNE + 1);
-        strawberriesSeedingValues3.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues3);
+        strawberriesSeedingValues3.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues3.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues3.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues3.put(VegetableEntry.COLUMN_MONTH, JUNE + 1);
+        strawberriesSeedingValues3.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues3.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues3);
 
         // information of strawberries
         ContentValues strawberriesSeedingValues4 = new ContentValues();
-        strawberriesSeedingValues4.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues4.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues4.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues4.put(VegetableContract.VegetableEntry.COLUMN_MONTH, SEPTEMBER + 1);
-        strawberriesSeedingValues4.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues4);
+        strawberriesSeedingValues4.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues4.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues4.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues4.put(VegetableEntry.COLUMN_MONTH, SEPTEMBER + 1);
+        strawberriesSeedingValues4.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues4.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues4);
 
         // information of strawberries
         ContentValues strawberriesSeedingValues5 = new ContentValues();
-        strawberriesSeedingValues5.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues5.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues5.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues5.put(VegetableContract.VegetableEntry.COLUMN_MONTH, OCTOBER + 1);
-        strawberriesSeedingValues5.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues5);
+        strawberriesSeedingValues5.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues5.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues5.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues5.put(VegetableEntry.COLUMN_MONTH, OCTOBER + 1);
+        strawberriesSeedingValues5.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues5.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues5);
 
         // information of strawberries
         ContentValues strawberriesSeedingValues6 = new ContentValues();
-        strawberriesSeedingValues6.put(VegetableContract.VegetableEntry.COLUMN_NAME, STRAWBERRIES);
-        strawberriesSeedingValues6.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        strawberriesSeedingValues6.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
-        strawberriesSeedingValues6.put(VegetableContract.VegetableEntry.COLUMN_MONTH, NOVEMBER + 1);
-        strawberriesSeedingValues6.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues6);
+        strawberriesSeedingValues6.put(VegetableEntry.COLUMN_NAME, STRAWBERRIES);
+        strawberriesSeedingValues6.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        strawberriesSeedingValues6.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_ONE_TO_TWO_WEEKS);
+        strawberriesSeedingValues6.put(VegetableEntry.COLUMN_MONTH, NOVEMBER + 1);
+        strawberriesSeedingValues6.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        strawberriesSeedingValues6.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(STRAWBERRIES));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, strawberriesSeedingValues6);
 
 
         // information of strawberries
         ContentValues RedPeppersSeedingValues0 = new ContentValues();
-        RedPeppersSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_NAME, RED_PEPPERS);
-        RedPeppersSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        RedPeppersSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
-        RedPeppersSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_MONTH, MARCH + 1);
-        RedPeppersSeedingValues0.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, RedPeppersSeedingValues0);
+        RedPeppersSeedingValues0.put(VegetableEntry.COLUMN_NAME, RED_PEPPERS);
+        RedPeppersSeedingValues0.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        RedPeppersSeedingValues0.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
+        RedPeppersSeedingValues0.put(VegetableEntry.COLUMN_MONTH, MARCH + 1);
+        RedPeppersSeedingValues0.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        RedPeppersSeedingValues0.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(RED_PEPPERS));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, RedPeppersSeedingValues0);
 
         // information of strawberries
         ContentValues RedPeppersSeedingValues1 = new ContentValues();
-        RedPeppersSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_NAME, RED_PEPPERS);
-        RedPeppersSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
-        RedPeppersSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
-        RedPeppersSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_MONTH, APRIL + 1);
-        RedPeppersSeedingValues1.put(VegetableContract.VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
-        sqLiteDatabase.insert(VegetableContract.VegetableEntry.TABLE_NAME, null, RedPeppersSeedingValues1);
+        RedPeppersSeedingValues1.put(VegetableEntry.COLUMN_NAME, RED_PEPPERS);
+        RedPeppersSeedingValues1.put(VegetableEntry.COLUMN_DESCRIPTION1, SEEDING);
+        RedPeppersSeedingValues1.put(VegetableEntry.COLUMN_DESCRIPTION2, SPROUT_IN_A_WEEK);
+        RedPeppersSeedingValues1.put(VegetableEntry.COLUMN_MONTH, APRIL + 1);
+        RedPeppersSeedingValues1.put(VegetableEntry.COLUMN_WEEK_OF_MONTH, ALL_WEEK_OF_MONTH);
+        RedPeppersSeedingValues1.put(VegetableEntry.COLUMN_IMAGE, imageIdentifier(RED_PEPPERS));
+        sqLiteDatabase.insert(VegetableEntry.TABLE_NAME, null, RedPeppersSeedingValues1);
+    }
+
+    public String imageIdentifier(String id) {
+        // Cherry tomatoes image
+        String cherryTomatoImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomato_circle);
+
+        // Strawberry image
+        String strawberryImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_strawberry_circle);
+
+        // Red pepper image
+        String redPepperImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_red_pepper_circle);
+
+        //TODO: Set No_image image
+        // No Image
+        String noImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_launcher_foreground);
+
+        switch (id) {
+            case CHERRY_TOMATOES:
+                return cherryTomatoImageId;
+            case STRAWBERRIES:
+                return strawberryImageId;
+            case RED_PEPPERS:
+                return redPepperImageId;
+            default:
+                return noImageId;
+        }
     }
 }

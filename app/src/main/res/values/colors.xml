@@ -5,11 +5,8 @@
     <color name="colorAccent">#4CAF50</color>
 
     <!-- Color of button -->
-    <color name="buttonColor">#B2DFDB</color>
 
     <!-- Color of button's text -->
-    <color name="buttonTextColor">#ffffff</color>
 
     <!-- Color of TipsActivity -->
-    <color name="TipsActivity">#ffffff</color>
 </resources>

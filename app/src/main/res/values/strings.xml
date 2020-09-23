@@ -1,59 +1,42 @@
 <resources>
     <!-- Title name of mainActivity -->
-    <string name="app_name">VegetableCalendar</string>
+    <string name="app_name">ベジカレ</string>
 
     <!-- Title name of calendarActivity -->
-    <string name="title_calendar_activity">Calendar</string>
 
     <!-- Title name of tipsActivity -->
-    <string name="title_tips_activity">Tips</string>
 
     <!-- Title name of chatActivity -->
-    <string name="title_chat_activity">ChatRoom</string>
 
     <!-- String for Home button -->
-    <string name="homeButton">Home</string>
 
     <!-- String for Calendar button -->
-    <string name="calendarButton">Calendar</string>
 
     <!-- String for Tips button -->
-    <string name="tipsButton">Tips</string>
 
     <!-- String for Chat button -->
-    <string name="chatButton">Chat</string>
 
     <!-- String for Month display in calendar -->
-    <string name="title">Month</string>
 
     <!-- String for plan display in calendar -->
-    <string name="Schedule">Nothing Special</string>
 
     <!-- String for description of image in tips -->
-    <string name="image_describing_the_tip">Description</string>
 
     <!-- String for title in CalendarEditorActivity -->
-    <string name="text_title">タイトル</string>
 
     <!-- String for description of title in CalendarEditorActivity -->
-    <string name="text_description">詳細</string>
 
     <!-- String for hint for schedule title in CalendarEditorActivity -->
-    <string name="hint_for_schedule_title">タイトルを入力</string>
 
     <!-- String for hint for schedule description in CalendarEditorActivity -->
-    <string name="hint_for_schedule_description">詳細を入力</string>
 
     <!-- String for date picker in CalendarEditorActivity -->
-    <string name="pick_date">日付選択</string>
 
     <!-- String for toast message in CalendarEditorActivity -->
-    <string name="added_to_calendar">カレンダーに追加しました</string>
 
     <!-- String for toast message in CalendarEditorActivity -->
-    <string name="failed_to_add_to_calendar">エラーが発生しました</string>
 
-    <string name="empty_title_view">野菜のデータがありません</string>
+    <string name="empty_title_view">野菜のデータがありません\n次期アップデートをお待ちください</string>
 
     <string name="empty_title_view_error">野菜のデータがありません\nアプリを再インストールしてください</string>
 

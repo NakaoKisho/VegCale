@@ -60,8 +60,8 @@ public class VegetableTipContract {
 
         // Table headers
         public static final String _ID = "_id";
-        public static final String COLUMN_TITLE = "name";
-        public static final String COLUMN_DESCRIPTION1 = "description1";
-        public static final String COLUMN_DESCRIPTION2 = "description2";
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_DESCRIPTION = "description";
+        public static final String COLUMN_IMAGE = "image";
     }
 }

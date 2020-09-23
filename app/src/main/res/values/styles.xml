@@ -8,17 +8,8 @@
     </style>
 
     <!-- Style for numbers in calendar section -->
-    <style name="CalendarNumbers">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">16dp</item>
-        <item name="android:gravity">center_horizontal</item>
-    </style>
 
     <!-- Style for days in calendar section -->
-    <style name="CalendarDays">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
 
     <!-- Style for title in tips section -->
     <style name="TipsTitle">

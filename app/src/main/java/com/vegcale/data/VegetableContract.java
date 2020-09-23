@@ -65,5 +65,6 @@ public class VegetableContract {
         public static final String COLUMN_DESCRIPTION2 = "description2";
         public static final String COLUMN_MONTH = "month";
         public static final String COLUMN_WEEK_OF_MONTH = "weekOfMonth";
+        public static final String COLUMN_IMAGE = "image";
     }
 }
