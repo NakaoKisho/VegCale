@@ -33,7 +33,4 @@ public class VegetableConstant {
     public static final int SECOND_WEEK_OF_MOTH = 2;
     public static final int THIRD_WEEK_OF_MOTH = 3;
     public static final int FOURTH_WEEK_OF_MOTH = 4;
-
-    // Tips titles
-    public static final String WHERE_TO_PLACE_CHERRY_TOMATOES_FLOWER_POT = "プランターの置き場所 ミニトマト編";
 }

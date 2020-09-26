@@ -60,7 +60,7 @@ public class VegetableTipCursorAdapter extends CursorAdapter {
         TextView tipTitle = view.findViewById(R.id.tip_title);
 
         // Find the tip's short description
-        TextView tipDescription = view.findViewById(R.id.tip_description);
+        TextView tipDescription = view.findViewById(R.id.tip_article);
 
         // If these databases column are not null
         if(cursor.getColumnIndex(VegetableTipEntry.COLUMN_TITLE) > 0

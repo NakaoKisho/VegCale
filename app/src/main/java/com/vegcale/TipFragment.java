@@ -78,7 +78,7 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
         lvDataDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                TextView tipDescription = view.findViewById(R.id.tip_description);
+                TextView tipDescription = view.findViewById(R.id.tip_article);
                 ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
                 if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
                     final float scale = getActivity().getResources().getDisplayMetrics().density;

@@ -10,7 +10,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:contentDescription="@string/vegetable_growing_tip_image" />
+        android:contentDescription="@string/tip_image_description" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,12 +20,14 @@
         <TextView
             android:id="@+id/tip_title"
             style="@style/TipsTitle"
+            android:textSize="18sp"
             tools:text="Title" />
 
         <TextView
-            android:id="@+id/tip_description"
+            android:id="@+id/tip_article"
             style="@style/TipsDescription"
-            tools:text="Description" />
+            android:textSize="16sp"
+            tools:text="Article" />
 
     </LinearLayout>
 
