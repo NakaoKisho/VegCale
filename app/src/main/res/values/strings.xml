@@ -30,7 +30,7 @@
 
     <!-- "Where to place tomatoes flower pot" -->
     <string name="title_where_to_place_tomatoes_flower_pot">
-        プランターの置き場所　トマト編
+        プランターの置き場所\nトマト編
     </string>
 
     <!-- "The frequency of tomatoes watering" -->
@@ -52,12 +52,34 @@
 
     <!-- "Where to place strawberries flower pot" -->
     <string name="title_where_to_place_strawberries_flower_pot">
-        プランターの置き場所　イチゴ編
+        プランターの置き場所\nイチゴ編
     </string>
 
     <!-- "The frequency of strawberries watering" -->
     <string name="title_the_frequency_of_strawberries_watering">
         水やりの頻度　イチゴ編
+    </string>
+
+    <!-- Red peppers -->
+
+    <!-- "Things have to check to choose red peppers planter" -->
+    <string name="title_things_have_to_check_to_choose_red_peppers_planter">
+        プランターの選び方\nトウガラシ編
+    </string>
+
+    <!-- "Things have to check to choose red peppers soil" -->
+    <string name="title_things_have_to_check_to_choose_red_peppers_soil">
+        土の選び方　トウガラシ編
+    </string>
+
+    <!-- "Where to place red peppers flower pot" -->
+    <string name="title_where_to_place_red_peppers_flower_pot">
+        プランターの置き場所\nトウガラシ編
+    </string>
+
+    <!-- "The frequency of red peppers watering" -->
+    <string name="title_the_frequency_of_red_peppers_watering">
+        水やりの頻度　トウガラシ編
     </string>
 
     <!-- All -->
@@ -140,6 +162,28 @@
         乾燥させすぎないように気を配ってください。\n
         また屋外で雨水がかかるようなところでは、水やりをせずとも成長します。
         乾燥しすぎていないか、時々土を触って確認してあげてください。
+    </string>
+
+    <!--  Red peppers -->
+
+    <!-- "Things have to check to choose red peppers planter" -->
+    <string name="article_things_have_to_check_to_choose_red_peppers_planter">
+        標準タイプで深さ30cm以上のものを用意しましょう。
+    </string>
+
+    <!-- "Things have to check to choose red peppers soil" -->
+    <string name="article_things_have_to_check_to_choose_red_peppers_soil">
+        市販の野菜用の土を使いましょう。
+    </string>
+
+    <!-- "Where to place red peppers flower pot" -->
+    <string name="article_where_to_place_red_peppers_flower_pot">
+        日当たりがよく、風がよく通る場所を好みます。生育適温は25度〜30度前後です。
+    </string>
+
+    <!-- "The frequency of red peppers watering" -->
+    <string name="article_the_frequency_of_red_peppers_watering">
+        トウガラシは根張りが浅く、乾燥に弱いので、土が乾いていたらたっぷりと水をあげましょう。
     </string>
 
     <!-- All -->

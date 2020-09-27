@@ -19,13 +19,22 @@
 
         <TextView
             android:id="@+id/tip_title"
-            style="@style/TipsTitle"
-            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="0dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="0dp"
+            android:textSize="22sp"
             tools:text="Title" />
 
         <TextView
             android:id="@+id/tip_article"
-            style="@style/TipsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:padding="16dp"
             android:textSize="16sp"
             tools:text="Article" />
 

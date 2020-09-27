@@ -6,21 +6,4 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-    <!-- Style for title in tips section -->
-    <style name="TipsTitle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">16dp</item>
-    </style>
-
-    <!-- Style for title description in tips section -->
-    <style name="TipsDescription">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">64dp</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">16dp</item>
-    </style>
-
 </resources>

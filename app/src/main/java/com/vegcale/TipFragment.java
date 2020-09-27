@@ -74,7 +74,7 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
         // or start a new one.
         LoaderManager.getInstance(this).initLoader(VEGETABLE_TIPS, null, this);
 
-        //
+        // Listen to touches and change the height
         lvDataDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -82,7 +82,7 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
                 ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
                 if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
                     final float scale = getActivity().getResources().getDisplayMetrics().density;
-                    params.height = (int) (64 * scale + 0.5f);
+                    params.height = (int) (5 * scale + 0.5f);
                 } else {
                     params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 }
