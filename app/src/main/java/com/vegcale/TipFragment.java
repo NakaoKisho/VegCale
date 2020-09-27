@@ -81,8 +81,7 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
                 TextView tipDescription = view.findViewById(R.id.tip_article);
                 ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
                 if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
-                    final float scale = getActivity().getResources().getDisplayMetrics().density;
-                    params.height = (int) (5 * scale + 0.5f);
+                    params.height = 0;
                 } else {
                     params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 }
