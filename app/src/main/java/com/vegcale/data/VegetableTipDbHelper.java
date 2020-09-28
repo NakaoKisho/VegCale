@@ -66,28 +66,28 @@ public class VegetableTipDbHelper extends SQLiteOpenHelper {
         ContentValues tomatoesPlanter = new ContentValues();
         tomatoesPlanter.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_tomatoes_planter));
         tomatoesPlanter.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_tomatoes_planter));
-        tomatoesPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomato_circle));
+        tomatoesPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_planters));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, tomatoesPlanter);
 
         // Tip of tomatoes soil
         ContentValues tomatoesSoil = new ContentValues();
         tomatoesSoil.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_tomatoes_soil));
         tomatoesSoil.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_tomatoes_soil));
-        tomatoesSoil.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomato_circle));
+        tomatoesSoil.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_tomatoes_soil));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, tomatoesSoil);
 
-        // Tip of tomatoes planting pot
+        // Tip of tomatoes place to put a pot
         ContentValues tomatoesPlantPlace = new ContentValues();
         tomatoesPlantPlace.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_where_to_place_tomatoes_flower_pot));
         tomatoesPlantPlace.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_where_to_place_tomatoes_flower_pot));
-        tomatoesPlantPlace.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomato_circle));
+        tomatoesPlantPlace.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_place_to_put_planters));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, tomatoesPlantPlace);
 
         // Tip of tomatoes watering
         ContentValues tomatoesWatering = new ContentValues();
         tomatoesWatering.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_the_frequency_of_tomatoes_watering));
         tomatoesWatering.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_the_frequency_of_tomatoes_watering));
-        tomatoesWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomato_circle));
+        tomatoesWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_watering));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, tomatoesWatering);
 
         // Strawberries
@@ -96,28 +96,28 @@ public class VegetableTipDbHelper extends SQLiteOpenHelper {
         ContentValues strawberriesPlanter = new ContentValues();
         strawberriesPlanter.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_strawberries_planter));
         strawberriesPlanter.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_strawberries_planter));
-        strawberriesPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_strawberry_circle));
+        strawberriesPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_planters));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, strawberriesPlanter);
 
         // Tip of strawberries soil
         ContentValues strawberriesSoil = new ContentValues();
         strawberriesSoil.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_strawberries_soil));
         strawberriesSoil.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_strawberries_soil));
-        strawberriesSoil.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_strawberry_circle));
+        strawberriesSoil.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_strawberries_soil));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, strawberriesSoil);
 
-        // Tip of strawberries planting pot
+        // Tip of strawberries place to put a pot
         ContentValues strawberriesPlantPlace = new ContentValues();
         strawberriesPlantPlace.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_where_to_place_strawberries_flower_pot));
         strawberriesPlantPlace.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_where_to_place_strawberries_flower_pot));
-        strawberriesPlantPlace.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_strawberry_circle));
+        strawberriesPlantPlace.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_place_to_put_planters));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, strawberriesPlantPlace);
 
         // Tip of strawberries watering
         ContentValues strawberriesWatering = new ContentValues();
         strawberriesWatering.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_the_frequency_of_strawberries_watering));
         strawberriesWatering.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_the_frequency_of_strawberries_watering));
-        strawberriesWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_strawberry_circle));
+        strawberriesWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_watering));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, strawberriesWatering);
 
         // Red peppers
@@ -126,28 +126,28 @@ public class VegetableTipDbHelper extends SQLiteOpenHelper {
         ContentValues redPeppersPlanter = new ContentValues();
         redPeppersPlanter.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_red_peppers_planter));
         redPeppersPlanter.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_red_peppers_planter));
-        redPeppersPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_red_pepper_circle));
+        redPeppersPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_planters));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, redPeppersPlanter);
 
         // Tip of red peppers soil
         ContentValues redPeppersSoil = new ContentValues();
         redPeppersSoil.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_red_peppers_soil));
         redPeppersSoil.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_red_peppers_soil));
-        redPeppersSoil.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_red_pepper_circle));
+        redPeppersSoil.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_red_peppers_soil));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, redPeppersSoil);
 
-        // Tip of red peppers planting pot
+        // Tip of red peppers place to put a pot
         ContentValues redPeppersPlantPlace = new ContentValues();
         redPeppersPlantPlace.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_where_to_place_red_peppers_flower_pot));
         redPeppersPlantPlace.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_where_to_place_red_peppers_flower_pot));
-        redPeppersPlantPlace.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_red_pepper_circle));
+        redPeppersPlantPlace.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_place_to_put_planters));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, redPeppersPlantPlace);
 
         // Tip of red peppers watering
         ContentValues redPeppersWatering = new ContentValues();
         redPeppersWatering.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_the_frequency_of_red_peppers_watering));
         redPeppersWatering.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_the_frequency_of_red_peppers_watering));
-        redPeppersWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_red_pepper_circle));
+        redPeppersWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_watering));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, redPeppersWatering);
 
         // All
@@ -156,14 +156,14 @@ public class VegetableTipDbHelper extends SQLiteOpenHelper {
         ContentValues bottomRocksInAPlanter = new ContentValues();
         bottomRocksInAPlanter.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_things_have_to_check_to_choose_rocks_put_in_bottom_of_a_planter));
         bottomRocksInAPlanter.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_things_have_to_check_to_choose_rocks_put_in_bottom_of_a_planter));
-        bottomRocksInAPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_launcher_foreground));
+        bottomRocksInAPlanter.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_rocks_in_the_bottom_of_a_planter));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, bottomRocksInAPlanter);
 
         // Tip of watering
         ContentValues frequencyOfWatering = new ContentValues();
         frequencyOfWatering.put(VegetableTipEntry.COLUMN_TITLE, mContext.getResources().getString(R.string.title_the_frequency_of_plants_watering));
         frequencyOfWatering.put(VegetableTipEntry.COLUMN_DESCRIPTION, mContext.getResources().getString(R.string.article_the_frequency_of_plants_watering));
-        frequencyOfWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_launcher_foreground));
+        frequencyOfWatering.put(VegetableTipEntry.COLUMN_IMAGE, mContext.getResources().getResourceEntryName(R.drawable.ic_watering_all));
         sqLiteDatabase.insert(VegetableTipEntry.TABLE_NAME, null, frequencyOfWatering);
     }
 }

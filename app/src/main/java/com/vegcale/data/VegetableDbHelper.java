@@ -229,13 +229,13 @@ public class VegetableDbHelper extends SQLiteOpenHelper {
 
     public String imageIdentifier(String id) {
         // Cherry tomatoes image
-        String cherryTomatoImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomato_circle);
+        String cherryTomatoImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_cherry_tomatoes_circle);
 
         // Strawberry image
-        String strawberryImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_strawberry_circle);
+        String strawberryImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_strawberries_circle);
 
         // Red pepper image
-        String redPepperImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_red_pepper_circle);
+        String redPepperImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_red_peppers_circle);
 
         //TODO: Set No_image image
         // No Image
