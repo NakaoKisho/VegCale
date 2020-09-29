@@ -11,6 +11,7 @@ package com.vegcale;
 
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,24 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
 
         // Find calendarView
         CalendarView calendarView = rootView.findViewById(R.id.calendar_view);
+
+        // If API level is lower than 19
+        if ((Build.VERSION.SDK_INT) <= 19) {
+
+//            calendarView.setDateTextAppearance(R.style.TextAppearance_AppCompat_Large);
+
+            // Get Layout
+            ViewGroup.LayoutParams params = calendarView.getLayoutParams();
+
+            // Get the screen's density scale
+            final float scale = getActivity().getResources().getDisplayMetrics().density;
+
+            // Convert the dps to pixels, based on density scale and change it's height
+            params.height = (int) (550 * scale + 0.5f);
+
+            // Apply it
+            calendarView.setLayoutParams(params);
+        }
 
         // Initiate calendar class
         Calendar cal = Calendar.getInstance();

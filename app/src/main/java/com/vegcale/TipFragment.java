@@ -79,12 +79,20 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 TextView tipDescription = view.findViewById(R.id.tip_article);
+
+                // Get Layout
                 ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
                 if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
+
+                    // Change it's height
                     params.height = 0;
                 } else {
+
+                    // Change it's height
                     params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 }
+
+                // Apply it
                 tipDescription.setLayoutParams(params);
             }
         });
