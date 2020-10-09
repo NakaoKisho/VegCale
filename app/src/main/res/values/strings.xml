@@ -2,6 +2,12 @@
     <!-- Title name of mainActivity -->
     <string name="app_name">ベジカレ</string>
 
+    <!-- Information about updates -->
+    <string name="update">
+        次回のアップデートではミニトマト、イチゴ、トウガラシについてのより詳しい情報や、
+        アプリ内に要望などを送るボタンを設置します。
+    </string>
+
     <!-- No vegetable data in calendar -->
     <string name="empty_title_view">野菜のデータがありません\n次期アップデートをお待ちください</string>
 

@@ -75,8 +75,6 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
         // If API level is lower than 19
         if ((Build.VERSION.SDK_INT) <= 19) {
 
-//            calendarView.setDateTextAppearance(R.style.TextAppearance_AppCompat_Large);
-
             // Get Layout
             ViewGroup.LayoutParams params = calendarView.getLayoutParams();
 

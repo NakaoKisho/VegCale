@@ -237,8 +237,6 @@ public class VegetableDbHelper extends SQLiteOpenHelper {
         // Red pepper image
         String redPepperImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_red_peppers_circle);
 
-        //TODO: Set No_image image
-        // No Image
         String noImageId = mContext.getResources().getResourceEntryName(R.drawable.ic_launcher_foreground);
 
         switch (id) {

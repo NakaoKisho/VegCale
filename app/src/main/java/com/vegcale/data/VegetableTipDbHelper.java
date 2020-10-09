@@ -59,7 +59,7 @@ public class VegetableTipDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion1) { }
     
     public void prepopulateVegetableTipsData(SQLiteDatabase sqLiteDatabase) {
-        // TODO: Change the photos
+
         // Tomatoes
 
         // Tip of tomatoes planter

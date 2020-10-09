@@ -22,8 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:gravity="center_vertical"
-            android:paddingLeft="16dp"
-            android:paddingRight="0dp"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
             android:textSize="22sp"
