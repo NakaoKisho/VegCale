@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".CalendarFragment">
 
@@ -11,6 +12,10 @@
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        ads:layout_constraintLeft_toLeftOf="parent"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintRight_toRightOf="parent"
+        ads:layout_constraintBottom_toTopOf="@+id/calendar_view"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-8476565332830580/8214871135">
     </com.google.android.gms.ads.AdView>
@@ -18,26 +23,31 @@
     <CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/grid_view" />
 
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="4" />
+        android:layout_height="0dp"
+        android:numColumns="4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <LinearLayout
+    <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/empty_title_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/empty_title_view" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

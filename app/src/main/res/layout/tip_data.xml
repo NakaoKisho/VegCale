@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,32 +11,36 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:contentDescription="@string/tip_image_description" />
+        android:contentDescription="@string/tip_image_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tip_title" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tip_title"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="0dp"
+        android:textSize="22sp"
+        tools:text="Title"
+        app:layout_constraintLeft_toRightOf="@+id/tip_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tip_article" />
 
-        <TextView
-            android:id="@+id/tip_title"
-            android:layout_width="match_parent"
-            android:layout_height="96dp"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="0dp"
-            android:textSize="22sp"
-            tools:text="Title" />
+    <TextView
+        android:id="@+id/tip_article"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:textSize="16sp"
+        tools:text="Article"
+        app:layout_constraintLeft_toRightOf="@+id/tip_image"
+        app:layout_constraintTop_toBottomOf="@+id/tip_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <TextView
-            android:id="@+id/tip_article"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center_vertical"
-            android:padding="16dp"
-            android:textSize="16sp"
-            tools:text="Article" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
