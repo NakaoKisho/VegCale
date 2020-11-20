@@ -8,6 +8,7 @@
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context=".CalendarFragment">
 
+    <!-- Set the bottom to nothing -->
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="match_parent"
@@ -18,6 +19,39 @@
         ads:layout_constraintRight_toRightOf="parent"
         ads:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:text="@string/sun"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/display_year"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/display_year"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:text="@string/sun"
+        app:layout_constraintLeft_toRightOf="@+id/previous"
+        app:layout_constraintRight_toLeftOf="@+id/next"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:text="@string/sun"
+        app:layout_constraintLeft_toRightOf="@+id/display_year"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
     <TextView
         android:id="@+id/sunday"
         android:layout_width="0dp"
@@ -27,7 +61,7 @@
         android:text="@string/sun"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/monday"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/previous" />
 
     <TextView
         android:id="@+id/monday"
@@ -38,7 +72,7 @@
         android:text="@string/mon"
         app:layout_constraintLeft_toRightOf="@+id/sunday"
         app:layout_constraintRight_toLeftOf="@+id/tuesday"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/previous" />
 
     <TextView
         android:id="@+id/tuesday"
@@ -49,7 +83,7 @@
         android:text="@string/tue"
         app:layout_constraintLeft_toRightOf="@+id/monday"
         app:layout_constraintRight_toLeftOf="@+id/wednesday"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/display_year" />
 
     <TextView
         android:id="@+id/wednesday"
@@ -60,7 +94,7 @@
         android:text="@string/wed"
         app:layout_constraintLeft_toRightOf="@+id/tuesday"
         app:layout_constraintRight_toLeftOf="@+id/thursday"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/display_year" />
 
     <TextView
         android:id="@+id/thursday"
@@ -71,7 +105,7 @@
         android:text="@string/thu"
         app:layout_constraintLeft_toRightOf="@+id/wednesday"
         app:layout_constraintRight_toLeftOf="@+id/friday"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/display_year" />
 
     <TextView
         android:id="@+id/friday"
@@ -82,7 +116,7 @@
         android:text="@string/fri"
         app:layout_constraintLeft_toRightOf="@+id/thursday"
         app:layout_constraintRight_toLeftOf="@+id/saturday"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/next" />
 
     <TextView
         android:id="@+id/saturday"
@@ -93,23 +127,14 @@
         android:text="@string/sat"
         app:layout_constraintLeft_toRightOf="@+id/friday"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids=
-            "adView, sunday, monday, tuesday, wednesday, thursday, friday, saturday,"
-        tools:layout_editor_absoluteX="411dp" />
+        app:layout_constraintTop_toBottomOf="@+id/next" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrier2"
+        app:layout_constraintTop_toBottomOf="@+id/wednesday"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 

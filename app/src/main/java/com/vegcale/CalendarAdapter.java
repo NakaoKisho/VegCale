@@ -66,6 +66,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         params.height = parent.getMeasuredHeight() / mDateUtils.getFULL_HEIGHT_COUNT();
         view.setLayoutParams(params);
 
+        Log.d(TAG, "\n onCreateViewHolder: parent.getMeasuredWidth() == " + parent.getMeasuredWidth() +
+                "\n parent.getMeasuredHeight() == " + parent.getMeasuredHeight());
         return new ViewHolder(view);
     }
 
