@@ -19,35 +19,43 @@
         ads:layout_constraintRight_toRightOf="parent"
         ads:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/previous"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
         android:gravity="center"
-        android:textAllCaps="true"
+        android:rotation="180"
+        android:src="@android:drawable/ic_media_play"
         android:text="@string/sun"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@id/barrier"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/display_year"
         app:layout_constraintTop_toBottomOf="@+id/adView" />
 
     <TextView
         android:id="@+id/display_year"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
         android:gravity="center"
+        android:text="2020"
         android:textAllCaps="true"
-        android:text="@string/sun"
+        android:textSize="30sp"
         app:layout_constraintLeft_toRightOf="@+id/previous"
         app:layout_constraintRight_toLeftOf="@+id/next"
         app:layout_constraintTop_toBottomOf="@+id/adView" />
 
-    <Button
+    <ImageButton
         android:id="@+id/next"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
         android:gravity="center"
-        android:textAllCaps="true"
+        android:src="@android:drawable/ic_media_play"
         android:text="@string/sun"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/barrier"
         app:layout_constraintLeft_toRightOf="@+id/display_year"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adView" />
@@ -57,30 +65,33 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/sun"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/monday"
-        app:layout_constraintTop_toBottomOf="@+id/previous" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/monday"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/mon"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/sunday"
         app:layout_constraintRight_toLeftOf="@+id/tuesday"
-        app:layout_constraintTop_toBottomOf="@+id/previous" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/tuesday"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/tue"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/monday"
         app:layout_constraintRight_toLeftOf="@+id/wednesday"
         app:layout_constraintTop_toBottomOf="@+id/display_year" />
@@ -90,8 +101,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/wed"
+        android:textAllCaps="true"
         app:layout_constraintLeft_toRightOf="@+id/tuesday"
         app:layout_constraintRight_toLeftOf="@+id/thursday"
         app:layout_constraintTop_toBottomOf="@+id/display_year" />
@@ -101,8 +112,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/thu"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/wednesday"
         app:layout_constraintRight_toLeftOf="@+id/friday"
         app:layout_constraintTop_toBottomOf="@+id/display_year" />
@@ -112,30 +124,40 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/fri"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/thursday"
         app:layout_constraintRight_toLeftOf="@+id/saturday"
-        app:layout_constraintTop_toBottomOf="@+id/next" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/saturday"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textAllCaps="true"
         android:text="@string/sat"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/friday"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/next" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wednesday"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/wednesday" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="adView, display_year, next, previous"
+        tools:layout_editor_absoluteX="411dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
