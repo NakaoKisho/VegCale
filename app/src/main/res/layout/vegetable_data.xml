@@ -3,56 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_height="80dp"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/vegetable_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:contentDescription="@string/vegetable_image_description"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/vegetable_name" />
+        tools:text="8" />
 
     <TextView
-        android:id="@+id/vegetable_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        tools:text="ミニトマト"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_image"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/vegetable_description1" />
-
-    <TextView
-        android:id="@+id/vegetable_description1"
+        android:id="@+id/note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="12sp"
-        tools:text="種まき"
+        android:maxLines="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_name"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/vegetable_description2" />
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        tools:text="Test" />
 
-    <TextView
-        android:id="@+id/vegetable_description2"
+    <ImageView
+        android:id="@+id/stamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:contentDescription="Vegetable Stamps"
         android:textSize="12sp"
-        tools:text="発芽: 約一週間"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_description1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

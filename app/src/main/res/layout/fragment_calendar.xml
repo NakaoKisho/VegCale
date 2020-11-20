@@ -8,50 +8,108 @@
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context=".CalendarFragment">
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ads:layout_constraintLeft_toLeftOf="parent"
-        ads:layout_constraintTop_toTopOf="parent"
-        ads:layout_constraintRight_toRightOf="parent"
-        ads:layout_constraintBottom_toTopOf="@+id/calendar_view"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-8476565332830580/8214871135">
-    </com.google.android.gms.ads.AdView>
-
-    <CalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <GridView
-        android:id="@+id/grid_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:horizontalSpacing="0dp"
-        android:verticalSpacing="0dp"
-        android:numColumns="4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_view"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        ads:adUnitId="ca-app-pub-8476565332830580/8214871135"
+        ads:layout_constraintLeft_toLeftOf="parent"
+        ads:layout_constraintRight_toRightOf="parent"
+        ads:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/empty_view"
+        android:id="@+id/sunday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/sun"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/monday"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/monday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/mon"
+        app:layout_constraintLeft_toRightOf="@+id/sunday"
+        app:layout_constraintRight_toLeftOf="@+id/tuesday"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/tuesday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/tue"
+        app:layout_constraintLeft_toRightOf="@+id/monday"
+        app:layout_constraintRight_toLeftOf="@+id/wednesday"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/wednesday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/wed"
+        app:layout_constraintLeft_toRightOf="@+id/tuesday"
+        app:layout_constraintRight_toLeftOf="@+id/thursday"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/thursday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/thu"
+        app:layout_constraintLeft_toRightOf="@+id/wednesday"
+        app:layout_constraintRight_toLeftOf="@+id/friday"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/friday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/fri"
+        app:layout_constraintLeft_toRightOf="@+id/thursday"
+        app:layout_constraintRight_toLeftOf="@+id/saturday"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <TextView
+        android:id="@+id/saturday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:text="@string/sat"
+        app:layout_constraintLeft_toRightOf="@+id/friday"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids=
+            "adView, sunday, monday, tuesday, wednesday, thursday, friday, saturday,"
+        tools:layout_editor_absoluteX="411dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/empty_title_view"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_view"
+        app:layout_constraintTop_toBottomOf="@+id/barrier2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
