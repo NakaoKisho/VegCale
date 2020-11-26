@@ -42,7 +42,6 @@
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:gravity="center"
-        android:text="2020"
         android:textAllCaps="true"
         android:textSize="50sp"
         app:layout_constraintLeft_toRightOf="@+id/previous"

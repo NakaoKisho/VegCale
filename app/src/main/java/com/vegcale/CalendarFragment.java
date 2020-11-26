@@ -10,10 +10,12 @@
 package com.vegcale;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +37,11 @@ import static com.vegcale.DateUtils.SPAN_COUNT;
  */
 public class CalendarFragment extends Fragment {//implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int DAYS_COUNT = 30;
+    public static Calendar mCalendar;
+
+    public static Calendar currentCalendar;
+
+    private TextView displayYear;
 
 //    /** Int field to get a year which a user currently picks */
 //    private int mYear;
@@ -52,6 +58,8 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
     /** Int field to tell that it shows tables associated with specified month in the database */
     private static final int VEGETABLE_MONTH = 2;
 
+//    DateUtils dateUtils;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +73,13 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+//        Log.d("CalendarFragment", "onCreateView: mCalendar.get(Calendar.MONTH)"
+//                + mCalendar.get(Calendar.MONTH));
+
+        mCalendar = Calendar.getInstance();
+        currentCalendar = (Calendar) mCalendar.clone();
+
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         // Find the adView
@@ -76,9 +91,17 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
         // Load an ad
         mAdView.loadAd(adRequest);
 
+        ImageButton previous = rootView.findViewById(R.id.previous);
+
+        displayYear = rootView.findViewById(R.id.display_year);
+
+        ImageButton next = rootView.findViewById(R.id.next);
+
+//        dateUtils = new DateUtils();
+
 //        // Initiate calendar class
 //        Calendar cal = Calendar.getInstance();
-
+//
 //        // get current year
 //        mYear = cal.get(Calendar.YEAR);
 //
@@ -87,7 +110,7 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
 //
 //        // get current day
 //        mDay = cal.get(Calendar.DAY_OF_MONTH);
-
+//
 //        // Find GridView
 //        GridView gvDataDisplay = rootView.findViewById(R.id.recycler_view);
 //
@@ -112,8 +135,43 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
 //        // Prepare the loader.  Either re-connect with an existing one,
 //        // or start a new one.
 //        LoaderManager.getInstance(this).initLoader(VEGETABLE_MONTH, null, this);
-        
+
+        displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCalendar.add(Calendar.MONTH, -1);
+                checkYear(-1);
+                mCalendarAdapter.notifyDataSetChanged();
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCalendar.add(Calendar.MONTH, 1);
+                checkYear(1);
+                mCalendarAdapter.notifyDataSetChanged();
+            }
+        });
         return rootView;
+    }
+
+    private void checkYear(int direction) {
+        if(direction == -1 && mCalendar.get(Calendar.MONTH) > currentCalendar.get(Calendar.MONTH)) {
+            displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+            Log.d("checkYear",
+                    "\n mCalendar.get(Calendar.MONTH) = " + mCalendar.get(Calendar.MONTH) +
+                            "\n currentCalendar.get(Calendar.MONTH) = " + currentCalendar.get(Calendar.MONTH));
+        } else if(direction == 1 && mCalendar.get(Calendar.MONTH) < currentCalendar.get(Calendar.MONTH)) {
+            displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+//            Log.d("checkYear",
+//                    "\n mCalendar.get(Calendar.MONTH): " + mCalendar.get(Calendar.MONTH) +
+//                            "\n currentCalendar.get(Calendar.MONTH = " + currentCalendar.get(Calendar.MONTH));
+        }
+        Log.d("checkYear",
+                "\n mCalendar.get(Calendar.MONTH): " + mCalendar.get(Calendar.MONTH) +
+                        "\n currentCalendar.get(Calendar.MONTH) = " + currentCalendar.get(Calendar.MONTH));
     }
 
 //    @NonNull

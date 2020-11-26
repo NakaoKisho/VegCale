@@ -6,6 +6,9 @@ import android.util.Log;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.vegcale.CalendarFragment.currentCalendar;
+import static com.vegcale.CalendarFragment.mCalendar;
+
 /**
  * Note
  * Calculate
@@ -17,6 +20,8 @@ import java.util.Locale;
  *      Numbers "Sunday" and "Saturday" to red
  *      empty days to grey color
  *      TextView's and ImageView's visibility to gone in the grey colored cells
+ * Check if
+ *      It is in the current date
  *
  * Method
  *      getDays()
@@ -33,16 +38,21 @@ public class DateUtils {
 
     private final String TAG = "DateUtility.class";
 
-    /** Calendar field for setting*/
-    Calendar mCalendar;
-
-    /** Calendar field for saving current values*/
-    Calendar currentCalendar;
+//    /** Calendar field for setting*/
+//    Calendar mCalendar;
+//
+//    /** Calendar field for saving current values*/
+//    Calendar currentCalendar;
 
     /** Constructor */
     public DateUtils() {
-        mCalendar = Calendar.getInstance();
-        currentCalendar = (Calendar) mCalendar.clone();
+        init();
+//        mCalendar = Calendar.getInstance();
+//        currentCalendar  = (Calendar) mCalendar.clone();
+    }
+
+    private void init() {
+//        Log.d(TAG, "init(): Created");
     }
 
     /**
@@ -69,13 +79,16 @@ public class DateUtils {
      */
     public int getEmptyDaysToTheStart() {
         String dayOfTheStartWeek;
-
+//        Log.d(TAG, "getEmptyDaysToTheStart: mCalendar.get(Calendar.MONTH) = " + mCalendar.get(Calendar.MONTH));
         // Set the calendar to the first day
         mCalendar.set(Calendar.DAY_OF_MONTH, 1);
         // Change the number to corresponding string
         dayOfTheStartWeek = mCalendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US);
-        // Reset the Calendar
-        resetCalendar();
+
+        if(isCurrentDate(mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH))) {
+            // Reset the Calendar
+            resetCalendar();
+        }
 
         return getEmptyDays(dayOfTheStartWeek, TO_THE_START);
     }
@@ -94,8 +107,11 @@ public class DateUtils {
         mCalendar.set(Calendar.DAY_OF_MONTH, dayOfTheMonth);
         // Change the number to corresponding string
         dayOfTheEndWeek = mCalendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US);
-        // Reset the Calendar
-        resetCalendar();
+
+        if(isCurrentDate(mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH))) {
+            // Reset the Calendar
+            resetCalendar();
+        }
 
         return getEmptyDays(dayOfTheEndWeek, FROM_THE_END);
     }
@@ -168,6 +184,22 @@ public class DateUtils {
         }
 
     }
+
+    public void setPreviousMonth() {
+        mCalendar.add(Calendar.MONTH, -1);
+//        Log.d(TAG, "setPreviousYear: mCalendar.add(Calendar.MONTH, -1) = " + mCalendar.get(Calendar.MONTH)); OK(9)
+    }
+
+    public void setNextMonth() {
+        mCalendar.add(Calendar.MONTH, 1);
+//        Log.d(TAG, "setNextYear: mCalendar.add(Calendar.MONTH, 1) = " + mCalendar.get(Calendar.MONTH)); OK
+    }
+
+    private boolean isCurrentDate(int year, int month) {
+        return year == currentCalendar.get(Calendar.YEAR)
+                && month == currentCalendar.get(Calendar.MONTH);
+    }
+
 //
 //    public List<Date> getDays() {
 //

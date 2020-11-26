@@ -40,19 +40,15 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
             note = itemView.findViewById(R.id.note);
             stamp = itemView.findViewById(R.id.stamp);
         }
-
         public TextView getDate() {
             return date;
         }
-
         public TextView getNote() {
             return note;
         }
-
         public ImageView getStamp() {
             return stamp;
         }
-
     }
 
     @NonNull
@@ -66,28 +62,39 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         params.height = parent.getMeasuredHeight() / mDateUtils.getFULL_HEIGHT_COUNT();
         view.setLayoutParams(params);
 
-        Log.d(TAG, "\n onCreateViewHolder: parent.getMeasuredWidth() == " + parent.getMeasuredWidth() +
-                "\n parent.getMeasuredHeight() == " + parent.getMeasuredHeight());
+//        Log.d(TAG,
+//                "\n parent.getMeasuredHeight() = " + parent.getMeasuredHeight() +
+//                "\n mDateUtils.getFULL_HEIGHT_COUNT() = " + mDateUtils.getFULL_HEIGHT_COUNT());
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CalendarAdapter.ViewHolder holder, int position) {
 
-        if(mDateUtils.getEmptyDaysToTheStart() < position + ONE
-                && position + ONE <= mDateUtils.getDaysFromTheStartToTheEnd()) {
+//        holder.getDate().setVisibility(View.VISIBLE);
+//        holder.getNote().setVisibility(View.VISIBLE);
 
-            holder.getDate().setText(String.valueOf(position + ONE
+        if(mDateUtils.getEmptyDaysToTheStart() < position + ONE
+                && position + ONE <= mDateUtils.getEmptyDaysToTheStart() + mDateUtils.getDaysFromTheStartToTheEnd()) {
+
+            holder.getDate().setText(String.valueOf((position + ONE)
                     - mDateUtils.getEmptyDaysToTheStart()));
             holder.getNote().setText("HI");
+//            Log.d(TAG, "AAA");
 
         } else {
 
-            holder.getDate().setVisibility(View.GONE);
-            holder.getNote().setVisibility(View.GONE);
+//            holder.getDate().setVisibility(View.GONE);
+//            holder.getNote().setVisibility(View.GONE);
+//            Log.d(TAG, "BBB");
 
         }
-
+//        Log.d(TAG, "onBindViewHolder: "
+//                + "\n position = " + position
+//                + "\n mDateUtils.getEmptyDaysToTheStart() = " + mDateUtils.getEmptyDaysToTheStart()
+//                + "\n position + ONE = " + (position + ONE)
+//                + "\n mDateUtils.getDaysFromTheStartToTheEnd() = " + mDateUtils.getDaysFromTheStartToTheEnd());
     }
 
     @Override

@@ -48,7 +48,7 @@ public class VegetableCursorAdapter extends CursorAdapter {
         super(context, c, 0);
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
-        mDateManager = new DateUtils();
+//        mDateManager = new DateUtils();
 //        dateArray = mDateManager.getDays();
     }
 
@@ -120,7 +120,8 @@ public class VegetableCursorAdapter extends CursorAdapter {
     //表示月を取得
     public String getTitle(){
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM", Locale.US);
-        return format.format(mDateManager.mCalendar.getTime());
+//        return format.format(mDateManager.mCalendar.getTime());
+        return null;
     }
 
 //    //翌月表示
