@@ -1,8 +1,5 @@
 package com.vegcale;
 
-
-import android.util.Log;
-
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -20,13 +17,17 @@ import static com.vegcale.CalendarFragment.mCalendar;
  *      Numbers "Sunday" and "Saturday" to red
  *      empty days to grey color
  *      TextView's and ImageView's visibility to gone in the grey colored cells
+ *
  * Check if
  *      It is in the current date
  *
- * Method
+ * Method of
  *      getDays()
  *      isCurrentMonth()
  *      getWeek()
+ *
+ * Problem
+ *      最終行の木曜以降の数字が、次の月の最初の行内の空欄に若い番号から順に反映されている
  */
 public class DateUtils {
 
@@ -35,8 +36,6 @@ public class DateUtils {
     private final int TO_THE_START = 0;
 
     private final int FROM_THE_END = 1;
-
-    private final String TAG = "DateUtility.class";
 
 //    /** Calendar field for setting*/
 //    Calendar mCalendar;
@@ -128,7 +127,7 @@ public class DateUtils {
      * Reset the calendar
      */
     private void resetCalendar() {
-        mCalendar = currentCalendar;
+        mCalendar = (Calendar) currentCalendar.clone();
     }
 
     /**

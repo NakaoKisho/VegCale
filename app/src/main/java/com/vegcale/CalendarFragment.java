@@ -14,9 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -28,6 +26,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import static com.vegcale.DateUtils.SPAN_COUNT;
 
@@ -42,6 +41,8 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
     public static Calendar currentCalendar;
 
     private TextView displayYear;
+
+    private TextView displayMonth;
 
 //    /** Int field to get a year which a user currently picks */
 //    private int mYear;
@@ -74,9 +75,6 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        Log.d("CalendarFragment", "onCreateView: mCalendar.get(Calendar.MONTH)"
-//                + mCalendar.get(Calendar.MONTH));
-
         mCalendar = Calendar.getInstance();
         currentCalendar = (Calendar) mCalendar.clone();
 
@@ -94,6 +92,8 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
         ImageButton previous = rootView.findViewById(R.id.previous);
 
         displayYear = rootView.findViewById(R.id.display_year);
+
+        displayMonth = rootView.findViewById(R.id.display_month);
 
         ImageButton next = rootView.findViewById(R.id.next);
 
@@ -137,12 +137,13 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
 //        LoaderManager.getInstance(this).initLoader(VEGETABLE_MONTH, null, this);
 
         displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+        displayMonth.setText(mCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US));
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mCalendar.add(Calendar.MONTH, -1);
-                checkYear(-1);
+                yearAndMonthModification();
                 mCalendarAdapter.notifyDataSetChanged();
             }
         });
@@ -150,28 +151,16 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
             @Override
             public void onClick(View view) {
                 mCalendar.add(Calendar.MONTH, 1);
-                checkYear(1);
+                yearAndMonthModification();
                 mCalendarAdapter.notifyDataSetChanged();
             }
         });
         return rootView;
     }
 
-    private void checkYear(int direction) {
-        if(direction == -1 && mCalendar.get(Calendar.MONTH) > currentCalendar.get(Calendar.MONTH)) {
-            displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
-            Log.d("checkYear",
-                    "\n mCalendar.get(Calendar.MONTH) = " + mCalendar.get(Calendar.MONTH) +
-                            "\n currentCalendar.get(Calendar.MONTH) = " + currentCalendar.get(Calendar.MONTH));
-        } else if(direction == 1 && mCalendar.get(Calendar.MONTH) < currentCalendar.get(Calendar.MONTH)) {
-            displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
-//            Log.d("checkYear",
-//                    "\n mCalendar.get(Calendar.MONTH): " + mCalendar.get(Calendar.MONTH) +
-//                            "\n currentCalendar.get(Calendar.MONTH = " + currentCalendar.get(Calendar.MONTH));
-        }
-        Log.d("checkYear",
-                "\n mCalendar.get(Calendar.MONTH): " + mCalendar.get(Calendar.MONTH) +
-                        "\n currentCalendar.get(Calendar.MONTH) = " + currentCalendar.get(Calendar.MONTH));
+    private void yearAndMonthModification() {
+        displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
+        displayMonth.setText(mCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US));
     }
 
 //    @NonNull

@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Calendar;
-
 import static com.vegcale.DateUtils.SPAN_COUNT;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
@@ -60,41 +58,25 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
         params.width = parent.getMeasuredWidth() / SPAN_COUNT;
         params.height = parent.getMeasuredHeight() / mDateUtils.getFULL_HEIGHT_COUNT();
+        params.height = parent.getMeasuredHeight() / 6;
         view.setLayoutParams(params);
-
-//        Log.d(TAG,
-//                "\n parent.getMeasuredHeight() = " + parent.getMeasuredHeight() +
-//                "\n mDateUtils.getFULL_HEIGHT_COUNT() = " + mDateUtils.getFULL_HEIGHT_COUNT());
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CalendarAdapter.ViewHolder holder, int position) {
-
-//        holder.getDate().setVisibility(View.VISIBLE);
-//        holder.getNote().setVisibility(View.VISIBLE);
-
+        holder.getDate().setVisibility(View.VISIBLE);
+        holder.getNote().setVisibility(View.VISIBLE);
         if(mDateUtils.getEmptyDaysToTheStart() < position + ONE
                 && position + ONE <= mDateUtils.getEmptyDaysToTheStart() + mDateUtils.getDaysFromTheStartToTheEnd()) {
-
             holder.getDate().setText(String.valueOf((position + ONE)
                     - mDateUtils.getEmptyDaysToTheStart()));
             holder.getNote().setText("HI");
-//            Log.d(TAG, "AAA");
-
         } else {
-
-//            holder.getDate().setVisibility(View.GONE);
-//            holder.getNote().setVisibility(View.GONE);
-//            Log.d(TAG, "BBB");
-
+            holder.getDate().setVisibility(View.GONE);
+            holder.getNote().setVisibility(View.GONE);
         }
-//        Log.d(TAG, "onBindViewHolder: "
-//                + "\n position = " + position
-//                + "\n mDateUtils.getEmptyDaysToTheStart() = " + mDateUtils.getEmptyDaysToTheStart()
-//                + "\n position + ONE = " + (position + ONE)
-//                + "\n mDateUtils.getDaysFromTheStartToTheEnd() = " + mDateUtils.getDaysFromTheStartToTheEnd());
     }
 
     @Override
