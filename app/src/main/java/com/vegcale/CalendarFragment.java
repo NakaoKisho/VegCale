@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -26,9 +25,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.Calendar;
-import java.util.Locale;
-
-import static com.vegcale.DateUtils.SPAN_COUNT;
 
 /**
  * A simple {@link Fragment} subclass
@@ -36,13 +32,9 @@ import static com.vegcale.DateUtils.SPAN_COUNT;
  */
 public class CalendarFragment extends Fragment {//implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    public static Calendar mCalendar;
+    private Calendar calendarForCalculation;
 
-    public static Calendar currentCalendar;
-
-    private TextView displayYear;
-
-    private TextView displayMonth;
+    private Calendar currentCalendar;
 
 //    /** Int field to get a year which a user currently picks */
 //    private int mYear;
@@ -59,24 +51,30 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
     /** Int field to tell that it shows tables associated with specified month in the database */
     private static final int VEGETABLE_MONTH = 2;
 
-//    DateUtils dateUtils;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     /** VegetableCursorAdapter field */
 //    private VegetableCursorAdapter mVegetableCursorAdapter;
 
     private CalendarAdapter mCalendarAdapter;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mCalendar = Calendar.getInstance();
-        currentCalendar = (Calendar) mCalendar.clone();
+        DateUtils mDateUtils = new DateUtils();
+//        mCalendar = Calendar.getInstance();
+//        currentCalendar = (Calendar) mCalendar.clone();
+//        mCalendar.set(2000, 0, 2);
+//        mDateUtils.setDayDifference(mCalendar, currentCalendar);
+
+        calendarForCalculation = mDateUtils.getCalendarForCalculation();
+        currentCalendar = mDateUtils.getCurrentCalendar();
+        calendarForCalculation.set(2000, 0, 2);
+        mDateUtils.calculateDayDifference(calendarForCalculation, currentCalendar);
 
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
 
@@ -89,15 +87,9 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
         // Load an ad
         mAdView.loadAd(adRequest);
 
-        ImageButton previous = rootView.findViewById(R.id.previous);
+        TextView displayYear = rootView.findViewById(R.id.display_year);
 
-        displayYear = rootView.findViewById(R.id.display_year);
-
-        displayMonth = rootView.findViewById(R.id.display_month);
-
-        ImageButton next = rootView.findViewById(R.id.next);
-
-//        dateUtils = new DateUtils();
+        TextView displayMonth = rootView.findViewById(R.id.display_month);
 
 //        // Initiate calendar class
 //        Calendar cal = Calendar.getInstance();
@@ -124,10 +116,11 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_view);
 
         // Set GridView has 7 columns to RecyclerView
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), SPAN_COUNT));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), mDateUtils.getSpanCount()));
+        mRecyclerView.getLayoutManager().scrollToPosition(mDateUtils.getDayDifferenceToFirstDayOfMonth());
 
         // Initiate the cursor adapter
-        mCalendarAdapter = new CalendarAdapter();
+        mCalendarAdapter = new CalendarAdapter(displayYear, displayMonth);
 
         // Set the adapter onto the RecyclerView
         mRecyclerView.setAdapter(mCalendarAdapter);
@@ -136,31 +129,7 @@ public class CalendarFragment extends Fragment {//implements LoaderManager.Loade
 //        // or start a new one.
 //        LoaderManager.getInstance(this).initLoader(VEGETABLE_MONTH, null, this);
 
-        displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
-        displayMonth.setText(mCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US));
-
-        previous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCalendar.add(Calendar.MONTH, -1);
-                yearAndMonthModification();
-                mCalendarAdapter.notifyDataSetChanged();
-            }
-        });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCalendar.add(Calendar.MONTH, 1);
-                yearAndMonthModification();
-                mCalendarAdapter.notifyDataSetChanged();
-            }
-        });
         return rootView;
-    }
-
-    private void yearAndMonthModification() {
-        displayYear.setText(String.valueOf(mCalendar.get(Calendar.YEAR)));
-        displayMonth.setText(mCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US));
     }
 
 //    @NonNull

@@ -19,59 +19,23 @@
         ads:layout_constraintRight_toRightOf="parent"
         ads:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?android:selectableItemBackground"
-        android:contentDescription="TODO"
-        android:gravity="center"
-        android:rotation="180"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:src="@android:drawable/ic_media_play"
-        android:text="@string/sun"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/display_month"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
-
     <TextView
         android:id="@+id/display_year"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
         android:textAllCaps="true"
         android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="@+id/display_month"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adView" />
 
     <TextView
         android:id="@+id/display_month"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textAllCaps="true"
-        android:textSize="50sp"
-        app:layout_constraintLeft_toRightOf="@+id/previous"
-        app:layout_constraintRight_toLeftOf="@+id/next"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
-
-    <ImageButton
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
-        android:background="?android:selectableItemBackground"
-        android:contentDescription="TODO"
-        android:gravity="center"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:src="@android:drawable/ic_media_play"
-        android:text="@string/sun"
+        android:gravity="end"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/barrier"
-        app:layout_constraintLeft_toRightOf="@+id/display_month"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/display_year"
         app:layout_constraintTop_toBottomOf="@+id/adView" />
 
     <TextView
@@ -108,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/monday"
         app:layout_constraintRight_toLeftOf="@+id/wednesday"
-        app:layout_constraintTop_toBottomOf="@+id/display_month" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/wednesday"
@@ -119,7 +83,7 @@
         android:textAllCaps="true"
         app:layout_constraintLeft_toRightOf="@+id/tuesday"
         app:layout_constraintRight_toLeftOf="@+id/thursday"
-        app:layout_constraintTop_toBottomOf="@+id/display_month" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/thursday"
@@ -131,7 +95,7 @@
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintLeft_toRightOf="@+id/wednesday"
         app:layout_constraintRight_toLeftOf="@+id/friday"
-        app:layout_constraintTop_toBottomOf="@+id/display_month" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/friday"
@@ -171,7 +135,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="adView, display_month, next, previous"
+        app:constraint_referenced_ids="adView, display_month"
         tools:layout_editor_absoluteX="411dp" />
+
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_view2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/recycler_view"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/adView" />-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/recycler_view2" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
