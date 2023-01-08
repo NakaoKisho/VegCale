@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_navigation_action_1"
+        android:title="@string/main_activity_home_button_name"
+        android:icon="@drawable/ic_launcher_foreground" />
+    <item
+        android:id="@+id/bottom_navigation_action_2"
+        android:title="@string/main_activity_section2_button_name"
+        android:icon="@drawable/ic_launcher_foreground" />
+    <item
+        android:id="@+id/bottom_navigation_action_3"
+        android:title="@string/main_activity_section3_button_name"
+        android:icon="@drawable/ic_launcher_foreground" />
+</menu>

@@ -29,7 +29,7 @@ public class FragmentPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch(position) {
             case 0:
-                return new MainFragment();
+                return new HomeFragment();
             case 1:
                 return new CalendarFragment();
             case 2:

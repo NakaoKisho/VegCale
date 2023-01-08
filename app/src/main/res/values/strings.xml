@@ -1,6 +1,17 @@
 <resources>
-    <!-- Title name of mainActivity -->
+    <!-- App -->
+    <!-- Name -->
     <string name="app_name">ベジカレ</string>
+
+    <!-- MainActivity -->
+    <!-- Button Name -->
+    <string name="main_activity_home_button_name">Home</string>
+    <string name="main_activity_section2_button_name">section 2</string>
+    <string name="main_activity_section3_button_name">section 3</string>
+
+    <!-- HomeFragment -->
+
+    <!-- HomeFragment -->
 
     <!-- Information about updates -->
     <string name="update">
