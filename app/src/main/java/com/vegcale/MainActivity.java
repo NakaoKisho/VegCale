@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -23,28 +25,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initializeGoogleMobileAdsSdk();
-
-        // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
+        showGoogleMobileAds();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
+        bottomNavigationView.setOnItemReselectedListener(getBottomNavigationOnItemReselectedListener());
         bottomNavigationView.setOnItemSelectedListener(getBottomNavigationOnItemSelectedListener());
-    }
-
-    private void initializeGoogleMobileAdsSdk() {
-        MobileAds.initialize(this, initializationStatus -> { });
-    }
-
-    private NavigationBarView.OnItemSelectedListener getBottomNavigationOnItemSelectedListener() {
-        return item -> {
-            int bottomNavigationButtonId = item.getItemId();
-            changeFragment(bottomNavigationButtonId);
-
-            return true;
-        };
     }
 
     private void changeFragment(int bottomNavigationButtonId) {
@@ -60,11 +46,29 @@ public class MainActivity extends AppCompatActivity {
             directionFragment = new TipFragment();
         }
 
-        if (directionFragment == null) {
-            throw new NullPointerException();
-        }
-
+        assert directionFragment != null : "directionFragment must not be null.";
         fragmentTransaction.replace(R.id.navigation_container, directionFragment);
         fragmentTransaction.commit();
+    }
+
+    private NavigationBarView.OnItemReselectedListener getBottomNavigationOnItemReselectedListener() {
+        return item -> {};
+    }
+
+    private NavigationBarView.OnItemSelectedListener getBottomNavigationOnItemSelectedListener() {
+        return item -> {
+            int bottomNavigationButtonId = item.getItemId();
+            changeFragment(bottomNavigationButtonId);
+
+            return true;
+        };
+    }
+
+    private void showGoogleMobileAds() {
+        MobileAds.initialize(this, initializationStatus -> { });
+
+        AdView googleAdView = findViewById(R.id.adView);
+        AdRequest googleAdRequest = new AdRequest.Builder().build();
+        googleAdView.loadAd(googleAdRequest);
     }
 }
