@@ -24,9 +24,9 @@ import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.vegcale.data.VegetableContract;
 
 import java.util.Calendar;
@@ -60,78 +60,81 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        // Find the adView
-        AdView mAdView = rootView.findViewById(R.id.adView);
+        RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_view);
+        CustomAdapter mCustomAdapter = new CustomAdapter();
+        mRecyclerView.setAdapter(mCustomAdapter);
 
-        // Hold runtime information
-        AdRequest adRequest = new AdRequest.Builder().build();
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // Load an ad
-        mAdView.loadAd(adRequest);
 
-        // Find calendarView
-        CalendarView calendarView = rootView.findViewById(R.id.calendar_view);
-
-        // If API level is lower than 19
-        if ((Build.VERSION.SDK_INT) <= 19) {
-
-            // Get Layout
-            ViewGroup.LayoutParams params = calendarView.getLayoutParams();
-
-            // Get the screen's density scale
-            final float scale = getActivity().getResources().getDisplayMetrics().density;
-
-            // Convert the dps to pixels, based on density scale and change it's height
-            params.height = (int) (550 * scale + 0.5f);
-
-            // Apply it
-            calendarView.setLayoutParams(params);
-        }
-
-        // Initiate calendar class
-        Calendar cal = Calendar.getInstance();
-
-        // get current year
-        mYear = cal.get(Calendar.YEAR);
-
-        // get current month
-        mMonth = cal.get(Calendar.MONTH) + 1;
-
-        // get current day
-        mDay = cal.get(Calendar.DAY_OF_MONTH);
-
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                if(mYear != year || mMonth != month + 1 || mDay != dayOfMonth) {
-                    mYear = year;
-                    mMonth = month + 1;
-                    mDay = dayOfMonth;
-                }
-                restartLoader();
-            }
-        });
-
-        // Find GridView
-        GridView gvDataDisplay = rootView.findViewById(R.id.grid_view);
-
-        // Find the empty view
-        View emptyView = rootView.findViewById(R.id.empty_view);
-
-        // Set the empty view onto the GridView
-        gvDataDisplay.setEmptyView(emptyView);
-
-        // Initiate the cursor adapter
-        mVegetableCursorAdapter = new VegetableCursorAdapter(getActivity(), null);
-
-        // Set the adapter onto the GridView
-        gvDataDisplay.setAdapter(mVegetableCursorAdapter);
-
-        // Prepare the loader.  Either re-connect with an existing one,
-        // or start a new one.
-        LoaderManager.getInstance(this).initLoader(VEGETABLE_MONTH, null, this);
+//        // Find calendarView
+//        CalendarView calendarView = rootView.findViewById(R.id.calendar_view);
+//
+//        // If API level is lower than 19
+//        if ((Build.VERSION.SDK_INT) <= 19) {
+//
+//            // Get Layout
+//            ViewGroup.LayoutParams params = calendarView.getLayoutParams();
+//
+//            // Get the screen's density scale
+//            final float scale = getActivity().getResources().getDisplayMetrics().density;
+//
+//            // Convert the dps to pixels, based on density scale and change it's height
+//            params.height = (int) (550 * scale + 0.5f);
+//
+//            // Apply it
+//            calendarView.setLayoutParams(params);
+//        }
+//
+//        // Initiate calendar class
+//        Calendar cal = Calendar.getInstance();
+//
+//        // get current year
+//        mYear = cal.get(Calendar.YEAR);
+//
+//        // get current month
+//        mMonth = cal.get(Calendar.MONTH) + 1;
+//
+//        // get current day
+//        mDay = cal.get(Calendar.DAY_OF_MONTH);
+//
+//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+//            @Override
+//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+//                if(mYear != year || mMonth != month + 1 || mDay != dayOfMonth) {
+//                    mYear = year;
+//                    mMonth = month + 1;
+//                    mDay = dayOfMonth;
+//                }
+//                restartLoader();
+//            }
+//        });
+//
+//        // Find GridView
+//        GridView gvDataDisplay = rootView.findViewById(R.id.grid_view);
+//
+//        // Find the empty view
+//        View emptyView = rootView.findViewById(R.id.empty_view);
+//
+//        // Set the empty view onto the GridView
+//        gvDataDisplay.setEmptyView(emptyView);
+//
+//        // Initiate the cursor adapter
+//        mVegetableCursorAdapter = new VegetableCursorAdapter(getActivity(), null);
+//
+//        // Set the adapter onto the GridView
+//        gvDataDisplay.setAdapter(mVegetableCursorAdapter);
+//
+//        // Prepare the loader.  Either re-connect with an existing one,
+//        // or start a new one.
+//        LoaderManager.getInstance(this).initLoader(VEGETABLE_MONTH, null, this);
         
         return rootView;
+    }
+
+    public void setRecyclerViewLayoutManager() {
+
     }
 
     public void restartLoader() {
