@@ -11,7 +11,11 @@
 
     <!-- HomeFragment -->
 
-    <!-- HomeFragment -->
+    <!-- SearchFragment -->
+    <string name="vegetable_image_for_card_view">A vegetable image</string>
+
+    <!-- TipFragment -->
+
 
     <!-- Information about updates -->
     <string name="update">
@@ -20,7 +24,6 @@
     </string>
 
     <!-- No vegetable data in calendar -->
-    <string name="empty_title_view">野菜のデータがありません\n次期アップデートをお待ちください</string>
 
     <!-- Vegetable tip db error -->
     <string name="empty_title_view_error">野菜のデータがありません\nアプリを再インストールしてください</string>

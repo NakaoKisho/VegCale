@@ -11,6 +11,7 @@ package com.vegcale;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLogo();
         setContentView(R.layout.activity_main);
         showGoogleMobileAds();
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(getBottomNavigationOnItemSelectedListener());
     }
 
-    private void changeFragment(int bottomNavigationButtonId) {
+    private void changeFragment(final int bottomNavigationButtonId) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setReorderingAllowed(true);
         Fragment directionFragment = null;
@@ -57,11 +59,23 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationBarView.OnItemSelectedListener getBottomNavigationOnItemSelectedListener() {
         return item -> {
-            int bottomNavigationButtonId = item.getItemId();
+            final int bottomNavigationButtonId = item.getItemId();
             changeFragment(bottomNavigationButtonId);
 
             return true;
         };
+    }
+
+    private void setLogo() {
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar == null) {
+            return;
+        }
+
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setLogo(R.mipmap.ic_logo_no_colored);
     }
 
     private void showGoogleMobileAds() {
