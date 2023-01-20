@@ -3,31 +3,34 @@ package com.vegcale;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+    List<String> itemData;
+
+    public CustomAdapter(List<String> itemData) {
+        this.itemData = itemData;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView mImageView;
-        private final TextView mTextView;
+        private final TextView textViewContainingImageOnTop;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mImageView = itemView.findViewById(R.id.imageView);
-            mTextView = itemView.findViewById(R.id.textView);
+            textViewContainingImageOnTop = itemView.findViewById(R.id.top_image_bottom_text_card);
         }
+    }
 
-        public ImageView getImageView() {
-            return mImageView;
-        }
-
-        public TextView getTextView() {
-            return mTextView;
-        }
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.textViewContainingImageOnTop.setText(itemData.get(position));
+        holder.textViewContainingImageOnTop.setOnClickListener(getOnClickListener());
     }
 
     @NonNull
@@ -40,13 +43,31 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getImageView().getId();
-        holder.getTextView().setText("position: " + position);
+    public void onViewDetachedFromWindow(@NonNull ViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+
+        holder.textViewContainingImageOnTop.setText("Detached");
+    }
+
+    @Override
+    public void onViewRecycled(@NonNull ViewHolder holder) {
+        super.onViewRecycled(holder);
+
+        holder.textViewContainingImageOnTop.setText("");
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return itemData.size();
+    }
+
+    private View.OnClickListener getOnClickListener() {
+        return view -> {
+            final int additionalHeight = 50;
+            int viewHeight = view.getHeight();
+            ViewGroup.LayoutParams viewLayoutParams = view.getLayoutParams();
+            viewLayoutParams.height = viewHeight + additionalHeight;
+            view.setLayoutParams(viewLayoutParams);
+        };
     }
 }
