@@ -12,6 +12,8 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     List<String> itemData;
+    int originalViewHeight = 0;
+
 
     public CustomAdapter(List<String> itemData) {
         this.itemData = itemData;
@@ -30,7 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewContainingImageOnTop.setText(itemData.get(position));
-        holder.textViewContainingImageOnTop.setOnClickListener(getOnClickListener());
+        holder.textViewContainingImageOnTop.setOnClickListener(changeHeight());
     }
 
     @NonNull
@@ -43,29 +45,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull ViewHolder holder) {
-        super.onViewDetachedFromWindow(holder);
-
-        holder.textViewContainingImageOnTop.setText("Detached");
-    }
-
-    @Override
-    public void onViewRecycled(@NonNull ViewHolder holder) {
-        super.onViewRecycled(holder);
-
-        holder.textViewContainingImageOnTop.setText("");
-    }
-
-    @Override
     public int getItemCount() {
         return itemData.size();
     }
 
-    private View.OnClickListener getOnClickListener() {
+    private View.OnClickListener changeHeight() {
         return view -> {
-            final int additionalHeight = 50;
             int viewHeight = view.getHeight();
+            if (originalViewHeight == 0) {
+                originalViewHeight = viewHeight;
+            }
+
             ViewGroup.LayoutParams viewLayoutParams = view.getLayoutParams();
+            if (viewLayoutParams.height > originalViewHeight) return;
+
+            final int additionalHeight = 50;
             viewLayoutParams.height = viewHeight + additionalHeight;
             view.setLayoutParams(viewLayoutParams);
         };

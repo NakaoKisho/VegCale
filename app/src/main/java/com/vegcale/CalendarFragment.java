@@ -35,14 +35,19 @@ public class CalendarFragment extends Fragment {
 
         List<String> item = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
+            if (i == 0) {
+                item.add("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " + i);
+                continue;
+            }
             item.add("title " + i);
         }
 
         CustomAdapter mCustomAdapter = new CustomAdapter(item);
         mRecyclerView.setAdapter(mCustomAdapter);
 
-        StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        final int twoColumn = 2;
+        StaggeredGridLayoutManager twoColumnStaggeredGridLayout = new StaggeredGridLayoutManager(twoColumn, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(twoColumnStaggeredGridLayout);
 
         return rootView;
     }
