@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/top_image_bottom_text_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:drawableTopCompat="@drawable/cherry_tomatoes_card_icon"
-        android:layout_gravity="center" />
+        android:layout_height="300dp"
+        android:gravity="center"
+        app:drawableTopCompat="@drawable/cherry_tomatoes_card_icon" />
 </FrameLayout>

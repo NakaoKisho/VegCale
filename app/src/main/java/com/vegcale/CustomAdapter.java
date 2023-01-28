@@ -11,13 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-    List<String> itemData;
+    List<String> data;
     int originalViewHeight = 0;
-
-
-    public CustomAdapter(List<String> itemData) {
-        this.itemData = itemData;
-    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewContainingImageOnTop;
@@ -31,8 +26,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textViewContainingImageOnTop.setText(itemData.get(position));
-        holder.textViewContainingImageOnTop.setOnClickListener(changeHeight());
+//        holder.textViewContainingImageOnTop.setText(data.get(position));
+        holder.textViewContainingImageOnTop.setOnClickListener(this::changeViewHeight);
     }
 
     @NonNull
@@ -46,22 +41,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return itemData.size();
+        final int defaultDisplayNumber = 2;
+
+        return data == null ? defaultDisplayNumber : data.size();
     }
 
-    private View.OnClickListener changeHeight() {
-        return view -> {
-            int viewHeight = view.getHeight();
-            if (originalViewHeight == 0) {
-                originalViewHeight = viewHeight;
-            }
+    public void setItem(List<String> data) {
+        this.data = data;
+    }
 
-            ViewGroup.LayoutParams viewLayoutParams = view.getLayoutParams();
-            if (viewLayoutParams.height > originalViewHeight) return;
+    private void changeViewHeight(View view) {
+        final int initialViewHeightValue = 0;
+        int viewHeight = view.getHeight();
+        if (originalViewHeight == initialViewHeightValue) {
+            originalViewHeight = viewHeight;
+        }
 
+        ViewGroup.LayoutParams viewLayoutParams = view.getLayoutParams();
+        if (viewLayoutParams.height > originalViewHeight) {
+            viewLayoutParams.height = originalViewHeight;
+        } else {
             final int additionalHeight = 50;
             viewLayoutParams.height = viewHeight + additionalHeight;
-            view.setLayoutParams(viewLayoutParams);
-        };
+        }
+
+        view.setLayoutParams(viewLayoutParams);
     }
 }

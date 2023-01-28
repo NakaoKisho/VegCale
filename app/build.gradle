@@ -48,6 +48,8 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:$nav_version"
+    // Volley
+    implementation 'com.android.volley:volley:1.2.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
