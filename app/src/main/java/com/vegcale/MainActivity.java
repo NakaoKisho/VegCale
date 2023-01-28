@@ -10,7 +10,9 @@
 package com.vegcale;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -26,13 +28,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setLogo();
+//        setLogo();
         setContentView(R.layout.activity_main);
         showGoogleMobileAds();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemReselectedListener(getBottomNavigationOnItemReselectedListener());
-        bottomNavigationView.setOnItemSelectedListener(getBottomNavigationOnItemSelectedListener());
+        bottomNavigationView.setOnItemReselectedListener(item -> {});
+        bottomNavigationView.setOnItemSelectedListener(
+                item -> {
+                    final int bottomNavigationButtonId = item.getItemId();
+                    changeFragment(bottomNavigationButtonId);
+
+                    return true;
+                });
     }
 
     private void changeFragment(final int bottomNavigationButtonId) {
@@ -51,19 +59,6 @@ public class MainActivity extends AppCompatActivity {
         assert directionFragment != null : "directionFragment must not be null.";
         fragmentTransaction.replace(R.id.navigation_container, directionFragment);
         fragmentTransaction.commit();
-    }
-
-    private NavigationBarView.OnItemReselectedListener getBottomNavigationOnItemReselectedListener() {
-        return item -> {};
-    }
-
-    private NavigationBarView.OnItemSelectedListener getBottomNavigationOnItemSelectedListener() {
-        return item -> {
-            final int bottomNavigationButtonId = item.getItemId();
-            changeFragment(bottomNavigationButtonId);
-
-            return true;
-        };
     }
 
     private void setLogo() {

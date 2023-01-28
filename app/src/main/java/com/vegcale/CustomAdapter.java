@@ -3,6 +3,7 @@ package com.vegcale;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,18 +16,27 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     int originalViewHeight = 0;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final ProgressBar progressCircle;
         private final TextView textViewContainingImageOnTop;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            progressCircle = itemView.findViewById(R.id.progress_circle);
             textViewContainingImageOnTop = itemView.findViewById(R.id.top_image_bottom_text_card);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        holder.textViewContainingImageOnTop.setText(data.get(position));
+        if (data != null) {
+            holder.progressCircle.setVisibility(View.INVISIBLE);
+            holder.textViewContainingImageOnTop.setVisibility(View.VISIBLE);
+        } else {
+            holder.progressCircle.setVisibility(View.VISIBLE);
+            holder.textViewContainingImageOnTop.setVisibility(View.INVISIBLE);
+        }
+
         holder.textViewContainingImageOnTop.setOnClickListener(this::changeViewHeight);
     }
 
@@ -41,7 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        final int defaultDisplayNumber = 2;
+        final int defaultDisplayNumber = 1;
 
         return data == null ? defaultDisplayNumber : data.size();
     }

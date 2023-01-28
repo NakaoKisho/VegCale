@@ -18,7 +18,7 @@ public class SpreadsheetTask {
     private final Context callerContext;
     ExecutorService executorService = Executors.newSingleThreadExecutor();
     private String b = "";
-    private CustomAdapter mCustomAdapter;
+    private final CustomAdapter mCustomAdapter;
 
     public SpreadsheetTask(Context callerContext, CustomAdapter mCustomAdapter) {
         this.callerContext = callerContext;
@@ -48,6 +48,7 @@ public class SpreadsheetTask {
                                     item.add("title " + i);
                                 }
                                 mCustomAdapter.setItem(item);
+                                mCustomAdapter.notifyDataSetChanged();
                             },
                             error -> b = "error"
                     );
@@ -70,6 +71,7 @@ public class SpreadsheetTask {
         try {
             System.out.println("spreadsheetTaskFuture.get(): " + spreadsheetTaskFuture.get());
         } catch (ExecutionException | InterruptedException e) {
+            System.out.println("Error Detail: " + e);
             throw new RuntimeException(e);
         } finally {
             System.out.println("Exception Error");
