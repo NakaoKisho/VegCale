@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setLogo();
         setContentView(R.layout.activity_main);
         showGoogleMobileAds();
 
@@ -59,18 +58,6 @@ public class MainActivity extends AppCompatActivity {
         assert directionFragment != null : "directionFragment must not be null.";
         fragmentTransaction.replace(R.id.navigation_container, directionFragment);
         fragmentTransaction.commit();
-    }
-
-    private void setLogo() {
-        ActionBar actionBar = getSupportActionBar();
-
-        if (actionBar == null) {
-            return;
-        }
-
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO);
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setLogo(R.mipmap.ic_logo_no_colored);
     }
 
     private void showGoogleMobileAds() {

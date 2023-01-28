@@ -3,13 +3,13 @@
     <item
         android:id="@+id/bottom_navigation_action_1"
         android:title="@string/main_activity_home_button_name"
-        android:icon="@drawable/ic_launcher_foreground" />
+        android:icon="@drawable/outline_home_24" />
     <item
         android:id="@+id/bottom_navigation_action_2"
         android:title="@string/main_activity_section2_button_name"
-        android:icon="@drawable/ic_launcher_foreground" />
+        android:icon="@drawable/outlined_potted_plant_24" />
     <item
         android:id="@+id/bottom_navigation_action_3"
         android:title="@string/main_activity_section3_button_name"
-        android:icon="@drawable/ic_launcher_foreground" />
+        android:icon="@drawable/outlined_nature_24" />
 </menu>
