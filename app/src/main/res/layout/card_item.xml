@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:backgroundTint="#E1E1E1"
     app:cardElevation="0dp">
 
     <ProgressBar
@@ -13,7 +12,6 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:indeterminate="true"
-        android:indeterminateTint="#9BBA8B"
         android:padding="80dp"
         android:visibility="visible" />
 
