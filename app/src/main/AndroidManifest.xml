@@ -8,8 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:label="ベジカレ"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".VegcaleApplication">
+        android:theme="@style/AppTheme">
         <activity
             android:exported="true"
             android:name=".MainActivity">

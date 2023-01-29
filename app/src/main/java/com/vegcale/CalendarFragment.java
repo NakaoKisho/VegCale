@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -36,9 +37,13 @@ public class CalendarFragment extends Fragment {
     }
 
     private void setRecyclerViewLayout(RecyclerView mRecyclerView) {
-        final int twoColumn = 2;
-        StaggeredGridLayoutManager twoColumnStaggeredGridLayout =
-                new StaggeredGridLayoutManager(twoColumn, StaggeredGridLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(twoColumnStaggeredGridLayout);
+//        final int twoColumn = 2;
+//        StaggeredGridLayoutManager twoColumnStaggeredGridLayout =
+//                new StaggeredGridLayoutManager(twoColumn, StaggeredGridLayoutManager.VERTICAL);
+//        mRecyclerView.setLayoutManager(twoColumnStaggeredGridLayout);
+
+        LinearLayoutManager verticalLinearLayoutManager =
+                new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(verticalLinearLayoutManager);
     }
 }

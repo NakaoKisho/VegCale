@@ -9,9 +9,16 @@
 
 package com.vegcale;
 
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        blackenOrWhitenStatusBarColor();
         showGoogleMobileAds();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -62,5 +70,21 @@ public class MainActivity extends AppCompatActivity {
         AdView googleAdView = findViewById(R.id.adView);
         AdRequest googleAdRequest = new AdRequest.Builder().build();
         googleAdView.loadAd(googleAdRequest);
+    }
+
+    private void blackenOrWhitenStatusBarColor() {
+        int nightModeFlags =
+                getApplicationContext().getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
+            window.setStatusBarColor(Color.WHITE);
+            return;
+        }
+
+        window.setStatusBarColor(Color.BLACK);
     }
 }
