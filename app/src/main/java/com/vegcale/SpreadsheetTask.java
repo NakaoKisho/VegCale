@@ -49,6 +49,9 @@ public class SpreadsheetTask {
                                 }
                                 mCustomAdapter.setItem(item);
                                 mCustomAdapter.notifyDataSetChanged();
+
+                                VegcaleDatabase mVegcaleDatabase = new VegcaleDatabase("food/fruit/two");
+                                mVegcaleDatabase.getOrangeValue();
                             },
                             error -> b = "error"
                     );

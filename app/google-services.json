@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "49292388288",
+    "project_id": "vegcale-app",
+    "storage_bucket": "vegcale-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49292388288:android:135b6a2908e19ff00fca25",
+        "android_client_info": {
+          "package_name": "com.vegcale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49292388288-3h06rmdvft4psjm6jjgh8er4ckdhm1of.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnZbdfT4WBiTTefctywTgAQXp3dgH3m-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49292388288-3h06rmdvft4psjm6jjgh8er4ckdhm1of.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
