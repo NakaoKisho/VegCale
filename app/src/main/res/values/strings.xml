@@ -16,6 +16,20 @@
 
     <!-- TipFragment -->
 
+    <!-- Month Number -->
+    <string name="january_number">1</string>
+    <string name="february_number">2</string>
+    <string name="march_number">3</string>
+    <string name="april_number">4</string>
+    <string name="may_number">5</string>
+    <string name="june_number">6</string>
+    <string name="july_number">7</string>
+    <string name="august_number">8</string>
+    <string name="september_number">9</string>
+    <string name="october_number">10</string>
+    <string name="november_number">11</string>
+    <string name="december_number">12</string>
+
 
     <!-- Information about updates -->
     <string name="update">
