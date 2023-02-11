@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/ph_one"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_one"
@@ -30,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_zero"
         app:layout_constraintRight_toLeftOf="@+id/ph_two"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_two"
@@ -44,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_one"
         app:layout_constraintRight_toLeftOf="@+id/ph_three"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_three"
@@ -58,7 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_two"
         app:layout_constraintRight_toLeftOf="@+id/ph_four"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_four"
@@ -72,7 +73,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_three"
         app:layout_constraintRight_toLeftOf="@+id/ph_five"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_five"
@@ -86,7 +87,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_four"
         app:layout_constraintRight_toLeftOf="@+id/ph_six"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_six"
@@ -100,7 +101,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_five"
         app:layout_constraintRight_toLeftOf="@+id/ph_seven"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_seven"
@@ -114,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_six"
         app:layout_constraintRight_toLeftOf="@+id/ph_eight"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_eight"
@@ -128,7 +129,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_seven"
         app:layout_constraintRight_toLeftOf="@+id/ph_nine"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/ph_nine"
@@ -141,8 +142,7 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_eight"
-        app:layout_constraintRight_toLeftOf="@+id/ph_ten"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@+id/ph_ten" />
 
     <TextView
         android:id="@+id/ph_ten"
@@ -155,8 +155,7 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_nine"
-        app:layout_constraintRight_toLeftOf="@+id/ph_eleven"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@+id/ph_eleven" />
 
     <TextView
         android:id="@+id/ph_eleven"
@@ -169,8 +168,7 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_ten"
-        app:layout_constraintRight_toLeftOf="@id/ph_twelve"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@id/ph_twelve" />
 
     <TextView
         android:id="@+id/ph_twelve"
@@ -183,8 +181,7 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_eleven"
-        app:layout_constraintRight_toLeftOf="@id/ph_thirteen"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@id/ph_thirteen" />
 
     <TextView
         android:id="@+id/ph_thirteen"
@@ -197,8 +194,7 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_twelve"
-        app:layout_constraintRight_toLeftOf="@id/ph_fourteen"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@id/ph_fourteen" />
 
     <TextView
         android:id="@+id/ph_fourteen"
@@ -212,5 +208,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ph_thirteen"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

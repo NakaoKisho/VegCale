@@ -5,96 +5,182 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/clip_source"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_strawberries_soil" />
-
     <TextView
         android:id="@+id/vegetable_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="野菜名(例: 大根)"
+        android:layout_marginStart="16dp"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="プチトマト" />
+
+    <ImageView
+        android:id="@+id/vegetable_image"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:src="@drawable/clip_source"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/vegetable_name"
+        tools:src="@drawable/ic_strawberries_soil" />
+
+    <ImageView
+        android:id="@+id/vegetable_image_frame"
+        android:layout_width="170dp"
+        android:layout_height="220dp"
+        android:src="@drawable/clip_source"
+        app:layout_constraintBottom_toBottomOf="@+id/vegetable_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/vegetable_name"
+        android:background="@drawable/rectangle_frame" />
 
     <TextView
         android:id="@+id/seeding_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="種付時期"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="種付月"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_name" />
 
-    <include
-        android:id="@+id/seeding_time"
-        layout="@layout/ph_list_horizontal_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/seeding_time_month"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_time_label" />
+        app:layout_constraintTop_toBottomOf="@+id/seeding_time_label"
+        tools:text="1月" />
 
     <TextView
         android:id="@+id/harvest_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="植付時期"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_time" />
-
-    <include
-        android:id="@+id/harvest_time"
-        layout="@layout/ph_list_horizontal_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time_label" />
+        android:text="植付月"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
+        app:layout_constraintTop_toBottomOf="@+id/seeding_time_month" />
 
     <TextView
-        android:id="@+id/daylight_hour"
-        android:layout_width="match_parent"
+        android:id="@+id/harvest_time_month"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="日照量"
-        android:background="#fde9b0"
-        app:drawableRightCompat="@drawable/filled_cloudy_108"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/growth_difficulty"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time" />
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/harvest_time_label"
+        tools:text="3月" />
+
+    <TextView
+        android:id="@+id/growth_difficulty_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="「育成難易度」"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
+        app:layout_constraintTop_toBottomOf="@+id/harvest_time_month" />
 
     <TextView
         android:id="@+id/growth_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="「育成難易度」"
-        app:layout_constraintLeft_toRightOf="@+id/daylight_hour"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time" />
+        app:layout_constraintTop_toBottomOf="@+id/growth_difficulty_label"
+        tools:text="むずかしい" />
+
+    <View
+        android:id="@+id/divider_between_detail_and_watering_frequency"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/watering_frequency"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vegetable_image"/>
 
     <TextView
         android:id="@+id/watering_frequency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="「水やり頻度」＋ジョウロの数とfill具合"
+        android:paddingStart="16dp"
+        android:text="水やり頻度と量＋ジョウロの数とfill具合"
+        android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/daylight_hour"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/potential_hydrogen"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_between_detail_and_watering_frequency"
+        tools:ignore="RtlSymmetry" />
+
+    <View
+        android:id="@+id/divider_between_watering_frequency_and_daylight_hour"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/daylight_hour"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/watering_frequency"/>
+
+    <TextView
+        android:id="@+id/daylight_hour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fde9b0"
+        android:paddingStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="日照量 雲drawableを拡大縮小させたらいい説"
+        android:textColor="#666666"
+        app:drawableRightCompat="@drawable/filled_quarter_sun_108"
+        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/watering_frequency"
+        tools:ignore="RtlSymmetry" />
+
+    <View
+        android:id="@+id/divider_between_watering_daylight_hour_and_potential_hydrogen"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daylight_hour"/>
 
     <TextView
         android:id="@+id/potential_hydrogen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ph値 phを表す横棒"
-        app:layout_constraintLeft_toRightOf="@+id/watering_frequency"
+        android:paddingStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="ph"
+        android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/seeding_time"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daylight_hour"
+        tools:ignore="RtlSymmetry" />
+
+    <include
+        android:id="@+id/seeding_time"
+        layout="@layout/ph_list_horizontal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/growth_difficulty" />
+        app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen" />
 </androidx.constraintlayout.widget.ConstraintLayout>
