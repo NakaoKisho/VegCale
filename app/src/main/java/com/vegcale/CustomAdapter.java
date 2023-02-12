@@ -3,8 +3,8 @@ package com.vegcale;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,31 +13,34 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     List<String> data;
-    int originalViewHeight = 0;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ProgressBar progressCircle;
-        private final TextView textViewContainingImageOnTop;
+        private final ViewStub vegetable_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             progressCircle = itemView.findViewById(R.id.progress_circle);
-            textViewContainingImageOnTop = itemView.findViewById(R.id.top_image_bottom_text_card);
+            vegetable_image = itemView.findViewById(R.id.vegetable_image);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (data != null) {
-            holder.progressCircle.setVisibility(View.INVISIBLE);
-            holder.textViewContainingImageOnTop.setVisibility(View.VISIBLE);
-        } else {
+        if (data == null) {
             holder.progressCircle.setVisibility(View.VISIBLE);
-            holder.textViewContainingImageOnTop.setVisibility(View.INVISIBLE);
+            holder.vegetable_image.setVisibility(View.INVISIBLE);
+        } else {
+            holder.progressCircle.setVisibility(View.INVISIBLE);
+            holder.vegetable_image.setVisibility(View.VISIBLE);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("hi");
+                }
+            });
         }
-
-        holder.textViewContainingImageOnTop.setOnClickListener(this::changeViewHeight);
     }
 
     @NonNull
@@ -58,23 +61,5 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     public void setItem(List<String> data) {
         this.data = data;
-    }
-
-    private void changeViewHeight(View view) {
-        final int initialViewHeightValue = 0;
-        int viewHeight = view.getHeight();
-        if (originalViewHeight == initialViewHeightValue) {
-            originalViewHeight = viewHeight;
-        }
-
-        ViewGroup.LayoutParams viewLayoutParams = view.getLayoutParams();
-        if (viewLayoutParams.height > originalViewHeight) {
-            viewLayoutParams.height = originalViewHeight;
-        } else {
-            final int additionalHeight = 50;
-            viewLayoutParams.height = viewHeight + additionalHeight;
-        }
-
-        view.setLayoutParams(viewLayoutParams);
     }
 }

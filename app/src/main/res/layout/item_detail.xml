@@ -17,29 +17,22 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="プチトマト" />
 
-    <ImageView
-        android:id="@+id/vegetable_image_frame"
-        android:layout_width="170dp"
-        android:layout_height="220dp"
-        android:background="@drawable/rectangle_frame"
-        app:layout_constraintBottom_toBottomOf="@+id/vegetable_image"
+    <ViewStub
+        android:id="@+id/vegetable_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:inflatedId="@+id/vegetable_image_view_stub"
+        android:layout="@layout/image_sticking_out_from_frame"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_name" />
-
-    <ImageView
-        android:id="@+id/vegetable_image"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_name"
-        tools:src="@drawable/ic_place_to_put_planters" />
 
     <TextView
         android:id="@+id/seeding_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
         android:text="種付月"
         android:textColor="#666666"
@@ -50,7 +43,7 @@
         android:id="@+id/seeding_time_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="56dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintTop_toBottomOf="@+id/seeding_time_label"
@@ -60,6 +53,7 @@
         android:id="@+id/harvest_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="植付月"
         android:textColor="#666666"
         app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
@@ -69,7 +63,7 @@
         android:id="@+id/harvest_time_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="56dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintTop_toBottomOf="@+id/harvest_time_label"
@@ -79,6 +73,7 @@
         android:id="@+id/growth_difficulty_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="「育成難易度」"
         android:textColor="#666666"
         app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
@@ -88,7 +83,7 @@
         android:id="@+id/growth_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="56dp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintTop_toBottomOf="@+id/growth_difficulty_label"
@@ -122,16 +117,14 @@
         app:layout_constraintTop_toBottomOf="@+id/vegetable_detail" />
 
     <TextView
-        android:id="@+id/abc"
+        android:id="@+id/daylight_hour_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/daylight_amount_gradient"
         app:layout_constraintBottom_toBottomOf="@id/potential_hydrogen"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_detail">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/divider_between_vegetable_detail_and_watering_frequency"></TextView>
 
     <TextView
         android:id="@+id/daylight_hour_label"
@@ -141,9 +134,9 @@
         android:paddingStart="16dp"
         android:text="日照時間"
         android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/daylight_hour"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider_between_vegetable_detail_and_watering_frequency"
-        app:layout_constraintBottom_toTopOf="@+id/daylight_hour"
         tools:ignore="RtlSymmetry" />
 
     <TextView
@@ -151,9 +144,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:textStyle="bold"
         android:layout_marginBottom="8dp"
         android:textColor="#666666"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/divider1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daylight_hour_label"
@@ -192,8 +185,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="8dp"
-        android:textStyle="bold"
         android:textColor="#666666"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/divider4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/watering_frequency_label"
@@ -232,13 +225,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="8dp"
-        android:textStyle="bold"
         android:textColor="#666666"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/divider6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/watering_amount_label"
         tools:ignore="RtlSymmetry"
-        tools:text="土がひたひたになるまで"/>
+        tools:text="土がひたひたになるまで" />
 
     <View
         android:id="@+id/divider6"
