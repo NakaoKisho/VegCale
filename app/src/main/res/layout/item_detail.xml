@@ -9,8 +9,8 @@
         android:id="@+id/vegetable_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -18,32 +18,30 @@
         tools:text="プチトマト" />
 
     <ImageView
-        android:id="@+id/vegetable_image"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
-        android:src="@drawable/clip_source"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_name"
-        tools:src="@drawable/ic_strawberries_soil" />
-
-    <ImageView
         android:id="@+id/vegetable_image_frame"
         android:layout_width="170dp"
         android:layout_height="220dp"
         android:background="@drawable/rectangle_frame"
-        android:src="@drawable/clip_source"
         app:layout_constraintBottom_toBottomOf="@+id/vegetable_image"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_name" />
 
+    <ImageView
+        android:id="@+id/vegetable_image"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/seeding_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/vegetable_name"
+        tools:src="@drawable/ic_place_to_put_planters" />
+
     <TextView
         android:id="@+id/seeding_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="種付月"
         android:layout_marginTop="60dp"
+        android:text="種付月"
         android:textColor="#666666"
         app:layout_constraintLeft_toRightOf="@+id/vegetable_image"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_name" />
@@ -118,32 +116,96 @@
         android:layout_marginRight="24dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/watering_frequency"
+        app:layout_constraintBottom_toTopOf="@+id/daylight_hour_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_detail" />
 
     <TextView
-        android:id="@+id/watering_frequency"
+        android:id="@+id/abc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:paddingStart="16dp"
-        android:text="水やり頻度と量＋ジョウロの数とfill具合"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/divider_between_watering_frequency_and_daylight_hour_label"
+        android:background="@drawable/daylight_amount_gradient"
+        app:layout_constraintBottom_toBottomOf="@id/potential_hydrogen"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vegetable_detail">
+    </TextView>
+
+    <TextView
+        android:id="@+id/daylight_hour_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="16dp"
+        android:text="日照時間"
+        android:textColor="#666666"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider_between_vegetable_detail_and_watering_frequency"
+        app:layout_constraintBottom_toTopOf="@+id/daylight_hour"
         tools:ignore="RtlSymmetry" />
 
+    <TextView
+        android:id="@+id/daylight_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/divider1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daylight_hour_label"
+        tools:ignore="RtlSymmetry"
+        tools:text="1日中" />
+
     <View
-        android:id="@+id/divider_between_watering_frequency_and_daylight_hour_label"
+        android:id="@+id/divider1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="160dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/watering_frequency_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daylight_hour" />
+
+    <TextView
+        android:id="@+id/watering_frequency_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="16dp"
+        android:text="水やり頻度"
+        android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/watering_frequency"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider1"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/watering_frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="8dp"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/divider4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/watering_frequency_label"
+        tools:ignore="RtlSymmetry"
+        tools:text="毎日" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="160dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="#666666"
         app:layout_constraintBottom_toTopOf="@+id/daylight_hour_label"
@@ -152,69 +214,72 @@
         app:layout_constraintTop_toBottomOf="@+id/watering_frequency" />
 
     <TextView
-        android:id="@+id/daylight_hour_label"
-        android:layout_width="match_parent"
+        android:id="@+id/watering_amount_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#fde9b0"
         android:paddingStart="16dp"
-        android:text="日照量"
+        android:text="水やり量"
         android:textColor="#666666"
-        app:drawableRightCompat="@drawable/filled_quarter_sun_108"
-        app:layout_constraintBottom_toTopOf="@+id/divider_between_watering_daylight_hour_label_and_potential_hydrogen"
+        app:layout_constraintBottom_toTopOf="@+id/watering_amount"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_between_watering_frequency_and_daylight_hour_label"
+        app:layout_constraintTop_toBottomOf="@+id/divider4"
         tools:ignore="RtlSymmetry" />
 
     <TextView
-        android:id="@+id/daylight_hour"
-        android:layout_width="match_parent"
+        android:id="@+id/watering_amount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="40dp"
-        android:paddingStart="16dp"
-        tools:text="1日中"
+        android:layout_marginBottom="8dp"
         android:textStyle="bold"
         android:textColor="#666666"
+        app:layout_constraintBottom_toTopOf="@+id/divider6"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_between_watering_frequency_and_daylight_hour_label"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintTop_toBottomOf="@+id/watering_amount_label"
+        tools:ignore="RtlSymmetry"
+        tools:text="土がひたひたになるまで"/>
 
     <View
-        android:id="@+id/divider_between_watering_daylight_hour_label_and_potential_hydrogen"
+        android:id="@+id/divider6"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="160dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen"
+        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour_label" />
+        app:layout_constraintTop_toBottomOf="@+id/watering_amount" />
 
     <TextView
-        android:id="@+id/potential_hydrogen"
+        android:id="@+id/potential_hydrogen_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingStart="16dp"
         android:text="ph"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/seeding_time"
+        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_between_watering_daylight_hour_label_and_potential_hydrogen"
+        app:layout_constraintTop_toBottomOf="@+id/divider6"
         tools:ignore="RtlSymmetry" />
 
     <include
-        android:id="@+id/seeding_time"
+        android:id="@+id/potential_hydrogen"
         layout="@layout/ph_list_horizontal_layout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen" />
+        app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_label" />
+
+    <ImageView
+        android:id="@+id/daylight_hour_image"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:background="@drawable/filled_quarter_sun_108"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_between_vegetable_detail_and_watering_frequency" />
 </androidx.constraintlayout.widget.ConstraintLayout>

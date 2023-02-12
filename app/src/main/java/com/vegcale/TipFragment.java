@@ -44,58 +44,59 @@ public class TipFragment extends Fragment implements LoaderManager.LoaderCallbac
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_tip, container, false);
+        View rootView = inflater.inflate(R.layout.item_detail, container, false);
+//        View rootView = inflater.inflate(R.layout.fragment_tip, container, false);
 
-        // Find the adView
-        AdView mAdView = rootView.findViewById(R.id.adView);
-
-        // Hold runtime information
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        // Load an ad
-        mAdView.loadAd(adRequest);
-
-        // Find the ListView
-        ListView lvDataDisplay = rootView.findViewById(R.id.list_view);
-
-        // Find the empty view
-        View emptyView = rootView.findViewById(R.id.empty_view);
-
-        // Set the empty view onto the ListView
-        lvDataDisplay.setEmptyView(emptyView);
-
-        // Initiate the cursor adapter
-        mVegetableTipCursorAdapter = new VegetableTipCursorAdapter(getActivity(), null);
-
-        // Set the adapter onto the ListView
-        lvDataDisplay.setAdapter(mVegetableTipCursorAdapter);
-
-        // Prepare the loader.  Either re-connect with an existing one,
-        // or start a new one.
-        LoaderManager.getInstance(this).initLoader(VEGETABLE_TIPS, null, this);
-
-        // Listen to touches and change the height
-        lvDataDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                TextView tipDescription = view.findViewById(R.id.tip_article);
-
-                // Get Layout
-                ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
-                if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
-
-                    // Change it's height
-                    params.height = 0;
-                } else {
-
-                    // Change it's height
-                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                }
-
-                // Apply it
-                tipDescription.setLayoutParams(params);
-            }
-        });
+//        // Find the adView
+//        AdView mAdView = rootView.findViewById(R.id.adView);
+//
+//        // Hold runtime information
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//
+//        // Load an ad
+//        mAdView.loadAd(adRequest);
+//
+//        // Find the ListView
+//        ListView lvDataDisplay = rootView.findViewById(R.id.list_view);
+//
+//        // Find the empty view
+//        View emptyView = rootView.findViewById(R.id.empty_view);
+//
+//        // Set the empty view onto the ListView
+//        lvDataDisplay.setEmptyView(emptyView);
+//
+//        // Initiate the cursor adapter
+//        mVegetableTipCursorAdapter = new VegetableTipCursorAdapter(getActivity(), null);
+//
+//        // Set the adapter onto the ListView
+//        lvDataDisplay.setAdapter(mVegetableTipCursorAdapter);
+//
+//        // Prepare the loader.  Either re-connect with an existing one,
+//        // or start a new one.
+//        LoaderManager.getInstance(this).initLoader(VEGETABLE_TIPS, null, this);
+//
+//        // Listen to touches and change the height
+//        lvDataDisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                TextView tipDescription = view.findViewById(R.id.tip_article);
+//
+//                // Get Layout
+//                ViewGroup.LayoutParams params = tipDescription.getLayoutParams();
+//                if (ViewGroup.LayoutParams.WRAP_CONTENT == params.height) {
+//
+//                    // Change it's height
+//                    params.height = 0;
+//                } else {
+//
+//                    // Change it's height
+//                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+//                }
+//
+//                // Apply it
+//                tipDescription.setLayoutParams(params);
+//            }
+//        });
 
         return rootView;
     }

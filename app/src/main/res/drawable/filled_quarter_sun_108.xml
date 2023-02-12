@@ -4,48 +4,53 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-  <group>
-    <clip-path
-        android:pathData="m0,0l108,0l0,108l-108,0l0,-108z"/>
-    <path
-        android:pathData="m0,0l108,0l0,108l-108,0z"
-        android:fillColor="#000000"
-        android:fillAlpha="0"
-        android:fillType="evenOdd"
-        android:strokeColor="#00000000"
-        android:strokeLineCap="square"/>
-    <path
-        android:pathData="m8,28.16l0,0c0,-39.68 32.16,-71.84 71.84,-71.84l0,0c19.05,0 37.33,7.57 50.8,21.04c13.47,13.47 21.04,31.75 21.04,50.8l0,0c0,39.68 -32.16,71.84 -71.84,71.84l0,0c-39.68,0 -71.84,-32.16 -71.84,-71.84z"
-        android:fillType="evenOdd"
-        android:strokeColor="#00000000"
-        android:strokeLineCap="square">
-      <aapt:attr name="android:fillColor">
-        <gradient 
-            android:centerX="79.84"
-            android:centerY="28.16"
-            android:gradientRadius="101.6"
-            android:tileMode="clamp"
-            android:type="radial">
-          <item android:offset="0" android:color="#FFFFF6DB"/>
-          <item android:offset="0.66" android:color="#FFFDE49C"/>
-          <item android:offset="1" android:color="#FF434343"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-    <path
-        android:pathData="m3.73,28.16l0,0c0,-41.94 34.08,-75.94 76.13,-75.94l0,0c20.19,0 39.55,8 53.83,22.24c14.28,14.24 22.3,33.56 22.3,53.7l0,0c0,41.94 -34.08,75.94 -76.13,75.94l0,0c-42.04,0 -76.13,-34 -76.13,-75.94z"
-        android:fillColor="#000000"
-        android:fillAlpha="0"
-        android:fillType="evenOdd"
-        android:strokeColor="#00000000"
-        android:strokeLineCap="square"/>
-    <path
-        android:pathData="m3.73,28.16l0,0c0,-41.94 34.08,-75.94 76.13,-75.94l0,0c20.19,0 39.55,8 53.83,22.24c14.28,14.24 22.3,33.56 22.3,53.7l0,0c0,41.94 -34.08,75.94 -76.13,75.94l0,0c-42.04,0 -76.13,-34 -76.13,-75.94z"
-        android:strokeLineJoin="round"
-        android:strokeWidth="8.0"
-        android:fillColor="#00000000"
-        android:fillType="evenOdd"
-        android:strokeColor="#ffffff"
-        android:strokeLineCap="butt"/>
-  </group>
+    <group>
+        <clip-path android:pathData="m0,0l108,0l0,108l-108,0l0,-108z" />
+        <path
+            android:fillAlpha="0"
+            android:fillColor="#000000"
+            android:fillType="evenOdd"
+            android:pathData="m0,0l108,0l0,108l-108,0z"
+            android:strokeColor="#00000000"
+            android:strokeLineCap="square" />
+        <path
+            android:fillType="evenOdd"
+            android:pathData="m8,28.16l0,0c0,-39.68 32.16,-71.84 71.84,-71.84l0,0c19.05,0 37.33,7.57 50.8,21.04c13.47,13.47 21.04,31.75 21.04,50.8l0,0c0,39.68 -32.16,71.84 -71.84,71.84l0,0c-39.68,0 -71.84,-32.16 -71.84,-71.84z"
+            android:strokeColor="#00000000"
+            android:strokeLineCap="square">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:centerX="79.84"
+                    android:centerY="28.16"
+                    android:gradientRadius="101.6"
+                    android:tileMode="clamp"
+                    android:type="radial">
+                    <item
+                        android:color="#FFFFF6DB"
+                        android:offset="0" />
+                    <item
+                        android:color="#FFFDE49C"
+                        android:offset="0.66" />
+                    <item
+                        android:color="#FF434343"
+                        android:offset="1" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <path
+            android:fillAlpha="0"
+            android:fillColor="#000000"
+            android:fillType="evenOdd"
+            android:pathData="m3.73,28.16l0,0c0,-41.94 34.08,-75.94 76.13,-75.94l0,0c20.19,0 39.55,8 53.83,22.24c14.28,14.24 22.3,33.56 22.3,53.7l0,0c0,41.94 -34.08,75.94 -76.13,75.94l0,0c-42.04,0 -76.13,-34 -76.13,-75.94z"
+            android:strokeColor="#00000000"
+            android:strokeLineCap="square" />
+        <path
+            android:fillColor="#00000000"
+            android:fillType="evenOdd"
+            android:pathData="m3.73,28.16l0,0c0,-41.94 34.08,-75.94 76.13,-75.94l0,0c20.19,0 39.55,8 53.83,22.24c14.28,14.24 22.3,33.56 22.3,53.7l0,0c0,41.94 -34.08,75.94 -76.13,75.94l0,0c-42.04,0 -76.13,-34 -76.13,-75.94z"
+            android:strokeWidth="8.0"
+            android:strokeColor="#ffffff"
+            android:strokeLineCap="butt"
+            android:strokeLineJoin="round" />
+    </group>
 </vector>
