@@ -17,7 +17,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         showGoogleMobileAds();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemReselectedListener(item -> {});
+        bottomNavigationView.setOnItemReselectedListener(item -> {
+        });
         bottomNavigationView.setOnItemSelectedListener(
                 item -> {
                     final int bottomNavigationButtonId = item.getItemId();
@@ -43,31 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void changeFragment(final int bottomNavigationButtonId) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setReorderingAllowed(true);
-        Fragment directionFragment = null;
-
-        if (bottomNavigationButtonId == R.id.bottom_navigation_action_1) {
-            directionFragment = new HomeFragment();
-        } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_2) {
-            directionFragment = new CalendarFragment();
-        } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_3) {
-            directionFragment = new TipFragment();
-        }
-
-        assert directionFragment != null : "directionFragment must not be null.";
-        fragmentTransaction.replace(R.id.navigation_container, directionFragment);
-        fragmentTransaction.commit();
-    }
-
-    private void showGoogleMobileAds() {
-        MobileAds.initialize(this, initializationStatus -> { });
-
-        AdView googleAdView = findViewById(R.id.adView);
-        AdRequest googleAdRequest = new AdRequest.Builder().build();
-        googleAdView.loadAd(googleAdRequest);
-    }
 
     private void blackenOrWhitenStatusBarColor() {
         int nightModeFlags =
@@ -83,5 +58,33 @@ public class MainActivity extends AppCompatActivity {
         }
 
         window.setStatusBarColor(Color.BLACK);
+    }
+
+    private void changeFragment(final int bottomNavigationButtonId) {
+        Fragment directionFragment = null;
+
+        if (bottomNavigationButtonId == R.id.bottom_navigation_action_1) {
+            directionFragment = new HomeFragment();
+        } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_2) {
+            directionFragment = new CalendarFragment();
+        } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_3) {
+            directionFragment = new TipFragment();
+        }
+
+        assert directionFragment != null : "directionFragment must not be null.";
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.navigation_container, directionFragment)
+                .commit();
+    }
+
+    private void showGoogleMobileAds() {
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+
+        AdView googleAdView = findViewById(R.id.adView);
+        AdRequest googleAdRequest = new AdRequest.Builder().build();
+        googleAdView.loadAd(googleAdRequest);
     }
 }

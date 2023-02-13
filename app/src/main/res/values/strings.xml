@@ -12,7 +12,7 @@
     <!-- HomeFragment -->
 
     <!-- SearchFragment -->
-    <string name="vegetable_image_for_card_view">A vegetable image</string>
+    <string name="vegetable_image">A vegetable image</string>
 
     <!-- TipFragment -->
 

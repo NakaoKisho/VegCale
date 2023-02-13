@@ -13,7 +13,11 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     List<String> data;
+    View.OnClickListener onClickListenerOnParent;
 
+    public CustomAdapter(View.OnClickListener onClickListener) {
+        onClickListenerOnParent = onClickListener;
+    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ProgressBar progressCircle;
         private final ViewStub vegetable_image;
@@ -34,12 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         } else {
             holder.progressCircle.setVisibility(View.INVISIBLE);
             holder.vegetable_image.setVisibility(View.VISIBLE);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    System.out.println("hi");
-                }
-            });
+            holder.itemView.setOnClickListener(onClickListenerOnParent);
         }
     }
 
