@@ -253,6 +253,14 @@
         植物は午前中に活発に活動するので、朝のうちに水をあげ、夕方にはプランターの土が乾いているくらいが理想です。\n
         水をあげる際は、泥がはねて葉につくと病気の原因になる可能性があるので根元に優しくあげます。
     </string>
+    <string name="back_button">back button</string>
+    <string name="seeding_time_month">種付月</string>
+    <string name="harvest_time_month">収穫月</string>
+    <string name="difficulty">難易度</string>
+    <string name="daylight_hour">日照時間</string>
+    <string name="watering_frequency">水やり頻度</string>
+    <string name="watering_amount">水やり量</string>
+    <string name="potential_hydrogen">ph</string>
 
     <!--                                        Tips article                                     -->
 
