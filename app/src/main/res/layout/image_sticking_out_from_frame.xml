@@ -6,23 +6,24 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/vegetable_image_frame"
+        android:id="@+id/image_frame"
         android:layout_width="170dp"
         android:layout_height="220dp"
         android:background="@drawable/rectangle_frame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintOverlap" />
 
     <ImageView
-        android:id="@+id/vegetable_image"
+        android:id="@+id/sticking_out_image"
         android:layout_width="200dp"
         android:layout_height="250dp"
+        android:contentDescription="@string/vegetable_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_place_to_put_planters"
-        android:contentDescription="@string/vegetable_image" />
+        tools:src="@drawable/ic_place_to_put_planters" />
 </androidx.constraintlayout.widget.ConstraintLayout>

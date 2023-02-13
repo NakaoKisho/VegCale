@@ -35,17 +35,6 @@ public class CalendarFragment extends Fragment implements View.OnClickListener {
         return rootView;
     }
 
-    private void setRecyclerViewLayout(RecyclerView mRecyclerView) {
-        LinearLayoutManager verticalLinearLayoutManager =
-                new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(verticalLinearLayoutManager);
-    }
-
-    @Override
-    public void onClick(View view) {
-        changeToItemDetailFragment();
-    }
-
     private void changeToItemDetailFragment() {
         if (getActivity() == null) return;
 
@@ -60,5 +49,16 @@ public class CalendarFragment extends Fragment implements View.OnClickListener {
                 .setReorderingAllowed(true)
                 .replace(R.id.navigation_container, itemDetailFragment)
                 .commit();
+    }
+
+    @Override
+    public void onClick(View view) {
+        changeToItemDetailFragment();
+    }
+
+    private void setRecyclerViewLayout(RecyclerView mRecyclerView) {
+        LinearLayoutManager verticalLinearLayoutManager =
+                new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(verticalLinearLayoutManager);
     }
 }
