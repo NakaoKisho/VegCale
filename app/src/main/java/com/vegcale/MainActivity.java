@@ -22,8 +22,13 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.vegcale.utility.fragment.FragmentUtility;
 
 public class MainActivity extends AppCompatActivity {
+    private FragmentUtility mFragmentUtility;
+    private HomeFragment mHomeFragment;
+    private VegetableListFragment mVegetableListFragment;
+    private TipFragment mTipFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +36,25 @@ public class MainActivity extends AppCompatActivity {
         blackenOrWhitenStatusBarColor();
         showGoogleMobileAds();
 
+        mFragmentUtility = new FragmentUtility(this);
+        mHomeFragment = new HomeFragment();
+        mVegetableListFragment = new VegetableListFragment();
+        mTipFragment = new TipFragment();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         bottomNavigationView.setOnItemReselectedListener(item -> {
+            if (!mFragmentUtility.isFragmentVisible(FragmentUtility.ItemDetailFragmentTag)) return;
+
+            mFragmentUtility.changeFragment(
+                    mVegetableListFragment,
+                    FragmentUtility.VegetableListFragmentTag,
+                    FragmentUtility.SlideAnimation.LeftToRight
+            );
         });
         bottomNavigationView.setOnItemSelectedListener(
                 item -> {
                     final int bottomNavigationButtonId = item.getItemId();
-                    changeFragment(bottomNavigationButtonId);
+                    transitionToFragmentAssociatedToButton(bottomNavigationButtonId);
 
                     return true;
                 });
@@ -60,23 +77,27 @@ public class MainActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.BLACK);
     }
 
-    private void changeFragment(final int bottomNavigationButtonId) {
+    private void transitionToFragmentAssociatedToButton(final int bottomNavigationButtonId) {
         Fragment directionFragment = null;
+        String fragmentTag = "";
 
         if (bottomNavigationButtonId == R.id.bottom_navigation_action_1) {
-            directionFragment = new HomeFragment();
+            directionFragment = mHomeFragment;
+            fragmentTag = FragmentUtility.HomeFragmentTag;
         } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_2) {
-            directionFragment = new CalendarFragment();
+            directionFragment = mVegetableListFragment;
+            fragmentTag = FragmentUtility.VegetableListFragmentTag;
         } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_3) {
-            directionFragment = new TipFragment();
+            directionFragment = mTipFragment;
+            fragmentTag = FragmentUtility.TipListFragmentTag;
         }
 
         assert directionFragment != null : "directionFragment must not be null.";
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setReorderingAllowed(true)
-                .replace(R.id.navigation_container, directionFragment)
-                .commit();
+        mFragmentUtility.changeFragment(
+                directionFragment,
+                fragmentTag,
+                FragmentUtility.SlideAnimation.Nothing
+        );
     }
 
     private void showGoogleMobileAds() {

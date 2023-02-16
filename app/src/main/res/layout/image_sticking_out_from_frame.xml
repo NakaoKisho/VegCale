@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/image_frame"
-        android:layout_width="170dp"
-        android:layout_height="220dp"
+        android:layout_width="126dp"
+        android:layout_height="158dp"
         android:background="@drawable/rectangle_frame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/sticking_out_image"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_width="144dp"
+        android:layout_height="180dp"
         android:contentDescription="@string/vegetable_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

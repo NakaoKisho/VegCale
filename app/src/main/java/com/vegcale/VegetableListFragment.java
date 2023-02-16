@@ -18,13 +18,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CalendarFragment extends Fragment implements View.OnClickListener {
+import com.vegcale.utility.fragment.FragmentUtility;
+
+public class VegetableListFragment extends Fragment implements View.OnClickListener {
+    private FragmentUtility mFragmentUtility;
+    private ItemDetailFragment ItemDetailFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_view);
+        mFragmentUtility = new FragmentUtility(getActivity());
+        ItemDetailFragment = new ItemDetailFragment();
         CustomAdapter mCustomAdapter = new CustomAdapter(this);
         mRecyclerView.setAdapter(mCustomAdapter);
         setRecyclerViewLayout(mRecyclerView);
@@ -35,25 +41,13 @@ public class CalendarFragment extends Fragment implements View.OnClickListener {
         return rootView;
     }
 
-    private void changeToItemDetailFragment() {
-        if (getActivity() == null) return;
-
-        Fragment itemDetailFragment = new ItemDetailFragment();
-        getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(
-                        R.anim.slide_in,
-                        R.anim.fade_out
-                )
-                .setReorderingAllowed(true)
-                .replace(R.id.navigation_container, itemDetailFragment)
-                .commit();
-    }
-
     @Override
     public void onClick(View view) {
-        changeToItemDetailFragment();
+        mFragmentUtility.changeFragment(
+                ItemDetailFragment,
+                FragmentUtility.ItemDetailFragmentTag,
+                FragmentUtility.SlideAnimation.LeftToRight
+        );
     }
 
     private void setRecyclerViewLayout(RecyclerView mRecyclerView) {

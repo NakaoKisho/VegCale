@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.vegcale.CalendarFragment"
+        android:name="com.vegcale.VegetableListFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
     </fragment>
