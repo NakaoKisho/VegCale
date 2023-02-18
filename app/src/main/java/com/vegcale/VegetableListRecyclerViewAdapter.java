@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class VegetableListRecyclerViewAdapter extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder> {
     List<String> data;
     View.OnClickListener onClickListenerOnParent;
 
-    public CustomAdapter(View.OnClickListener onClickListener) {
-        onClickListenerOnParent = onClickListener;
+    public VegetableListRecyclerViewAdapter(View.OnClickListener mOnClickListener) {
+        onClickListenerOnParent = mOnClickListener;
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ProgressBar progressCircle;

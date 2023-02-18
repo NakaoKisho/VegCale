@@ -51,15 +51,15 @@ public class ItemDetailFragment extends Fragment {
 
         TextView vegetableName = rootView.findViewById(R.id.vegetable_name);
         vegetableName.setText("プチトマト");
-        TextView seedingTimeMonth = rootView.findViewById(R.id.seeding_time_month);
+        TextView seedingTimeMonth = rootView.findViewById(R.id.seeding_month);
         seedingTimeMonth.setText("1月");
-        TextView harvestTimeMonth = rootView.findViewById(R.id.harvest_time_month);
+        TextView harvestTimeMonth = rootView.findViewById(R.id.harvest_month);
         harvestTimeMonth.setText("3月");
         TextView growthDifficulty = rootView.findViewById(R.id.growth_difficulty);
         growthDifficulty.setText("ややむずかしい");
         TextView vegetableDetail = rootView.findViewById(R.id.vegetable_detail);
         vegetableDetail.setText("リコピン含有量が多くどんな料理にも合う名脇役");
-        TextView daylightHour = rootView.findViewById(R.id.daylight_hour);
+        TextView daylightHour = rootView.findViewById(R.id.hours_of_light);
         daylightHour.setText("1日中");
         TextView wateringFrequency = rootView.findViewById(R.id.watering_frequency);
         wateringFrequency.setText("毎日");

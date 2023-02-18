@@ -79,45 +79,45 @@
         app:layout_constraintGuide_percent="0.20" />
 
     <TextView
-        android:id="@+id/seeding_time_label"
+        android:id="@+id/seeding_month_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/seeding_time_month"
+        android:text="@string/seeding_month"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/seeding_time_month"
+        app:layout_constraintBottom_toTopOf="@+id/seeding_month"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/outline_info_top_guideline" />
 
     <TextView
-        android:id="@+id/seeding_time_month"
+        android:id="@+id/seeding_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/harvest_time_label"
+        app:layout_constraintBottom_toTopOf="@+id/harvest_month_label"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/seeding_month_label"
         tools:text="1月" />
 
     <TextView
-        android:id="@+id/harvest_time_label"
+        android:id="@+id/harvest_month_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/harvest_time_month"
+        android:text="@string/harvest_month"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/harvest_time_month"
+        app:layout_constraintBottom_toTopOf="@+id/harvest_month"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_time_month" />
+        app:layout_constraintTop_toBottomOf="@+id/seeding_month" />
 
     <TextView
-        android:id="@+id/harvest_time_month"
+        android:id="@+id/harvest_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/growth_difficulty_label"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/harvest_month_label"
         tools:text="3月" />
 
     <TextView
@@ -128,7 +128,7 @@
         android:textColor="#666666"
         app:layout_constraintBottom_toTopOf="@+id/growth_difficulty"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time_month" />
+        app:layout_constraintTop_toBottomOf="@+id/harvest_month" />
 
     <TextView
         android:id="@+id/growth_difficulty"
@@ -161,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/daylight_hour_divider"
+        app:layout_constraintBottom_toTopOf="@+id/hours_of_light_divider"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
         app:layout_constraintRight_toLeftOf="@+id/right_guideline"
         app:layout_constraintTop_toBottomOf="@+id/detail_info_top_guideline"
@@ -169,40 +169,40 @@
         tools:text="リコピン含有量が多くどんな料理にも合う名脇役" />
 
     <View
-        android:id="@+id/daylight_hour_divider"
+        android:id="@+id/hours_of_light_divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/daylight_hour_label"
+        app:layout_constraintBottom_toTopOf="@+id/hours_of_light_label"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
         app:layout_constraintRight_toLeftOf="@+id/right_guideline"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_detail" />
 
     <TextView
-        android:id="@+id/daylight_hour_background"
+        android:id="@+id/hours_of_light_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/daylight_amount_gradient"
         app:layout_constraintBottom_toBottomOf="@id/potential_hydrogen"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour_divider" />
+        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider" />
 
     <TextView
-        android:id="@+id/daylight_hour_label"
+        android:id="@+id/hours_of_light_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/daylight_hour"
+        android:text="@string/hours_of_light"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/daylight_hour"
+        app:layout_constraintBottom_toTopOf="@+id/hours_of_light"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour_divider"
+        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
         tools:ignore="RtlSymmetry,TextContrastCheck" />
 
     <TextView
-        android:id="@+id/daylight_hour"
+        android:id="@+id/hours_of_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -211,7 +211,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/watering_frequency_divider"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour_label"
+        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_label"
         tools:ignore="RtlSymmetry"
         tools:text="1日中" />
 
@@ -224,7 +224,7 @@
         app:layout_constraintBottom_toTopOf="@+id/watering_frequency_label"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
         app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour" />
+        app:layout_constraintTop_toBottomOf="@+id/hours_of_light" />
 
     <TextView
         android:id="@+id/watering_frequency_label"
@@ -258,7 +258,7 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/daylight_hour_label"
+        app:layout_constraintBottom_toTopOf="@+id/hours_of_light_label"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
         app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/watering_frequency" />
@@ -322,12 +322,12 @@
         app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_label" />
 
     <ImageView
-        android:id="@+id/daylight_hour_image"
+        android:id="@+id/hours_of_light_image"
         android:layout_width="108dp"
         android:layout_height="108dp"
         android:background="@drawable/filled_quarter_sun_108"
-        android:contentDescription="@string/daylight_hour"
+        android:contentDescription="@string/hours_of_light"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daylight_hour_divider"
+        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
         tools:ignore="ImageContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

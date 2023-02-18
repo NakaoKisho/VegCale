@@ -56,39 +56,39 @@
         tools:text="プチトマト" />
 
     <TextView
-        android:id="@+id/seeding_time_label"
+        android:id="@+id/seeding_month_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/seeding_time_month"
+        android:text="@string/seeding_month"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/seeding_time_month"
+        app:layout_constraintBottom_toTopOf="@+id/seeding_month"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/outline_info_top_guideline" />
 
     <TextView
-        android:id="@+id/seeding_time_month"
+        android:id="@+id/seeding_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textColor="#666666"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/harvest_time_label"
+        app:layout_constraintBottom_toTopOf="@+id/harvest_month_label"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/seeding_month_label"
         tools:text="1月" />
 
     <TextView
-        android:id="@+id/harvest_time_label"
+        android:id="@+id/harvest_month_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/harvest_time_month"
+        android:text="@string/harvest_month"
         android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/harvest_time_month"
+        app:layout_constraintBottom_toTopOf="@+id/harvest_month"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_time_month" />
+        app:layout_constraintTop_toBottomOf="@+id/seeding_month" />
 
     <TextView
-        android:id="@+id/harvest_time_month"
+        android:id="@+id/harvest_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -96,7 +96,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/growth_difficulty_label"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/harvest_month_label"
         tools:text="3月" />
 
     <TextView
@@ -107,7 +107,7 @@
         android:textColor="#666666"
         app:layout_constraintBottom_toTopOf="@+id/growth_difficulty"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_time_month" />
+        app:layout_constraintTop_toBottomOf="@+id/harvest_month" />
 
     <TextView
         android:id="@+id/growth_difficulty"
