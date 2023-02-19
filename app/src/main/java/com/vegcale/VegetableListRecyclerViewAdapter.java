@@ -9,15 +9,25 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class VegetableListRecyclerViewAdapter extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder> {
-    List<String> data;
-    View.OnClickListener onClickListenerOnParent;
+public class VegetableListRecyclerViewAdapter
+        extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder>
+        implements ValueEventListener {
+    private final List<String> data = new ArrayList<>();
+    private final View.OnClickListener onClickListenerOnParent;
+    private final VegcaleDatabase mVegcaleDatabase;
 
-    public VegetableListRecyclerViewAdapter(View.OnClickListener mOnClickListener) {
-        onClickListenerOnParent = mOnClickListener;
+    public VegetableListRecyclerViewAdapter(View.OnClickListener onClickListenerOnParent) {
+        this.onClickListenerOnParent = onClickListenerOnParent;
+        mVegcaleDatabase = new VegcaleDatabase(this);
     }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ProgressBar progressCircle;
         private final ViewStub vegetable_image;
@@ -32,14 +42,20 @@ public class VegetableListRecyclerViewAdapter extends RecyclerView.Adapter<Veget
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (data == null) {
+        if (data.isEmpty()) {
             holder.progressCircle.setVisibility(View.VISIBLE);
             holder.vegetable_image.setVisibility(View.INVISIBLE);
-        } else {
-            holder.progressCircle.setVisibility(View.INVISIBLE);
-            holder.vegetable_image.setVisibility(View.VISIBLE);
-            holder.itemView.setOnClickListener(onClickListenerOnParent);
+            mVegcaleDatabase.fetchPlantsData();
+            return;
         }
+
+        holder.progressCircle.setVisibility(View.INVISIBLE);
+        holder.vegetable_image.setVisibility(View.VISIBLE);
+        holder.itemView.setOnClickListener(onClickListenerOnParent);
+
+//        String currentMonth =
+//                Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
+//        assert currentMonth != null : "currentMonth must not be null.";
     }
 
     @NonNull
@@ -55,10 +71,23 @@ public class VegetableListRecyclerViewAdapter extends RecyclerView.Adapter<Veget
     public int getItemCount() {
         final int defaultDisplayNumber = 1;
 
-        return data == null ? defaultDisplayNumber : data.size();
+        return data.isEmpty() ? defaultDisplayNumber : data.size();
     }
 
-    public void setItem(List<String> data) {
-        this.data = data;
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        int position = data.size();
+        notifyItemChanged(position);
+
+        data.add("1");
+        data.add("2");
+        data.add("3");
+        data.add("4");
+        data.add("5");
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+
     }
 }

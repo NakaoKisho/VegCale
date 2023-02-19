@@ -19,18 +19,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.vegcale.utility.fragment.FragmentUtility;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class VegetableListFragment extends Fragment implements View.OnClickListener, ValueEventListener {
+public class VegetableListFragment extends Fragment implements View.OnClickListener {
     private FragmentUtility mFragmentUtility;
     private ItemDetailFragment ItemDetailFragment;
-    private VegetableListRecyclerViewAdapter mVegetableListRecyclerViewAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,11 +34,9 @@ public class VegetableListFragment extends Fragment implements View.OnClickListe
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_view);
         setVerticalLinearLayoutToRecyclerViewLayout(mRecyclerView);
 
-        mVegetableListRecyclerViewAdapter =
+        VegetableListRecyclerViewAdapter mVegetableListRecyclerViewAdapter =
                 new VegetableListRecyclerViewAdapter(this);
         mRecyclerView.setAdapter(mVegetableListRecyclerViewAdapter);
-
-        new VegcaleDatabase("plants_info/alias/Japanese/プチトマト", this).getOrangeValue();
 
         return rootView;
     }
@@ -59,26 +50,9 @@ public class VegetableListFragment extends Fragment implements View.OnClickListe
         );
     }
 
-    private void setVerticalLinearLayoutToRecyclerViewLayout(RecyclerView mRecyclerView) {
+    private void setVerticalLinearLayoutToRecyclerViewLayout(@NonNull RecyclerView mRecyclerView) {
         LinearLayoutManager verticalLinearLayoutManager =
                 new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(verticalLinearLayoutManager);
-    }
-
-    @Override
-    public void onDataChange(@NonNull DataSnapshot snapshot) {
-        List<String> item = new ArrayList<>();
-        item.add("1");
-        item.add("2");
-        item.add("3");
-        item.add("4");
-        item.add("5");
-        mVegetableListRecyclerViewAdapter.setItem(item);
-        mVegetableListRecyclerViewAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-
     }
 }

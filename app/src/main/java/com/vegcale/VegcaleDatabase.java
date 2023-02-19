@@ -18,30 +18,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class VegcaleDatabase {
-    private final DatabaseReference vegcaleDatabaseReference;
-    private DataSnapshot plantsDataSnapShot;
-    ValueEventListener abcd;
+    private final FirebaseDatabase vegcaleDatabase;
+    private final ValueEventListener mValueEventListener;
+    private final String plantsInfoRootPath = "plants_info/";
 
-    public VegcaleDatabase(@NonNull String databasePath, ValueEventListener abcd) {
+    public VegcaleDatabase(@NonNull ValueEventListener mValueEventListener) {
+        this.mValueEventListener = mValueEventListener;
         final String vegcaleDatabaseUrl =
                 "https://vegcale-app-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
-        FirebaseDatabase vegcaleDatabase = FirebaseDatabase.getInstance(vegcaleDatabaseUrl);
-        vegcaleDatabaseReference = vegcaleDatabase.getReference(databasePath);
-        this.abcd = abcd;
+        vegcaleDatabase = FirebaseDatabase.getInstance(vegcaleDatabaseUrl);
     }
 
-    public DataSnapshot getOrangeValue() {
-        vegcaleDatabaseReference.addListenerForSingleValueEvent(abcd);
-//        vegcaleDatabaseReference.get().addOnCompleteListener(task -> {
-//            if (!task.isSuccessful()) {
-//                plantsDataSnapShot = null;
-//                return;
-//            }
-//
-//            plantsDataSnapShot = task.getResult();
-//        });
-//
-        return plantsDataSnapShot;
+    public void fetchPlantsData() {
+        String plantsPath = plantsInfoRootPath + "plants";
+
+        DatabaseReference plantsReference =
+                vegcaleDatabase.getReference(plantsPath);
+        plantsReference.limitToLast(10);
+        plantsReference.addListenerForSingleValueEvent(mValueEventListener);
     }
 }
