@@ -2,136 +2,114 @@ package com.vegcale;
 
 public class Plant {
     private String detail;
-    private int growthDifficulty;
-    private HarvestMonth mHarvestMonth;
-    private String hoursOfLight;
-    private PlantName mPlantName;
-    private SeedingMonth mSeedingMonth;
-    private String wateringAmount;
-    private String wateringFrequency;
+    private int growth_difficulty;
+    private harvest_month harvest_month;
+    private String hours_of_light;
+    private name name;
+    private seeding_month seeding_month;
+    private String watering_amount;
+    private String watering_frequency;
 
-    public Plant() {}
+    public Plant() {
+    }
 
     public Plant(
             String detail,
-            int growthDifficulty,
-            HarvestMonth mHarvestMonth,
-            String hoursOfLight,
-            PlantName mPlantName,
-            SeedingMonth mSeedingMonth,
-            String wateringAmount,
-            String wateringFrequency
+            int growth_difficulty,
+            harvest_month harvest_month,
+            String hours_of_light,
+            name name,
+            seeding_month seeding_month,
+            String watering_amount,
+            String watering_frequency
     ) {
         this.detail = detail;
-        this.growthDifficulty = growthDifficulty;
-        this.mHarvestMonth = mHarvestMonth;
-        this.hoursOfLight = hoursOfLight;
-        this.mPlantName = mPlantName;
-        this.mSeedingMonth = mSeedingMonth;
-        this.wateringAmount = wateringAmount;
-        this.wateringFrequency = wateringFrequency;
+        this.growth_difficulty = growth_difficulty;
+        this.harvest_month = harvest_month;
+        this.hours_of_light = hours_of_light;
+        this.name = name;
+        this.seeding_month = seeding_month;
+        this.watering_amount = watering_amount;
+        this.watering_frequency = watering_frequency;
     }
 
     public String getDetail() {
         return detail;
     }
 
-    public int getGrowthDifficulty() {
-        return growthDifficulty;
+    public int getGrowth_Difficulty() {
+        return growth_difficulty;
     }
 
-    public HarvestMonth getHarvestMonth() {
-        return mHarvestMonth;
+    public harvest_month getHarvest_Month() {
+        return harvest_month;
     }
 
-    public String getHoursOfLight() {
-        return hoursOfLight;
+    public String getHours_Of_Light() {
+        return hours_of_light;
     }
 
-    public PlantName getPlantName() {
-        return mPlantName;
+    public name getName() {
+        return name;
     }
 
-    public SeedingMonth getSeedingMonth() {
-        return mSeedingMonth;
+    public seeding_month getSeeding_Month() {
+        return seeding_month;
     }
 
-    public String getWateringAmount() {
-        return wateringAmount;
+    public String getWatering_Amount() {
+        return watering_amount;
     }
 
-    public String getWateringFrequency() {
-        return wateringFrequency;
+    public String getWatering_Frequency() {
+        return watering_frequency;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
+    private static class harvest_month {
+        private String from;
+        private String to;
 
-    public void setGrowthDifficulty(int growthDifficulty) {
-        this.growthDifficulty = growthDifficulty;
-    }
-
-    public void setHarvestMonth(HarvestMonth mHarvestMonth) {
-        this.mHarvestMonth = mHarvestMonth;
-    }
-
-    public void setHoursOfLight(String hoursOfLight) {
-        this.hoursOfLight = hoursOfLight;
-    }
-
-    public void setPlantName(PlantName mPlantName) {
-        this.mPlantName = mPlantName;
-    }
-
-    public void setSeedingMonth(SeedingMonth mSeedingMonth) {
-        this.mSeedingMonth = mSeedingMonth;
-    }
-
-    public void setWateringAmount(String wateringAmount) {
-        this.wateringAmount = wateringAmount;
-    }
-
-    public void setWateringFrequency(String wateringFrequency) {
-        this.wateringFrequency = wateringFrequency;
-    }
-
-    private class HarvestMonth {
-        private String beginningMonthOfSeeding;
-        private String endMonthOfSeeding;
-
-        public String getBeginningMonthOfSeeding() {
-            return beginningMonthOfSeeding;
+        public harvest_month() {
         }
 
-        public String getEndMonthOfSeeding() {
-            return endMonthOfSeeding;
+        public String getFrom() {
+            return from;
+        }
+
+        public String getTo() {
+            return to;
         }
     }
 
-    private class PlantName {
-        private String english;
-        private String japanese;
+    public static class name {
+        private String English;
+        private String Japanese;
+
+        public name() {
+        }
 
         public String getEnglish() {
-            return english;
+            return English;
         }
 
         public String getJapanese() {
-            return japanese;
+            return Japanese;
         }
     }
 
-    private class SeedingMonth {
-        private String beginningMonthOfSeeding;
-        private String endMonthOfSeeding;
+    public static class seeding_month {
+        private String from;
+        private String to;
 
-        public String getBeginningMonthOfSeeding() {
-            return beginningMonthOfSeeding;
+        public seeding_month() {
         }
 
-        public String getEndMonthOfSeeding() {
-            return endMonthOfSeeding;
+        public String getFrom() {
+            return from;
+        }
+
+        public String getTo() {
+            return to;
         }
     }
 }

@@ -56,7 +56,7 @@ public class VegetableListRecyclerViewAdapter
         holder.vegetable_image.setVisibility(View.VISIBLE);
         holder.itemView.setOnClickListener(onClickListenerOnParent);
 
-        holder.vegetable_name.setText(data.get(0).getHoursOfLight());
+        holder.vegetable_name.setText(data.get(0).getHours_Of_Light());
         if (position == 9) {
             mVegcaleDatabase.fetchPlantsData();
         }
