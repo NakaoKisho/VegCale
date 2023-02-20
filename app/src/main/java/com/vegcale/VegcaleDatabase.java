@@ -31,11 +31,11 @@ public class VegcaleDatabase {
     }
 
     public void fetchPlantsData() {
-        String plantsPath = plantsInfoRootPath + "plants";
+        String plantsPath = plantsInfoRootPath + "plants/cherry_tomato";
 
         DatabaseReference plantsReference =
                 vegcaleDatabase.getReference(plantsPath);
-        plantsReference.limitToLast(10);
+//        plantsReference.limitToFirst(10);
         plantsReference.addListenerForSingleValueEvent(mValueEventListener);
     }
 }

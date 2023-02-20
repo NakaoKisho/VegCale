@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +20,7 @@ import java.util.List;
 public class VegetableListRecyclerViewAdapter
         extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder>
         implements ValueEventListener {
-    private final List<String> data = new ArrayList<>();
+    private final List<Plant> data = new ArrayList<>();
     private final View.OnClickListener onClickListenerOnParent;
     private final VegcaleDatabase mVegcaleDatabase;
 
@@ -31,12 +32,14 @@ public class VegetableListRecyclerViewAdapter
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ProgressBar progressCircle;
         private final ViewStub vegetable_image;
+        private final TextView vegetable_name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             progressCircle = itemView.findViewById(R.id.progress_circle);
             vegetable_image = itemView.findViewById(R.id.vegetable_image);
+            vegetable_name = itemView.findViewById(R.id.vegetable_name);
         }
     }
 
@@ -53,6 +56,10 @@ public class VegetableListRecyclerViewAdapter
         holder.vegetable_image.setVisibility(View.VISIBLE);
         holder.itemView.setOnClickListener(onClickListenerOnParent);
 
+        holder.vegetable_name.setText(data.get(0).getHoursOfLight());
+        if (position == 9) {
+            mVegcaleDatabase.fetchPlantsData();
+        }
 //        String currentMonth =
 //                Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
 //        assert currentMonth != null : "currentMonth must not be null.";
@@ -76,18 +83,19 @@ public class VegetableListRecyclerViewAdapter
 
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
-        int position = data.size();
-        notifyItemChanged(position);
+        if (data.isEmpty()) {
+            int firstItemIndex = 0;
 
-        data.add("1");
-        data.add("2");
-        data.add("3");
-        data.add("4");
-        data.add("5");
+            notifyItemChanged(firstItemIndex);
+        } else {
+            notifyItemInserted(data.size());
+        }
+
+        data.add(snapshot.getValue(Plant.class));
     }
 
     @Override
     public void onCancelled(@NonNull DatabaseError error) {
-
+//        エラーが起きました。インターネット接続を確認してください。
     }
 }
