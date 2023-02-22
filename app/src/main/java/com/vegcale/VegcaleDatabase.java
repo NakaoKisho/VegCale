@@ -31,7 +31,7 @@ public class VegcaleDatabase {
     }
 
     public void fetchPlantsData() {
-        String plantsPath = plantsInfoRootPath + "plants/cherry_tomato";
+        String plantsPath = plantsInfoRootPath + "plants/";
 
         DatabaseReference plantsReference =
                 vegcaleDatabase.getReference(plantsPath);

@@ -20,6 +20,10 @@ import java.util.List;
 public class VegetableListRecyclerViewAdapter
         extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder>
         implements ValueEventListener {
+    private enum ProgressBarVisibility {
+        Visible,
+        Invisible
+    }
     private final List<Plant> data = new ArrayList<>();
     private final View.OnClickListener onClickListenerOnParent;
     private final VegcaleDatabase mVegcaleDatabase;
@@ -30,33 +34,43 @@ public class VegetableListRecyclerViewAdapter
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView growthDifficulty;
+        private final TextView growthDifficultyLabel;
+        private final TextView harvestMonth;
+        private final TextView harvestMonthLabel;
         private final ProgressBar progressCircle;
-        private final ViewStub vegetable_image;
-        private final TextView vegetable_name;
+        private final TextView seedingMonth;
+        private final TextView seedingMonthLabel;
+        private final ViewStub vegetableImage;
+        private final TextView vegetableName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            growthDifficulty = itemView.findViewById(R.id.growth_difficulty);
+            growthDifficultyLabel = itemView.findViewById(R.id.growth_difficulty_label);
+            harvestMonth = itemView.findViewById(R.id.harvest_month);
+            harvestMonthLabel = itemView.findViewById(R.id.harvest_month_label);
             progressCircle = itemView.findViewById(R.id.progress_circle);
-            vegetable_image = itemView.findViewById(R.id.vegetable_image);
-            vegetable_name = itemView.findViewById(R.id.vegetable_name);
+            seedingMonth = itemView.findViewById(R.id.seeding_month);
+            seedingMonthLabel = itemView.findViewById(R.id.seeding_month_label);
+            vegetableImage = itemView.findViewById(R.id.vegetable_image);
+            vegetableName = itemView.findViewById(R.id.vegetable_name);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (data.isEmpty()) {
-            holder.progressCircle.setVisibility(View.VISIBLE);
-            holder.vegetable_image.setVisibility(View.INVISIBLE);
+            changeProgressCircleVisibility(holder, ProgressBarVisibility.Visible);
             mVegcaleDatabase.fetchPlantsData();
             return;
         }
 
-        holder.progressCircle.setVisibility(View.INVISIBLE);
-        holder.vegetable_image.setVisibility(View.VISIBLE);
+        changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
         holder.itemView.setOnClickListener(onClickListenerOnParent);
 
-        holder.vegetable_name.setText(data.get(0).getHours_Of_Light());
+        setItemData(holder, position);
         if (position == 9) {
             mVegcaleDatabase.fetchPlantsData();
         }
@@ -91,11 +105,45 @@ public class VegetableListRecyclerViewAdapter
             notifyItemInserted(data.size());
         }
 
-        data.add(snapshot.getValue(Plant.class));
+        for (DataSnapshot children : snapshot.getChildren()) {
+            data.add(children.getValue(Plant.class));
+        }
     }
 
     @Override
     public void onCancelled(@NonNull DatabaseError error) {
 //        エラーが起きました。インターネット接続を確認してください。
+    }
+
+    private void changeProgressCircleVisibility(@NonNull ViewHolder holder, ProgressBarVisibility visibility) {
+        int otherItemVisibility;
+        int progressBarVisibility;
+
+        if (visibility == ProgressBarVisibility.Visible) {
+            otherItemVisibility = View.INVISIBLE;
+            progressBarVisibility = View.VISIBLE;
+        } else {
+            otherItemVisibility = View.VISIBLE;
+            progressBarVisibility = View.INVISIBLE;
+        }
+
+        holder.growthDifficulty.setVisibility(otherItemVisibility);
+        holder.growthDifficultyLabel.setVisibility(otherItemVisibility);
+        holder.harvestMonth.setVisibility(otherItemVisibility);
+        holder.harvestMonthLabel.setVisibility(otherItemVisibility);
+        holder.progressCircle.setVisibility(progressBarVisibility);
+        holder.seedingMonth.setVisibility(otherItemVisibility);
+        holder.seedingMonthLabel.setVisibility(otherItemVisibility);
+        holder.vegetableImage.setVisibility(otherItemVisibility);
+        holder.vegetableName.setVisibility(otherItemVisibility);
+    }
+
+    private void setItemData(@NonNull ViewHolder holder, int position) {
+        Plant vegetableData = data.get(position);
+
+        holder.vegetableName.setText(vegetableData.getName().getJapanese());
+        holder.growthDifficulty.setText(String.valueOf(vegetableData.getGrowth_Difficulty()));
+        holder.harvestMonth.setText(vegetableData.getHarvest_Month().getFrom());
+        holder.seedingMonth.setText(vegetableData.getSeeding_Month().getFrom());
     }
 }

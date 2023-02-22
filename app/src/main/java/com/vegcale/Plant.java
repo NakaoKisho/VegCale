@@ -65,7 +65,7 @@ public class Plant {
         return watering_frequency;
     }
 
-    private static class harvest_month {
+    public static class harvest_month {
         private String from;
         private String to;
 
