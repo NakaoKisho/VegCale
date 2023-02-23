@@ -5,6 +5,7 @@ public class Plant {
     private int growth_difficulty;
     private harvest_month harvest_month;
     private String hours_of_light;
+    private String image_url;
     private name name;
     private seeding_month seeding_month;
     private String watering_amount;
@@ -18,6 +19,7 @@ public class Plant {
             int growth_difficulty,
             harvest_month harvest_month,
             String hours_of_light,
+            String image_url,
             name name,
             seeding_month seeding_month,
             String watering_amount,
@@ -27,6 +29,7 @@ public class Plant {
         this.growth_difficulty = growth_difficulty;
         this.harvest_month = harvest_month;
         this.hours_of_light = hours_of_light;
+        this.image_url = image_url;
         this.name = name;
         this.seeding_month = seeding_month;
         this.watering_amount = watering_amount;
@@ -47,6 +50,10 @@ public class Plant {
 
     public String getHours_Of_Light() {
         return hours_of_light;
+    }
+
+    public String getImage_Url() {
+        return image_url;
     }
 
     public name getName() {

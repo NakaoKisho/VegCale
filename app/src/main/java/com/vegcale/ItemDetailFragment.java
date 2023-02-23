@@ -40,14 +40,8 @@ public class ItemDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
 
-        ViewStub vegetableImageStub = rootView.findViewById(R.id.vegetable_image);
-        View inflatedVegetableImage = vegetableImageStub.inflate();
-        ImageView imageInVegetableImageViewStub = inflatedVegetableImage.findViewById(R.id.sticking_out_image);
-        expandStickingOutImage(imageInVegetableImageViewStub);
-        imageInVegetableImageViewStub.setBackgroundResource(R.drawable.ic_cherry_tomatoes_circle);
-
-        TextView imageFrameInVegetableImageViewStub = inflatedVegetableImage.findViewById(R.id.image_frame);
-        expandStickingOutImageFrame(imageFrameInVegetableImageViewStub);
+        TextView vegetableImageFrame = rootView.findViewById(R.id.image_frame);
+        ImageView stickingOutImage = rootView.findViewById(R.id.sticking_out_image);
 
         TextView vegetableName = rootView.findViewById(R.id.vegetable_name);
         vegetableName.setText("プチトマト");
@@ -77,19 +71,5 @@ public class ItemDetailFragment extends Fragment {
         );
 
         return rootView;
-    }
-
-    private void expandStickingOutImage(ImageView imageInVegetableImageViewStub) {
-        ViewGroup.LayoutParams imageLayoutParams = imageInVegetableImageViewStub.getLayoutParams();
-        imageLayoutParams.width = 550;
-        imageLayoutParams.height = 688;
-        imageInVegetableImageViewStub.setLayoutParams(imageLayoutParams);
-    }
-
-    private void expandStickingOutImageFrame(TextView imageFrameInVegetableImageViewStub) {
-        ViewGroup.LayoutParams imageFrameLayoutParams = imageFrameInVegetableImageViewStub.getLayoutParams();
-        imageFrameLayoutParams.width = 400;
-        imageFrameLayoutParams.height = 500;
-        imageFrameInVegetableImageViewStub.setLayoutParams(imageFrameLayoutParams);
     }
 }

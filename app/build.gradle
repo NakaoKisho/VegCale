@@ -29,9 +29,11 @@ android {
 
 dependencies {
     def nav_version = "2.5.3"
+
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -45,6 +47,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-ads:21.5.0'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
 

@@ -3,16 +3,19 @@ package com.vegcale;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,7 @@ public class VegetableListRecyclerViewAdapter
         Visible,
         Invisible
     }
+
     private final List<Plant> data = new ArrayList<>();
     private final View.OnClickListener onClickListenerOnParent;
     private final VegcaleDatabase mVegcaleDatabase;
@@ -41,7 +45,8 @@ public class VegetableListRecyclerViewAdapter
         private final ProgressBar progressCircle;
         private final TextView seedingMonth;
         private final TextView seedingMonthLabel;
-        private final ViewStub vegetableImage;
+        private final TextView vegetableImageFrame;
+        private final ImageView vegetableStickingOutImage;
         private final TextView vegetableName;
 
         public ViewHolder(@NonNull View itemView) {
@@ -54,7 +59,8 @@ public class VegetableListRecyclerViewAdapter
             progressCircle = itemView.findViewById(R.id.progress_circle);
             seedingMonth = itemView.findViewById(R.id.seeding_month);
             seedingMonthLabel = itemView.findViewById(R.id.seeding_month_label);
-            vegetableImage = itemView.findViewById(R.id.vegetable_image);
+            vegetableImageFrame = itemView.findViewById(R.id.image_frame);
+            vegetableStickingOutImage = itemView.findViewById(R.id.sticking_out_image);
             vegetableName = itemView.findViewById(R.id.vegetable_name);
         }
     }
@@ -134,12 +140,20 @@ public class VegetableListRecyclerViewAdapter
         holder.progressCircle.setVisibility(progressBarVisibility);
         holder.seedingMonth.setVisibility(otherItemVisibility);
         holder.seedingMonthLabel.setVisibility(otherItemVisibility);
-        holder.vegetableImage.setVisibility(otherItemVisibility);
+        holder.vegetableImageFrame.setVisibility(otherItemVisibility);
+        holder.vegetableStickingOutImage.setVisibility(otherItemVisibility);
         holder.vegetableName.setVisibility(otherItemVisibility);
     }
 
     private void setItemData(@NonNull ViewHolder holder, int position) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
         Plant vegetableData = data.get(position);
+        String imageUrl = vegetableData.getImage_Url();
+        StorageReference imageReference = storage.getReferenceFromUrl(imageUrl);
+
+        Glide.with(holder.itemView)
+                .load(imageReference)
+                .into(holder.vegetableStickingOutImage);
 
         holder.vegetableName.setText(vegetableData.getName().getJapanese());
         holder.growthDifficulty.setText(String.valueOf(vegetableData.getGrowth_Difficulty()));

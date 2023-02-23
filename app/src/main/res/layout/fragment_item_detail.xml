@@ -52,17 +52,27 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.13" />
 
-    <ViewStub
-        android:id="@+id/vegetable_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:inflatedId="@+id/vegetable_image_view_stub"
-        android:layout="@layout/image_sticking_out_from_frame"
+    <TextView
+        android:id="@+id/image_frame"
+        android:layout_width="170dp"
+        android:layout_height="220dp"
+        android:background="@drawable/rectangle_frame"
         app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
         app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_name" />
+        app:layout_constraintTop_toBottomOf="@+id/title_guideline"
+        tools:ignore="VisualLintOverlap" />
+
+    <ImageView
+        android:id="@+id/sticking_out_image"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:contentDescription="@string/vegetable_image"
+        app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
+        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/title_guideline"
+        tools:src="@drawable/ic_place_to_put_planters" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/end_of_vegetable_image_guideline"
