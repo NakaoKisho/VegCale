@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -39,13 +40,10 @@ public class VegetableListRecyclerViewAdapter
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView growthDifficulty;
-        private final TextView growthDifficultyLabel;
         private final TextView harvestMonth;
-        private final TextView harvestMonthLabel;
+        private final Group infoGroup;
         private final ProgressBar progressCircle;
         private final TextView seedingMonth;
-        private final TextView seedingMonthLabel;
-        private final TextView vegetableImageFrame;
         private final ImageView vegetableStickingOutImage;
         private final TextView vegetableName;
 
@@ -53,13 +51,10 @@ public class VegetableListRecyclerViewAdapter
             super(itemView);
 
             growthDifficulty = itemView.findViewById(R.id.growth_difficulty);
-            growthDifficultyLabel = itemView.findViewById(R.id.growth_difficulty_label);
             harvestMonth = itemView.findViewById(R.id.harvest_month);
-            harvestMonthLabel = itemView.findViewById(R.id.harvest_month_label);
+            infoGroup = itemView.findViewById(R.id.info_group);
             progressCircle = itemView.findViewById(R.id.progress_circle);
             seedingMonth = itemView.findViewById(R.id.seeding_month);
-            seedingMonthLabel = itemView.findViewById(R.id.seeding_month_label);
-            vegetableImageFrame = itemView.findViewById(R.id.image_frame);
             vegetableStickingOutImage = itemView.findViewById(R.id.sticking_out_image);
             vegetableName = itemView.findViewById(R.id.vegetable_name);
         }
@@ -74,9 +69,9 @@ public class VegetableListRecyclerViewAdapter
         }
 
         changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
+        setItemData(holder, position);
         holder.itemView.setOnClickListener(onClickListenerOnParent);
 
-        setItemData(holder, position);
         if (position == 9) {
             mVegcaleDatabase.fetchPlantsData();
         }
@@ -122,27 +117,19 @@ public class VegetableListRecyclerViewAdapter
     }
 
     private void changeProgressCircleVisibility(@NonNull ViewHolder holder, ProgressBarVisibility visibility) {
-        int otherItemVisibility;
+        int infoGroupVisibility;
         int progressBarVisibility;
 
         if (visibility == ProgressBarVisibility.Visible) {
-            otherItemVisibility = View.INVISIBLE;
+            infoGroupVisibility = View.INVISIBLE;
             progressBarVisibility = View.VISIBLE;
         } else {
-            otherItemVisibility = View.VISIBLE;
+            infoGroupVisibility = View.VISIBLE;
             progressBarVisibility = View.INVISIBLE;
         }
 
-        holder.growthDifficulty.setVisibility(otherItemVisibility);
-        holder.growthDifficultyLabel.setVisibility(otherItemVisibility);
-        holder.harvestMonth.setVisibility(otherItemVisibility);
-        holder.harvestMonthLabel.setVisibility(otherItemVisibility);
+        holder.infoGroup.setVisibility(infoGroupVisibility);
         holder.progressCircle.setVisibility(progressBarVisibility);
-        holder.seedingMonth.setVisibility(otherItemVisibility);
-        holder.seedingMonthLabel.setVisibility(otherItemVisibility);
-        holder.vegetableImageFrame.setVisibility(otherItemVisibility);
-        holder.vegetableStickingOutImage.setVisibility(otherItemVisibility);
-        holder.vegetableName.setVisibility(otherItemVisibility);
     }
 
     private void setItemData(@NonNull ViewHolder holder, int position) {

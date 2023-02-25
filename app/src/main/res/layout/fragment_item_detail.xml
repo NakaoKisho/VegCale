@@ -68,6 +68,7 @@
         android:layout_width="200dp"
         android:layout_height="250dp"
         android:contentDescription="@string/vegetable_image"
+        android:scaleType="center"
         app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
         app:layout_constraintLeft_toRightOf="@+id/left_guideline"
         app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
@@ -86,14 +87,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.20" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <TextView
         android:id="@+id/seeding_month_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/seeding_month"
-        android:textColor="#666666"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/seeding_month"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/outline_info_top_guideline" />
@@ -103,7 +104,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#666666"
         app:layout_constraintBottom_toTopOf="@+id/harvest_month_label"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/seeding_month_label"
@@ -114,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/harvest_month"
-        android:textColor="#666666"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/harvest_month"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/seeding_month" />
@@ -124,7 +127,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#666666"
         app:layout_constraintBottom_toTopOf="@+id/growth_difficulty_label"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/harvest_month_label"
@@ -135,7 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/difficulty"
-        android:textColor="#666666"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/growth_difficulty"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/harvest_month" />
@@ -145,7 +150,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="#666666"
         app:layout_constraintBottom_toTopOf="@+id/outline_info_bottom_guideline"
         app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
         app:layout_constraintTop_toBottomOf="@+id/growth_difficulty_label"
@@ -156,7 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.40" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/detail_info_top_guideline"

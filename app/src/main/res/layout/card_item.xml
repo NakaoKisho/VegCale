@@ -19,6 +19,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/info_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="image_frame,sticking_out_image,vegetable_name,seeding_month_label,seeding_month,harvest_month_label,harvest_month,growth_difficulty_label,growth_difficulty"/>
+
     <TextView
         android:id="@+id/image_frame"
         android:layout_width="126dp"
@@ -35,6 +41,7 @@
         android:layout_width="144dp"
         android:layout_height="180dp"
         android:contentDescription="@string/vegetable_image"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"

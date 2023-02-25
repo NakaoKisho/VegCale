@@ -12,6 +12,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.vegcale.utility.fragment.FragmentUtility;
 
 public class ItemDetailFragment extends Fragment {
@@ -42,6 +43,10 @@ public class ItemDetailFragment extends Fragment {
 
         TextView vegetableImageFrame = rootView.findViewById(R.id.image_frame);
         ImageView stickingOutImage = rootView.findViewById(R.id.sticking_out_image);
+
+        Glide.with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/vegcale-app.appspot.com/o/plant%2Fcherry_tomato.webp?alt=media&token=e8b314ef-a274-4f7f-9873-37f9111aad5d")
+                .into(stickingOutImage);
 
         TextView vegetableName = rootView.findViewById(R.id.vegetable_name);
         vegetableName.setText("プチトマト");
