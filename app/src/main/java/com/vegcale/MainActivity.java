@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         blackenOrWhitenStatusBarColor();
         showGoogleMobileAds();
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 });
     }
-
 
     private void blackenOrWhitenStatusBarColor() {
         int nightModeFlags =

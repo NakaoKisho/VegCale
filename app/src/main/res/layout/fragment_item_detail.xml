@@ -1,350 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.03" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.97" />
-
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_arrow_back_24"
-        android:contentDescription="@string/back_button"
-        android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/title_guideline"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@id/vegetable_name"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RedundantDescriptionCheck" />
-
-    <TextView
-        android:id="@+id/vegetable_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#666666"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/title_guideline"
-        app:layout_constraintLeft_toRightOf="@+id/back_button"
-        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="プチトマト" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/title_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.13" />
-
-    <TextView
-        android:id="@+id/image_frame"
-        android:layout_width="170dp"
-        android:layout_height="220dp"
-        android:background="@drawable/rectangle_frame"
-        app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/title_guideline"
-        tools:ignore="VisualLintOverlap" />
-
-    <ImageView
-        android:id="@+id/sticking_out_image"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
-        android:contentDescription="@string/vegetable_image"
-        android:scaleType="center"
-        app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/title_guideline"
-        tools:src="@drawable/ic_place_to_put_planters" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/end_of_vegetable_image_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/outline_info_top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <TextView
-        android:id="@+id/seeding_month_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/seeding_month"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/seeding_month"
-        app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/outline_info_top_guideline" />
-
-    <TextView
-        android:id="@+id/seeding_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/harvest_month_label"
-        app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_month_label"
-        tools:text="1月" />
-
-    <TextView
-        android:id="@+id/harvest_month_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/harvest_month"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/harvest_month"
-        app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/seeding_month" />
-
-    <TextView
-        android:id="@+id/harvest_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/growth_difficulty_label"
-        app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_month_label"
-        tools:text="3月" />
-
-    <TextView
-        android:id="@+id/growth_difficulty_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/difficulty"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/growth_difficulty"
-        app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/harvest_month" />
-
-    <TextView
-        android:id="@+id/growth_difficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/outline_info_bottom_guideline"
-        app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/growth_difficulty_label"
-        tools:text="むずかしい" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/outline_info_bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/detail_info_top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/vegetable_detail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/hours_of_light_divider"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/detail_info_top_guideline"
-        tools:ignore="RtlSymmetry"
-        tools:text="リコピン含有量が多くどんな料理にも合う名脇役" />
-
-    <View
-        android:id="@+id/hours_of_light_divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/hours_of_light_label"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/vegetable_detail" />
-
-    <TextView
-        android:id="@+id/hours_of_light_background"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/daylight_amount_gradient"
-        app:layout_constraintBottom_toBottomOf="@id/potential_hydrogen"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/hours_of_light_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/hours_of_light"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/hours_of_light"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
-        tools:ignore="RtlSymmetry,TextContrastCheck" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
 
-    <TextView
-        android:id="@+id/hours_of_light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/watering_frequency_divider"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_label"
-        tools:ignore="RtlSymmetry"
-        tools:text="1日中" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97" />
 
-    <View
-        android:id="@+id/watering_frequency_divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/watering_frequency_label"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/hours_of_light" />
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_arrow_back_24"
+            android:contentDescription="@string/back_button"
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/title_guideline"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@id/vegetable_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RedundantDescriptionCheck" />
 
-    <TextView
-        android:id="@+id/watering_frequency_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/watering_frequency"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/watering_frequency"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/watering_frequency_divider"
-        tools:ignore="RtlSymmetry" />
+        <TextView
+            android:id="@+id/vegetable_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#666666"
+            android:textSize="35sp"
 
-    <TextView
-        android:id="@+id/watering_frequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/watering_amount_divider"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/watering_frequency_label"
-        tools:ignore="RtlSymmetry"
-        tools:text="毎日" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/title_guideline"
+            app:layout_constraintLeft_toRightOf="@+id/back_button"
+            app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="プチトマト" />
 
-    <View
-        android:id="@+id/watering_amount_divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/hours_of_light_label"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/watering_frequency" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/title_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="70dp" />
 
-    <TextView
-        android:id="@+id/watering_amount_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/watering_amount"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/watering_amount"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/watering_amount_divider"
-        tools:ignore="RtlSymmetry" />
+        <TextView
+            android:id="@+id/image_frame"
+            android:layout_width="170dp"
+            android:layout_height="220dp"
+            android:background="@drawable/rectangle_frame"
+            app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/title_guideline"
+            tools:ignore="VisualLintOverlap" />
 
-    <TextView
-        android:id="@+id/watering_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen_divider"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/watering_amount_label"
-        tools:ignore="RtlSymmetry"
-        tools:text="土がひたひたになるまで" />
+        <ImageView
+            android:id="@+id/sticking_out_image"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:contentDescription="@string/vegetable_image"
+            android:scaleType="center"
+            app:layout_constraintBottom_toTopOf="@+id/vegetable_detail"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/title_guideline"
+            tools:src="@drawable/ic_place_to_put_planters" />
 
-    <View
-        android:id="@+id/potential_hydrogen_divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:backgroundTint="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen_label"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/watering_amount" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_of_vegetable_image_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
 
-    <TextView
-        android:id="@+id/potential_hydrogen_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/potential_hydrogen"
-        android:textColor="#666666"
-        app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_divider"
-        tools:ignore="RtlSymmetry" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/outline_info_top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="140dp" />
 
-    <include
-        android:id="@+id/potential_hydrogen"
-        layout="@layout/ph_list_horizontal_layout"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideline"
-        app:layout_constraintRight_toLeftOf="@+id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_label" />
+        <TextView
+            android:id="@+id/seeding_month_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seeding_month"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/seeding_month"
+            app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/outline_info_top_guideline" />
 
-    <ImageView
-        android:id="@+id/hours_of_light_image"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:background="@drawable/filled_quarter_sun_108"
-        android:contentDescription="@string/hours_of_light"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
-        tools:ignore="ImageContrastCheck" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/seeding_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/seeding_month_label"
+            tools:text="1月" />
+
+        <TextView
+            android:id="@+id/harvest_month_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/harvest_month"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/harvest_month"
+            app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/seeding_month" />
+
+        <TextView
+            android:id="@+id/harvest_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/harvest_month_label"
+            tools:text="3月" />
+
+        <TextView
+            android:id="@+id/growth_difficulty_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/difficulty"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/growth_difficulty"
+            app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/harvest_month" />
+
+        <TextView
+            android:id="@+id/growth_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/growth_difficulty_label"
+            tools:text="むずかしい" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/detail_info_top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="350dp" />
+
+        <TextView
+            android:id="@+id/vegetable_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/hours_of_light_divider"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/detail_info_top_guideline"
+            tools:ignore="RtlSymmetry"
+            tools:text="リコピン含有量が多くどんな料理にも合う名脇役" />
+
+        <View
+            android:id="@+id/hours_of_light_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="#666666"
+            app:layout_constraintBottom_toTopOf="@+id/hours_of_light_label"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/vegetable_detail" />
+
+        <TextView
+            android:id="@+id/hours_of_light_background"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/daylight_amount_gradient"
+            app:layout_constraintBottom_toBottomOf="@id/potential_hydrogen"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider" />
+
+        <TextView
+            android:id="@+id/hours_of_light_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/hours_of_light"
+            android:textColor="#666666"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/hours_of_light"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
+            tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/hours_of_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/watering_frequency_divider"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/hours_of_light_label"
+            tools:ignore="RtlSymmetry"
+            tools:text="1日中" />
+
+        <View
+            android:id="@+id/watering_frequency_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="#666666"
+            app:layout_constraintBottom_toTopOf="@+id/watering_frequency_label"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/hours_of_light" />
+
+        <TextView
+            android:id="@+id/watering_frequency_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/watering_frequency"
+            android:textColor="#666666"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/watering_frequency"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/watering_frequency_divider"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/watering_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/watering_amount_divider"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/watering_frequency_label"
+            tools:ignore="RtlSymmetry"
+            tools:text="毎日" />
+
+        <View
+            android:id="@+id/watering_amount_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="#666666"
+            app:layout_constraintBottom_toTopOf="@+id/hours_of_light_label"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/watering_frequency" />
+
+        <TextView
+            android:id="@+id/watering_amount_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/watering_amount"
+            android:textColor="#666666"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/watering_amount"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/watering_amount_divider"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/watering_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen_divider"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/watering_amount_label"
+            tools:ignore="RtlSymmetry"
+            tools:text="土がひたひたになるまで" />
+
+        <View
+            android:id="@+id/potential_hydrogen_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="#666666"
+            app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen_label"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/watering_amount" />
+
+        <TextView
+            android:id="@+id/potential_hydrogen_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/potential_hydrogen"
+            android:textColor="#666666"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/potential_hydrogen"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_divider"
+            tools:ignore="RtlSymmetry" />
+
+        <include
+            android:id="@+id/potential_hydrogen"
+            layout="@layout/ph_list_horizontal_layout"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/left_guideline"
+            app:layout_constraintRight_toLeftOf="@+id/right_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_label" />
+
+        <ImageView
+            android:id="@+id/hours_of_light_image"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:background="@drawable/filled_quarter_sun_108"
+            android:contentDescription="@string/hours_of_light"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
+            tools:ignore="ImageContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

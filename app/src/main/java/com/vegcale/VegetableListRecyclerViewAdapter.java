@@ -1,5 +1,6 @@
 package com.vegcale;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.Group;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.vegcale.utility.Conversion;
+import com.vegcale.utility.fragment.FragmentUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,16 +33,16 @@ public class VegetableListRecyclerViewAdapter
         Invisible
     }
 
-    private final List<Plant> data = new ArrayList<>();
-    private final View.OnClickListener onClickListenerOnParent;
+    private static final List<Plant> data = new ArrayList<>();
+    private static FragmentActivity mFragmentActivity = null;
     private final VegcaleDatabase mVegcaleDatabase;
 
-    public VegetableListRecyclerViewAdapter(View.OnClickListener onClickListenerOnParent) {
-        this.onClickListenerOnParent = onClickListenerOnParent;
+    public VegetableListRecyclerViewAdapter(FragmentActivity mFragmentActivity) {
+        VegetableListRecyclerViewAdapter.mFragmentActivity = mFragmentActivity;
         mVegcaleDatabase = new VegcaleDatabase(this);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView growthDifficulty;
         private final TextView harvestMonth;
         private final Group infoGroup;
@@ -57,6 +61,37 @@ public class VegetableListRecyclerViewAdapter
             seedingMonth = itemView.findViewById(R.id.seeding_month);
             vegetableStickingOutImage = itemView.findViewById(R.id.sticking_out_image);
             vegetableName = itemView.findViewById(R.id.vegetable_name);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            ItemDetailFragment mItemDetailFragment = new ItemDetailFragment();
+            setItemDetailData(mItemDetailFragment);
+
+            new FragmentUtility(mFragmentActivity).changeFragment(
+                    mItemDetailFragment,
+                    FragmentUtility.ItemDetailFragmentTag,
+                    FragmentUtility.SlideAnimation.LeftToRight
+            );
+        }
+
+        private void setItemDetailData(ItemDetailFragment mItemDetailFragment) {
+            Bundle mBundle = new Bundle();
+            Plant vegetableData = data.get(getLayoutPosition());
+            mBundle.putString("detail", vegetableData.getDetail());
+            mBundle.putInt("growthDifficulty", vegetableData.getGrowth_Difficulty());
+            mBundle.putInt("harvestMonthFrom", vegetableData.getHarvest_Month().getFrom());
+            mBundle.putInt("harvestMonthTo", vegetableData.getHarvest_Month().getTo());
+            mBundle.putString("hoursOfLight", vegetableData.getHours_Of_Light());
+            mBundle.putString("imageUrl", vegetableData.getImage_Url());
+            mBundle.putString("name", vegetableData.getName().getJapanese());
+            mBundle.putInt("seedingMonthFrom", vegetableData.getSeeding_Month().getFrom());
+            mBundle.putInt("seedingMonthTo", vegetableData.getSeeding_Month().getTo());
+            mBundle.putString("wateringAmount", vegetableData.getWatering_Amount());
+            mBundle.putString("wateringFrequency", vegetableData.getWatering_Frequency());
+            mItemDetailFragment.setArguments(mBundle);
         }
     }
 
@@ -70,14 +105,10 @@ public class VegetableListRecyclerViewAdapter
 
         changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
         setItemData(holder, position);
-        holder.itemView.setOnClickListener(onClickListenerOnParent);
 
         if (position == 9) {
             mVegcaleDatabase.fetchPlantsData();
         }
-//        String currentMonth =
-//                Calendar.getInstance().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
-//        assert currentMonth != null : "currentMonth must not be null.";
     }
 
     @NonNull
@@ -144,7 +175,16 @@ public class VegetableListRecyclerViewAdapter
 
         holder.vegetableName.setText(vegetableData.getName().getJapanese());
         holder.growthDifficulty.setText(String.valueOf(vegetableData.getGrowth_Difficulty()));
-        holder.harvestMonth.setText(vegetableData.getHarvest_Month().getFrom());
-        holder.seedingMonth.setText(vegetableData.getSeeding_Month().getFrom());
+
+        int harvestMonthFrom = vegetableData.getHarvest_Month().getFrom();
+        int harvestMonthTo = vegetableData.getHarvest_Month().getTo();
+        Conversion mConversion = new Conversion();
+        String harvestMonthText = mConversion.convertMonthRangeIntToText(harvestMonthFrom, harvestMonthTo);
+        holder.harvestMonth.setText(harvestMonthText);
+
+        int seedingMonthFrom = vegetableData.getSeeding_Month().getFrom();
+        int seedingMonthTo = vegetableData.getSeeding_Month().getTo();
+        String seedingMonthText = mConversion.convertMonthRangeIntToText(seedingMonthFrom, seedingMonthTo);
+        holder.seedingMonth.setText(seedingMonthText);
     }
 }

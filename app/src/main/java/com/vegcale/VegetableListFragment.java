@@ -19,35 +19,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.vegcale.utility.fragment.FragmentUtility;
-
-public class VegetableListFragment extends Fragment implements View.OnClickListener {
-    private FragmentUtility mFragmentUtility;
-    private ItemDetailFragment ItemDetailFragment;
+public class VegetableListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        mFragmentUtility = new FragmentUtility(getActivity());
-        ItemDetailFragment = new ItemDetailFragment();
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_view);
         setVerticalLinearLayoutToRecyclerViewLayout(mRecyclerView);
 
         VegetableListRecyclerViewAdapter mVegetableListRecyclerViewAdapter =
-                new VegetableListRecyclerViewAdapter(this);
+                new VegetableListRecyclerViewAdapter(getActivity());
         mRecyclerView.setAdapter(mVegetableListRecyclerViewAdapter);
 
         return rootView;
-    }
-
-    @Override
-    public void onClick(View view) {
-        mFragmentUtility.changeFragment(
-                ItemDetailFragment,
-                FragmentUtility.ItemDetailFragmentTag,
-                FragmentUtility.SlideAnimation.LeftToRight
-        );
     }
 
     private void setVerticalLinearLayoutToRecyclerViewLayout(@NonNull RecyclerView mRecyclerView) {

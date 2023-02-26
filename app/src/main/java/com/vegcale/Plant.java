@@ -1,5 +1,11 @@
 package com.vegcale;
 
+import android.icu.text.DateFormatSymbols;
+
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class Plant {
     private String detail;
     private int growth_difficulty;
@@ -73,17 +79,17 @@ public class Plant {
     }
 
     public static class harvest_month {
-        private String from;
-        private String to;
+        private int from;
+        private int to;
 
         public harvest_month() {
         }
 
-        public String getFrom() {
+        public int getFrom() {
             return from;
         }
 
-        public String getTo() {
+        public int getTo() {
             return to;
         }
     }
@@ -105,17 +111,17 @@ public class Plant {
     }
 
     public static class seeding_month {
-        private String from;
-        private String to;
+        private int from;
+        private int to;
 
         public seeding_month() {
         }
 
-        public String getFrom() {
+        public int getFrom() {
             return from;
         }
 
-        public String getTo() {
+        public int getTo() {
             return to;
         }
     }
