@@ -67,7 +67,7 @@ public class ItemDetailFragment extends Fragment {
         detail.setText(getArguments().getString("detail"));
 
         TextView growthDifficulty = rootView.findViewById(R.id.growth_difficulty);
-        growthDifficulty.setText(String.valueOf(getArguments().getInt("growthDifficulty")));
+        growthDifficulty.setText(getArguments().getString("growthDifficulty"));
 
         TextView harvestMonth = rootView.findViewById(R.id.harvest_month);
         int harvestMonthFrom = getArguments().getInt("harvestMonthFrom");
@@ -96,5 +96,8 @@ public class ItemDetailFragment extends Fragment {
 
         TextView wateringFrequency = rootView.findViewById(R.id.watering_frequency);
         wateringFrequency.setText(getArguments().getString("wateringFrequency"));
+
+        System.out.println(getArguments().getInt("phFrom"));
+        System.out.println(getArguments().getInt("phTo"));
     }
 }

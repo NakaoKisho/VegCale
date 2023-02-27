@@ -1,52 +1,25 @@
 package com.vegcale;
 
-import android.icu.text.DateFormatSymbols;
-
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 public class Plant {
     private String detail;
-    private int growth_difficulty;
+    private String growth_difficulty;
     private harvest_month harvest_month;
     private String hours_of_light;
     private String image_url;
-    private name name;
+    private String name;
     private seeding_month seeding_month;
     private String watering_amount;
     private String watering_frequency;
+    private ph ph;
 
     public Plant() {
-    }
-
-    public Plant(
-            String detail,
-            int growth_difficulty,
-            harvest_month harvest_month,
-            String hours_of_light,
-            String image_url,
-            name name,
-            seeding_month seeding_month,
-            String watering_amount,
-            String watering_frequency
-    ) {
-        this.detail = detail;
-        this.growth_difficulty = growth_difficulty;
-        this.harvest_month = harvest_month;
-        this.hours_of_light = hours_of_light;
-        this.image_url = image_url;
-        this.name = name;
-        this.seeding_month = seeding_month;
-        this.watering_amount = watering_amount;
-        this.watering_frequency = watering_frequency;
     }
 
     public String getDetail() {
         return detail;
     }
 
-    public int getGrowth_Difficulty() {
+    public String getGrowth_Difficulty() {
         return growth_difficulty;
     }
 
@@ -62,7 +35,7 @@ public class Plant {
         return image_url;
     }
 
-    public name getName() {
+    public String getName() {
         return name;
     }
 
@@ -76,6 +49,10 @@ public class Plant {
 
     public String getWatering_Frequency() {
         return watering_frequency;
+    }
+
+    public ph getPh() {
+        return ph;
     }
 
     public static class harvest_month {
@@ -94,27 +71,27 @@ public class Plant {
         }
     }
 
-    public static class name {
-        private String English;
-        private String Japanese;
-
-        public name() {
-        }
-
-        public String getEnglish() {
-            return English;
-        }
-
-        public String getJapanese() {
-            return Japanese;
-        }
-    }
-
     public static class seeding_month {
         private int from;
         private int to;
 
         public seeding_month() {
+        }
+
+        public int getFrom() {
+            return from;
+        }
+
+        public int getTo() {
+            return to;
+        }
+    }
+
+    public static class ph {
+        private int from;
+        private int to;
+
+        public ph() {
         }
 
         public int getFrom() {
