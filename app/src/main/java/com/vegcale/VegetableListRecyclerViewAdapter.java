@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -27,7 +29,8 @@ import java.util.List;
 
 public class VegetableListRecyclerViewAdapter
         extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder>
-        implements ValueEventListener {
+        implements OnCompleteListener<DataSnapshot>, ValueEventListener {
+
     private enum ProgressBarVisibility {
         Visible,
         Invisible
@@ -36,10 +39,14 @@ public class VegetableListRecyclerViewAdapter
     private final List<Plant> data = new ArrayList<>();
     private final FragmentActivity mFragmentActivity;
     private final VegcaleDatabase mVegcaleDatabase;
+    private Integer itemCount;
+    private int dataFetchCount = 0;
+    private String latestDataKey;
 
     public VegetableListRecyclerViewAdapter(FragmentActivity mFragmentActivity) {
         this.mFragmentActivity = mFragmentActivity;
         mVegcaleDatabase = new VegcaleDatabase(this);
+        mVegcaleDatabase.getCount(this);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,30 +72,67 @@ public class VegetableListRecyclerViewAdapter
     }
 
     @Override
+    public int getItemCount() {
+        final int defaultDisplayNumber = 1;
+
+        return data.isEmpty() ? defaultDisplayNumber : data.size();
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final int nextItemCount = 6;
+
+        if (itemCount == null) {
+            return;
+        }
+
         if (data.isEmpty()) {
             changeProgressCircleVisibility(holder, ProgressBarVisibility.Visible);
-            mVegcaleDatabase.fetchPlantsData();
+            mVegcaleDatabase.fetchPlantsData(nextItemCount, true, null);
+            dataFetchCount++;
+            itemCount -= nextItemCount;
+
             return;
         }
 
         changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
         setItemData(holder, position);
+        holder.itemView.setOnClickListener(view -> moveToItemDetailFragment(position));
 
-        holder.itemView.setOnClickListener(view -> {
-            ItemDetailFragment mItemDetailFragment = new ItemDetailFragment();
-            setDetailItemData(mItemDetailFragment, position);
+        if (itemCount <= 0) return;
 
-            new FragmentUtility(mFragmentActivity).changeFragment(
-                    mItemDetailFragment,
-                    FragmentUtility.ItemDetailFragmentTag,
-                    FragmentUtility.SlideAnimation.LeftToRight
-            );
-        });
+        int nextDataFetchPosition = nextItemCount * dataFetchCount - 1;
+        if (position == nextDataFetchPosition) {
+            mVegcaleDatabase.fetchPlantsData(nextItemCount, false, latestDataKey);
+            dataFetchCount++;
+            itemCount -= nextItemCount;
+            if (itemCount < 0) {
+                itemCount = 0;
+            }
+        }
+    }
 
-//        if (position == 9) {
-//            mVegcaleDatabase.fetchPlantsData();
-//        }
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+//        エラーが起きました。インターネット接続を確認してください。
+    }
+
+    @Override
+    public void onComplete(@NonNull Task<DataSnapshot> task) {
+        if (!task.isSuccessful()) {
+//            エラーが起きました。インターネット接続を確認してください。
+            return;
+        }
+
+        DataSnapshot resultDataSnapshot = task.getResult();
+        itemCount = resultDataSnapshot.getValue(Integer.class);
+
+        int firstItemIndex = 0;
+        notifyItemChanged(firstItemIndex);
+
+        if (itemCount == null) {
+//            エラーが起きました。インターネット接続を確認してください。
+        }
     }
 
     @NonNull
@@ -98,13 +142,6 @@ public class VegetableListRecyclerViewAdapter
                 .inflate(R.layout.card_item, parent, false);
 
         return new ViewHolder(cardItem);
-    }
-
-    @Override
-    public int getItemCount() {
-        final int defaultDisplayNumber = 1;
-
-        return data.isEmpty() ? defaultDisplayNumber : data.size();
     }
 
     @Override
@@ -119,12 +156,8 @@ public class VegetableListRecyclerViewAdapter
 
         for (DataSnapshot children : snapshot.getChildren()) {
             data.add(children.getValue(Plant.class));
+            latestDataKey = children.getKey();
         }
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-//        エラーが起きました。インターネット接続を確認してください。
     }
 
     private void changeProgressCircleVisibility(@NonNull ViewHolder holder, ProgressBarVisibility visibility) {
@@ -141,6 +174,17 @@ public class VegetableListRecyclerViewAdapter
 
         holder.infoGroup.setVisibility(infoGroupVisibility);
         holder.progressCircle.setVisibility(progressBarVisibility);
+    }
+
+    private void moveToItemDetailFragment(int position) {
+        ItemDetailFragment mItemDetailFragment = new ItemDetailFragment();
+        setDetailItemData(mItemDetailFragment, position);
+
+        new FragmentUtility(mFragmentActivity).changeFragment(
+                mItemDetailFragment,
+                FragmentUtility.ItemDetailFragmentTag,
+                FragmentUtility.SlideAnimation.LeftToRight
+        );
     }
 
     private void setDetailItemData(@NonNull ItemDetailFragment mItemDetailFragment, int position) {
