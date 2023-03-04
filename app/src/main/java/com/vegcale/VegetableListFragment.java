@@ -19,17 +19,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class VegetableListFragment extends Fragment {
+import com.google.android.material.snackbar.Snackbar;
+
+public class VegetableListFragment
+        extends Fragment
+        implements VegetableListRecyclerViewAdapter.SnackBarCallbackListener {
+    private View rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
+        rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_view);
         setVerticalLinearLayoutToRecyclerViewLayout(mRecyclerView);
 
         VegetableListRecyclerViewAdapter mVegetableListRecyclerViewAdapter =
-                new VegetableListRecyclerViewAdapter(getActivity());
+                new VegetableListRecyclerViewAdapter(getActivity(), this);
         mRecyclerView.setAdapter(mVegetableListRecyclerViewAdapter);
 
         return rootView;
@@ -39,5 +44,10 @@ public class VegetableListFragment extends Fragment {
         LinearLayoutManager verticalLinearLayoutManager =
                 new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(verticalLinearLayoutManager);
+    }
+
+    public void showErrorSnackBar() {
+        Snackbar.make(rootView, "error", Snackbar.LENGTH_SHORT)
+                .show();
     }
 }

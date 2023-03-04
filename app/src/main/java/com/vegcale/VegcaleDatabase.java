@@ -21,11 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class VegcaleDatabase {
     private final FirebaseDatabase vegcaleDatabase;
-    private final ValueEventListener mValueEventListener;
     private final String plantsInfoRootPath = "plants_info/";
 
-    public VegcaleDatabase(@NonNull ValueEventListener mValueEventListener) {
-        this.mValueEventListener = mValueEventListener;
+    public VegcaleDatabase() {
         final String vegcaleDatabaseUrl =
                 "https://vegcale-app-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
@@ -35,7 +33,8 @@ public class VegcaleDatabase {
     public void fetchPlantsData(
             int nextItemCount,
             boolean isFirstDataFetch,
-            @Nullable String startAfterValue
+            @Nullable String startAfterValue,
+            @NonNull ValueEventListener mValueEventListener
     ) {
         if (isFirstDataFetch && startAfterValue != null) {
             throw new Error("If isFirstDataFetch is true, startAfterValue should not be null,");
@@ -50,24 +49,14 @@ public class VegcaleDatabase {
                 vegcaleDatabase.getReference(plantsPath);
         Query dataFetchQuery = plantsReference.orderByKey();
 
-        if (isFirstDataFetch) {
-            dataFetchQuery = dataFetchQuery.limitToFirst(nextItemCount);
-        } else {
+        dataFetchQuery = dataFetchQuery.limitToFirst(nextItemCount);
+
+        if (!isFirstDataFetch) {
             dataFetchQuery = dataFetchQuery.startAfter(startAfterValue);
         }
 
         dataFetchQuery.addListenerForSingleValueEvent(mValueEventListener);
     }
-//    public void fetchPlantsData(int itemCount, int nextItemCount) {
-//        String plantsPath = plantsInfoRootPath + "plants/";
-//
-//        DatabaseReference plantsReference =
-//                vegcaleDatabase.getReference(plantsPath);
-//        plantsReference.orderByKey()
-//                .limitToLast(itemCount)
-//                .limitToFirst(nextItemCount)
-//                .addListenerForSingleValueEvent(mValueEventListener);
-//    }
 
     public void getCount(OnCompleteListener<DataSnapshot> mOnCompleteListener) {
         String itemCountPath = plantsInfoRootPath + "item_count";

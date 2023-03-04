@@ -36,128 +36,22 @@ public class VegetableListRecyclerViewAdapter
         Invisible
     }
 
-    private final List<Plant> data = new ArrayList<>();
     private final FragmentActivity mFragmentActivity;
+    private final List<Plant> data = new ArrayList<>();
+    private final SnackBarCallbackListener mSnackBarCallbackListener;
     private final VegcaleDatabase mVegcaleDatabase;
     private Integer itemCount;
     private int dataFetchCount = 0;
     private String latestDataKey;
 
-    public VegetableListRecyclerViewAdapter(FragmentActivity mFragmentActivity) {
+    public VegetableListRecyclerViewAdapter(
+            FragmentActivity mFragmentActivity,
+            SnackBarCallbackListener mSnackBarCallbackListener
+    ) {
         this.mFragmentActivity = mFragmentActivity;
-        mVegcaleDatabase = new VegcaleDatabase(this);
+        this.mSnackBarCallbackListener = mSnackBarCallbackListener;
+        mVegcaleDatabase = new VegcaleDatabase();
         mVegcaleDatabase.getCount(this);
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView growthDifficulty;
-        private final TextView harvestMonth;
-        private final Group infoGroup;
-        private final ProgressBar progressCircle;
-        private final TextView seedingMonth;
-        private final ImageView vegetableStickingOutImage;
-        private final TextView vegetableName;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            growthDifficulty = itemView.findViewById(R.id.growth_difficulty);
-            harvestMonth = itemView.findViewById(R.id.harvest_month);
-            infoGroup = itemView.findViewById(R.id.info_group);
-            progressCircle = itemView.findViewById(R.id.progress_circle);
-            seedingMonth = itemView.findViewById(R.id.seeding_month);
-            vegetableStickingOutImage = itemView.findViewById(R.id.sticking_out_image);
-            vegetableName = itemView.findViewById(R.id.vegetable_name);
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        final int defaultDisplayNumber = 1;
-
-        return data.isEmpty() ? defaultDisplayNumber : data.size();
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final int nextItemCount = 6;
-
-        if (itemCount == null) {
-            return;
-        }
-
-        if (data.isEmpty()) {
-            changeProgressCircleVisibility(holder, ProgressBarVisibility.Visible);
-            mVegcaleDatabase.fetchPlantsData(nextItemCount, true, null);
-            dataFetchCount++;
-            itemCount -= nextItemCount;
-
-            return;
-        }
-
-        changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
-        setItemData(holder, position);
-        holder.itemView.setOnClickListener(view -> moveToItemDetailFragment(position));
-
-        if (itemCount <= 0) return;
-
-        int nextDataFetchPosition = nextItemCount * dataFetchCount - 1;
-        if (position == nextDataFetchPosition) {
-            mVegcaleDatabase.fetchPlantsData(nextItemCount, false, latestDataKey);
-            dataFetchCount++;
-            itemCount -= nextItemCount;
-            if (itemCount < 0) {
-                itemCount = 0;
-            }
-        }
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-//        エラーが起きました。インターネット接続を確認してください。
-    }
-
-    @Override
-    public void onComplete(@NonNull Task<DataSnapshot> task) {
-        if (!task.isSuccessful()) {
-//            エラーが起きました。インターネット接続を確認してください。
-            return;
-        }
-
-        DataSnapshot resultDataSnapshot = task.getResult();
-        itemCount = resultDataSnapshot.getValue(Integer.class);
-
-        int firstItemIndex = 0;
-        notifyItemChanged(firstItemIndex);
-
-        if (itemCount == null) {
-//            エラーが起きました。インターネット接続を確認してください。
-        }
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View cardItem = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_item, parent, false);
-
-        return new ViewHolder(cardItem);
-    }
-
-    @Override
-    public void onDataChange(@NonNull DataSnapshot snapshot) {
-        if (data.isEmpty()) {
-            int firstItemIndex = 0;
-
-            notifyItemChanged(firstItemIndex);
-        } else {
-            notifyItemInserted(data.size());
-        }
-
-        for (DataSnapshot children : snapshot.getChildren()) {
-            data.add(children.getValue(Plant.class));
-            latestDataKey = children.getKey();
-        }
     }
 
     private void changeProgressCircleVisibility(@NonNull ViewHolder holder, ProgressBarVisibility visibility) {
@@ -230,5 +124,127 @@ public class VegetableListRecyclerViewAdapter
         int seedingMonthTo = vegetableData.getSeeding_Month().getTo();
         String seedingMonthText = mConversion.convertMonthRangeIntToText(seedingMonthFrom, seedingMonthTo);
         holder.seedingMonth.setText(seedingMonthText);
+    }
+
+    @Override
+    public int getItemCount() {
+        final int defaultDisplayNumber = 1;
+
+        return data.isEmpty() ? defaultDisplayNumber : data.size();
+    }
+
+    public interface SnackBarCallbackListener {
+        void showErrorSnackBar();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView growthDifficulty;
+        private final TextView harvestMonth;
+        private final Group infoGroup;
+        private final ProgressBar progressCircle;
+        private final TextView seedingMonth;
+        private final ImageView vegetableStickingOutImage;
+        private final TextView vegetableName;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            growthDifficulty = itemView.findViewById(R.id.growth_difficulty);
+            harvestMonth = itemView.findViewById(R.id.harvest_month);
+            infoGroup = itemView.findViewById(R.id.info_group);
+            progressCircle = itemView.findViewById(R.id.progress_circle);
+            seedingMonth = itemView.findViewById(R.id.seeding_month);
+            vegetableStickingOutImage = itemView.findViewById(R.id.sticking_out_image);
+            vegetableName = itemView.findViewById(R.id.vegetable_name);
+        }
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View cardItem = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_item, parent, false);
+
+        return new ViewHolder(cardItem);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final int nextItemCount = 6;
+
+        if (itemCount == null) return;
+
+        if (data.isEmpty()) {
+            changeProgressCircleVisibility(holder, ProgressBarVisibility.Visible);
+            mVegcaleDatabase.fetchPlantsData(
+                    nextItemCount,
+                    true,
+                    null,
+                    this
+            );
+            dataFetchCount++;
+            itemCount -= nextItemCount;
+
+            return;
+        }
+
+        changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
+        setItemData(holder, position);
+        holder.itemView.setOnClickListener(view -> moveToItemDetailFragment(position));
+
+        if (itemCount <= 0) return;
+
+        int nextDataFetchPosition = nextItemCount * dataFetchCount - 1;
+        if (position == nextDataFetchPosition) {
+            mVegcaleDatabase.fetchPlantsData(
+                    nextItemCount,
+                    false,
+                    latestDataKey,
+                    this);
+            dataFetchCount++;
+            itemCount -= nextItemCount;
+            if (itemCount < 0) {
+                itemCount = 0;
+            }
+        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+        mSnackBarCallbackListener.showErrorSnackBar();
+    }
+
+    @Override
+    public void onComplete(@NonNull Task<DataSnapshot> task) {
+        if (!task.isSuccessful()) {
+            mSnackBarCallbackListener.showErrorSnackBar();
+            return;
+        }
+
+        DataSnapshot resultDataSnapshot = task.getResult();
+        itemCount = resultDataSnapshot.getValue(Integer.class);
+
+        int firstItemIndex = 0;
+        notifyItemChanged(firstItemIndex);
+
+        if (itemCount == null) {
+            mSnackBarCallbackListener.showErrorSnackBar();
+        }
+    }
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        if (data.isEmpty()) {
+            int firstItemIndex = 0;
+
+            notifyItemChanged(firstItemIndex);
+        } else {
+            notifyItemInserted(data.size());
+        }
+
+        for (DataSnapshot children : snapshot.getChildren()) {
+            data.add(children.getValue(Plant.class));
+            latestDataKey = children.getKey();
+        }
     }
 }
