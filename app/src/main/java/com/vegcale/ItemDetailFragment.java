@@ -1,5 +1,7 @@
 package com.vegcale;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -39,17 +40,41 @@ public class ItemDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
-
         if (getArguments() == null) return rootView;
 
         setData(rootView);
-
         ImageView backButton = rootView.findViewById(R.id.back_button);
         backButton.setOnClickListener(view ->
                 backToVegetableListFragment()
         );
 
+        String hoursOfLight = getArguments().getString("hoursOfLight");
+        if (hoursOfLight.equals(Plant.MORE_THAN_6_HOURS_OF_LIGHT)) {
+            hideBottomCloud(rootView);
+            hideTopCloud(rootView);
+        } else if (hoursOfLight.equals(Plant.ONE_TO_TWO_HOURS_OF_LIGHT)){
+            animateBottomCloud(rootView);
+            animateTopCloud(rootView);
+        } else {
+            hideTopCloud(rootView);
+            animateBottomCloud(rootView);
+        }
+
         return rootView;
+    }
+
+    private void animateBottomCloud(View rootView) {
+        Animator swayAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.bottom_sway);
+        ImageView bottomCloud = rootView.findViewById(R.id.bottom_cloud);
+        swayAnimator.setTarget(bottomCloud);
+        swayAnimator.start();
+    }
+
+    private void animateTopCloud(View rootView) {
+        Animator topSwayAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.top_sway);
+        ImageView topCloud = rootView.findViewById(R.id.top_cloud);
+        topSwayAnimator.setTarget(topCloud);
+        topSwayAnimator.start();
     }
 
     private void backToVegetableListFragment() {
@@ -60,7 +85,17 @@ public class ItemDetailFragment extends Fragment {
         );
     }
 
-    private void setData(@NonNull View rootView) {
+    private void hideBottomCloud(View rootView) {
+        ImageView bottomCloud = rootView.findViewById(R.id.bottom_cloud);
+        bottomCloud.setVisibility(View.INVISIBLE);
+    }
+
+    private void hideTopCloud(View rootView) {
+        ImageView topCloud = rootView.findViewById(R.id.top_cloud);
+        topCloud.setVisibility(View.INVISIBLE);
+    }
+
+    private void setData(View rootView) {
         assert getArguments() != null;
 
         TextView detail = rootView.findViewById(R.id.vegetable_detail);
@@ -96,8 +131,5 @@ public class ItemDetailFragment extends Fragment {
 
         TextView wateringFrequency = rootView.findViewById(R.id.watering_frequency);
         wateringFrequency.setText(getArguments().getString("wateringFrequency"));
-
-        System.out.println(getArguments().getInt("phFrom"));
-        System.out.println(getArguments().getInt("phTo"));
     }
 }

@@ -37,8 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vegetable_name">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -349,6 +349,30 @@
                 android:contentDescription="@string/hours_of_light"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
+                tools:ignore="ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/top_cloud"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:background="@drawable/filled_cloud_108"
+                android:contentDescription="@string/hours_of_light"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
+                app:layout_constraintLeft_toLeftOf="@+id/hours_of_light_image"
+                app:layout_constraintBottom_toBottomOf="@+id/hours_of_light_image"
+                tools:ignore="ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/bottom_cloud"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:background="@drawable/filled_cloud_108"
+                android:contentDescription="@string/hours_of_light"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
+                app:layout_constraintLeft_toLeftOf="@+id/hours_of_light_image"
+                app:layout_constraintBottom_toBottomOf="@+id/hours_of_light_image"
                 tools:ignore="ImageContrastCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

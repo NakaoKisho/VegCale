@@ -12,6 +12,10 @@ public class Plant {
     private String watering_frequency;
     private ph ph;
 
+    public static String MORE_THAN_6_HOURS_OF_LIGHT = "6時間以上";
+    public static String THREE_TO_FOUR_HOURS_OF_LIGHT = "3から4時間";
+    public static String ONE_TO_TWO_HOURS_OF_LIGHT = "1から2時間";
+
     public Plant() {
     }
 
