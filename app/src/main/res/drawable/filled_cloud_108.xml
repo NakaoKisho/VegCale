@@ -26,13 +26,10 @@
                     android:tileMode="clamp"
                     android:type="radial">
                     <item
-                        android:color="#bfbfbf"
+                        android:color="#00bfff"
                         android:offset="0" />
                     <item
-                        android:color="#737373"
-                        android:offset="0.66" />
-                    <item
-                        android:color="#FF434343"
+                        android:color="#b0c4de"
                         android:offset="1" />
                 </gradient>
             </aapt:attr>

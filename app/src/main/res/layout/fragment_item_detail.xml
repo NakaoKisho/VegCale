@@ -342,7 +342,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/potential_hydrogen_label" />
 
             <ImageView
-                android:id="@+id/hours_of_light_image"
+                android:id="@+id/the_sun"
                 android:layout_width="108dp"
                 android:layout_height="108dp"
                 android:background="@drawable/filled_quarter_sun_108"
@@ -357,10 +357,10 @@
                 android:layout_height="108dp"
                 android:background="@drawable/filled_cloud_108"
                 android:contentDescription="@string/hours_of_light"
+                app:layout_constraintBottom_toBottomOf="@+id/the_sun"
+                app:layout_constraintLeft_toLeftOf="@+id/the_sun"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
-                app:layout_constraintLeft_toLeftOf="@+id/hours_of_light_image"
-                app:layout_constraintBottom_toBottomOf="@+id/hours_of_light_image"
                 tools:ignore="ImageContrastCheck" />
 
             <ImageView
@@ -369,10 +369,10 @@
                 android:layout_height="108dp"
                 android:background="@drawable/filled_cloud_108"
                 android:contentDescription="@string/hours_of_light"
+                app:layout_constraintBottom_toBottomOf="@+id/the_sun"
+                app:layout_constraintLeft_toLeftOf="@+id/the_sun"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hours_of_light_divider"
-                app:layout_constraintLeft_toLeftOf="@+id/hours_of_light_image"
-                app:layout_constraintBottom_toBottomOf="@+id/hours_of_light_image"
                 tools:ignore="ImageContrastCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

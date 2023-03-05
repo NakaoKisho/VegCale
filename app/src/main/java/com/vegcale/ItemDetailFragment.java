@@ -48,6 +48,23 @@ public class ItemDetailFragment extends Fragment {
                 backToVegetableListFragment()
         );
 
+        animateItem(rootView);
+
+        return rootView;
+    }
+
+    private void animateBottomCloud(View rootView) {
+        Animator bottomSwayAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.bottom_sway);
+        ImageView bottomCloud = rootView.findViewById(R.id.bottom_cloud);
+        bottomSwayAnimator.setTarget(bottomCloud);
+        bottomSwayAnimator.start();
+    }
+
+    private void animateItem(View rootView) {
+        assert getArguments() != null;
+
+        animateTheSun(rootView);
+
         String hoursOfLight = getArguments().getString("hoursOfLight");
         if (hoursOfLight.equals(Plant.MORE_THAN_6_HOURS_OF_LIGHT)) {
             hideBottomCloud(rootView);
@@ -56,18 +73,17 @@ public class ItemDetailFragment extends Fragment {
             animateBottomCloud(rootView);
             animateTopCloud(rootView);
         } else {
-            hideTopCloud(rootView);
             animateBottomCloud(rootView);
+            hideTopCloud(rootView);
         }
-
-        return rootView;
     }
 
-    private void animateBottomCloud(View rootView) {
-        Animator swayAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.bottom_sway);
-        ImageView bottomCloud = rootView.findViewById(R.id.bottom_cloud);
-        swayAnimator.setTarget(bottomCloud);
-        swayAnimator.start();
+    private void animateTheSun(View rootView) {
+        Animator sunScalingAnimator =
+                AnimatorInflater.loadAnimator(getContext(), R.animator.sun_scaling);
+        ImageView theSun = rootView.findViewById(R.id.the_sun);
+        sunScalingAnimator.setTarget(theSun);
+        sunScalingAnimator.start();
     }
 
     private void animateTopCloud(View rootView) {
