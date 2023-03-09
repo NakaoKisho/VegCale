@@ -116,13 +116,12 @@ public class VegetableListRecyclerViewAdapter
 
         int harvestMonthFrom = vegetableData.getHarvest_Month().getFrom();
         int harvestMonthTo = vegetableData.getHarvest_Month().getTo();
-        Conversion mConversion = new Conversion();
-        String harvestMonthText = mConversion.convertMonthRangeIntToText(harvestMonthFrom, harvestMonthTo);
+        String harvestMonthText = Conversion.convertMonthNumberToWord(harvestMonthFrom, harvestMonthTo);
         holder.harvestMonth.setText(harvestMonthText);
 
         int seedingMonthFrom = vegetableData.getSeeding_Month().getFrom();
         int seedingMonthTo = vegetableData.getSeeding_Month().getTo();
-        String seedingMonthText = mConversion.convertMonthRangeIntToText(seedingMonthFrom, seedingMonthTo);
+        String seedingMonthText = Conversion.convertMonthNumberToWord(seedingMonthFrom, seedingMonthTo);
         holder.seedingMonth.setText(seedingMonthText);
     }
 

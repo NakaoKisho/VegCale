@@ -5,21 +5,25 @@ import android.icu.text.DateFormatSymbols;
 import androidx.annotation.IntRange;
 
 public class Conversion {
-    public String convertMonthIntToText(@IntRange(from = 0, to = 11) int monthNumber) {
+    private static String getMonthWord(@IntRange(from = 0, to = 11) int monthNumber) {
         DateFormatSymbols mDateFormatSymbols = new DateFormatSymbols();
         return mDateFormatSymbols.getMonths()[monthNumber];
     }
 
-    public String convertMonthRangeIntToText(
+    public static String convertMonthNumberToWord(
             @IntRange(from = 0, to = 11) int from,
             @IntRange(from = 0, to = 11) int to
     ) {
-        if (from >= to) {
-            throw new Error("to should be higher than from.");
+        if (from == to) {
+            return getMonthWord(from);
         }
 
-        String monthFrom = convertMonthIntToText(from);
-        String monthTo = convertMonthIntToText(to);
+        if (from > to) {
+            throw new Error("A Parameter \"to\" should be higher than or equals to \"from\".");
+        }
+
+        String monthFrom = getMonthWord(from);
+        String monthTo = getMonthWord(to);
 
         return monthFrom + "から" + monthTo;
     }
