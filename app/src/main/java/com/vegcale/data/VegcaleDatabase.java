@@ -7,7 +7,7 @@
  *------------------------------------------*
  */
 
-package com.vegcale;
+package com.vegcale.data;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

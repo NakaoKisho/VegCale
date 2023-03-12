@@ -1,4 +1,4 @@
-package com.vegcale.utility;
+package com.vegcale.utilities;
 
 import android.icu.text.DateFormatSymbols;
 

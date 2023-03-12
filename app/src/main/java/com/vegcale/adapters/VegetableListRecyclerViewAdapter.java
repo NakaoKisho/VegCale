@@ -1,4 +1,4 @@
-package com.vegcale;
+package com.vegcale.adapters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,8 +21,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.vegcale.utility.Conversion;
-import com.vegcale.utility.fragment.FragmentUtility;
+import com.vegcale.ItemDetailFragment;
+import com.vegcale.R;
+import com.vegcale.data.Plant;
+import com.vegcale.data.VegcaleDatabase;
+import com.vegcale.utilities.Conversion;
+import com.vegcale.utilities.FragmentUtility;
 
 import java.util.ArrayList;
 import java.util.List;

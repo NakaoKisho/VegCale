@@ -1,4 +1,4 @@
-package com.vegcale;
+package com.vegcale.data;
 
 public class Plant {
     private String detail;

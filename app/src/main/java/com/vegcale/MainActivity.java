@@ -22,7 +22,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.vegcale.utility.fragment.FragmentUtility;
+import com.vegcale.utilities.FragmentUtility;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentUtility mFragmentUtility;

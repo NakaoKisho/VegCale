@@ -15,8 +15,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.vegcale.utility.Conversion;
-import com.vegcale.utility.fragment.FragmentUtility;
+import com.vegcale.data.Plant;
+import com.vegcale.utilities.Conversion;
+import com.vegcale.utilities.FragmentUtility;
 
 public class ItemDetailFragment extends Fragment {
     private FragmentUtility mFragmentUtility;

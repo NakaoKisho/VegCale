@@ -1,7 +1,6 @@
 <resources>
     <!-- App -->
     <!-- Name -->
-    <string name="app_name">ベジカレ</string>
 
     <!-- MainActivity -->
     <!-- Button Name -->
@@ -34,18 +33,6 @@
     <string name="fourteen">14</string>
 
     <!-- Month Number -->
-    <string name="january_number">1</string>
-    <string name="february_number">2</string>
-    <string name="march_number">3</string>
-    <string name="april_number">4</string>
-    <string name="may_number">5</string>
-    <string name="june_number">6</string>
-    <string name="july_number">7</string>
-    <string name="august_number">8</string>
-    <string name="september_number">9</string>
-    <string name="october_number">10</string>
-    <string name="november_number">11</string>
-    <string name="december_number">12</string>
 
 
     <!-- Information about updates -->
@@ -57,93 +44,48 @@
     <!-- No vegetable data in calendar -->
 
     <!-- Vegetable tip db error -->
-    <string name="empty_title_view_error">野菜のデータがありません\nアプリを再インストールしてください</string>
 
     <!-- Vegetable image description -->
-    <string name="vegetable_image_description">A vegetable image</string>
 
     <!-- Vegetable tip image description -->
-    <string name="tip_image_description">A vegetable growing tip image</string>
 
     <!--                                        Tips title                                       -->
 
     <!-- Tomatoes -->
 
     <!-- "Things have to check to choose tomatoes planter" -->
-    <string name="title_things_have_to_check_to_choose_tomatoes_planter">
-        プランターの選び方　トマト編
-    </string>
 
     <!-- "Things have to check to choose tomatoes soil" -->
-    <string name="title_things_have_to_check_to_choose_tomatoes_soil">
-        土の選び方　トマト編
-    </string>
 
     <!-- "Where to place tomatoes flower pot" -->
-    <string name="title_where_to_place_tomatoes_flower_pot">
-        プランターの置き場所\nトマト編
-    </string>
 
     <!-- "The frequency of tomatoes watering" -->
-    <string name="title_the_frequency_of_tomatoes_watering">
-        水やりの頻度　トマト編
-    </string>
 
     <!-- Strawberries -->
 
     <!-- "Things have to check to choose strawberries planter" -->
-    <string name="title_things_have_to_check_to_choose_strawberries_planter">
-        プランターの選び方　イチゴ編
-    </string>
 
     <!-- "Things have to check to choose strawberries soil" -->
-    <string name="title_things_have_to_check_to_choose_strawberries_soil">
-        土の選び方　イチゴ編
-    </string>
 
     <!-- "Where to place strawberries flower pot" -->
-    <string name="title_where_to_place_strawberries_flower_pot">
-        プランターの置き場所\nイチゴ編
-    </string>
 
     <!-- "The frequency of strawberries watering" -->
-    <string name="title_the_frequency_of_strawberries_watering">
-        水やりの頻度　イチゴ編
-    </string>
 
     <!-- Red peppers -->
 
     <!-- "Things have to check to choose red peppers planter" -->
-    <string name="title_things_have_to_check_to_choose_red_peppers_planter">
-        プランターの選び方\nトウガラシ編
-    </string>
 
     <!-- "Things have to check to choose red peppers soil" -->
-    <string name="title_things_have_to_check_to_choose_red_peppers_soil">
-        土の選び方　トウガラシ編
-    </string>
 
     <!-- "Where to place red peppers flower pot" -->
-    <string name="title_where_to_place_red_peppers_flower_pot">
-        プランターの置き場所\nトウガラシ編
-    </string>
 
     <!-- "The frequency of red peppers watering" -->
-    <string name="title_the_frequency_of_red_peppers_watering">
-        水やりの頻度　トウガラシ編
-    </string>
 
     <!-- All -->
 
     <!-- "Things have to check to choose rocks put in bottom of a planter" -->
-    <string name="title_things_have_to_check_to_choose_rocks_put_in_bottom_of_a_planter">
-        鉢底石の選び方
-    </string>
 
     <!-- "The frequency of plants watering" -->
-    <string name="title_the_frequency_of_plants_watering">
-        水やりの頻度
-    </string>
 
     <!--                                        Tips title                                       -->
 
@@ -152,107 +94,38 @@
     <!-- Tomatoes -->
 
     <!-- "Things have to check to choose tomatoes planter" -->
-    <string name="article_things_have_to_check_to_choose_tomatoes_planter">
-        トマトの根はしっかり張り、深く伸びるものもあります。\n
-        深さは30cm以上、幅は25~30cmほどあると望ましいです。
-    </string>
 
     <!-- "Things have to check to choose tomatoes soil" -->
-    <string name="article_things_have_to_check_to_choose_tomatoes_soil">
-        野菜が育つ土は、通気性、保水性、排水性がよく、有機物に富んでいるものです。\n
-        おすすめは園芸店やホームセンターなどに売られている野菜用やトマト用培養土の購入です。\n
-        一般的に高価な培養土ほど安定した収穫に繋がる傾向にあります。
-    </string>
 
     <!-- "Where to place tomatoes flower pot" -->
-    <string name="article_where_to_place_tomatoes_flower_pot">
-        トマトはよく日が当たり乾燥した場所を好み、強い光に当て乾燥気味に育てることで味が良くなります。\n
-        ベランダなどに置くときはよく日が当たる場所におきましょう。\n
-        室外機の近くや上に置くとトマトがダメになってしまうことがあるので注意しましょう。
-    </string>
 
     <!-- "The frequency of tomatoes watering" -->
-    <string name="article_the_frequency_of_tomatoes_watering">
-        トマトは乾燥に強く、水が大量に必要な野菜ではありません。\n
-        水をあげすぎると病気にかかることがあるので注意しましょう。\n
-        水をあげるサインは、朝、トマトの葉を見て萎えていたらです。\n
-        水をあげる際は根元に注いでください。\n
-        葉や茎に水がかかると病気になる可能性があります。
-    </string>
 
     <!-- Strawberries -->
 
     <!-- "Things have to check to choose strawberries planter" -->
-    <string name="article_things_have_to_check_to_choose_strawberries_planter">
-        イチゴの栽培には深さ20cm以上のプランターが適しています。\n
-        複数株を植える場合は株と株の間が20cmほど離して植えることが出来る横幅の鉢を選びましょう。\n
-        鉢の奥行きは広すぎないものを購入し、実が土につかないよう鉢の外に出しましょう。
-    </string>
 
     <!-- "Things have to check to choose strawberries soil" -->
-    <string name="article_things_have_to_check_to_choose_strawberries_soil">
-        おすすめは園芸店やホームセンターなどに売られているイチゴ用の土です。\n
-        イチゴ用の土には初期段階用の肥料が含まれているものがあり、
-        初心者の方はこちらを購入すれば問題なく始められます。
-    </string>
 
     <!-- "Where to place strawberries flower pot" -->
-    <string name="article_where_to_place_strawberries_flower_pot">
-        真夏でも冬でも屋外で育てます。\n
-        真夏の間は直射日光に当てないよう涼しい場所に移動させたり日陰を作ってあげると良いです。\n
-        冬の間は出来るだけ長時間日が当たるところに置きましょう。\n
-        置き場所に最適なのは午前中に一番日が当たるところです。
-    </string>
 
     <!-- "The frequency of strawberries watering" -->
-    <string name="article_the_frequency_of_strawberries_watering">
-        水をあげるサインは、朝、土が乾いていたらです。乾いている場合はたっぷりあげます。\n
-        水をあげる際は根元に注いでください。\n
-        葉や茎に水がかかると病気になる可能性があります。\n
-        イチゴは冬の間は休眠し水を吸う量も少なくなりますが、内部は春に向けた準備をしているので
-        乾燥させすぎないように気を配ってください。\n
-        また屋外で雨水がかかるようなところでは、水やりをせずとも成長します。\n
-        乾燥しすぎていないか、時々土を触って確認してあげてください。
-    </string>
 
     <!--  Red peppers -->
 
     <!-- "Things have to check to choose red peppers planter" -->
-    <string name="article_things_have_to_check_to_choose_red_peppers_planter">
-        標準タイプで深さ30cm以上のものを用意しましょう。
-    </string>
 
     <!-- "Things have to check to choose red peppers soil" -->
-    <string name="article_things_have_to_check_to_choose_red_peppers_soil">
-        市販の野菜用の土を使いましょう。
-    </string>
 
     <!-- "Where to place red peppers flower pot" -->
-    <string name="article_where_to_place_red_peppers_flower_pot">
-        日当たりがよく、風がよく通る場所を好みます。生育適温は25度〜30度前後です。
-    </string>
 
     <!-- "The frequency of red peppers watering" -->
-    <string name="article_the_frequency_of_red_peppers_watering">
-        トウガラシは根張りが浅く、乾燥に弱いので、土が乾いていたらたっぷりと水をあげましょう。
-    </string>
 
     <!-- All -->
 
     <!-- "Things have to check to choose rocks put in bottom of a planter" -->
-    <string name="article_things_have_to_check_to_choose_rocks_put_in_bottom_of_a_planter">
-        鉢底石は通気性や排気性をよくし悪い菌の発生を抑えるために使われます。\n
-        市販の軽石は通気性や保湿性に優れていますが、
-        道に転がっている小石や発泡スチロールを少し大きめに砕いたものでも代用可能です。
-    </string>
 
     <!-- "The frequency of plants watering" -->
-    <string name="article_the_frequency_of_plants_watering">
-        植物に定期的に水をあげる必要はなく、土が乾燥していれば水をあげます。\n
-        この時、土の表面だけでなく中も確認し、十分に湿っている場合は、水やりの必要はありません。\n
-        植物は午前中に活発に活動するので、朝のうちに水をあげ、夕方にはプランターの土が乾いているくらいが理想です。\n
-        水をあげる際は、泥がはねて葉につくと病気の原因になる可能性があるので根元に優しくあげます。
-    </string>
     <string name="back_button">back button</string>
     <string name="seeding_month">種付月</string>
     <string name="harvest_month">収穫月</string>

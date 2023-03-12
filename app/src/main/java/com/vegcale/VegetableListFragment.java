@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.vegcale.adapters.VegetableListRecyclerViewAdapter;
 
 public class VegetableListFragment
         extends Fragment

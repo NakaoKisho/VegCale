@@ -1,4 +1,4 @@
-package com.vegcale;
+package com.vegcale.di;
 
 import android.content.Context;
 

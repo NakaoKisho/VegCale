@@ -1,4 +1,4 @@
-package com.vegcale.utility.fragment;
+package com.vegcale.utilities;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
