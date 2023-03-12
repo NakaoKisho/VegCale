@@ -16,12 +16,12 @@
         android:id="@+id/calendarFragment"
         android:name="com.vegcale.VegetableListFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" >
+        tools:layout="@layout/fragment_vegetable_list" >
     </fragment>
     <fragment
         android:id="@+id/tipFragment"
         android:name="com.vegcale.TipFragment"
         android:label="fragment_tip"
-        tools:layout="@layout/fragment_tip" >
+        tools:layout="@layout/fragment_vegetable_article" >
     </fragment>
 </navigation>

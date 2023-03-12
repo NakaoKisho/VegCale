@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private FragmentUtility mFragmentUtility;
     private HomeFragment mHomeFragment;
     private VegetableListFragment mVegetableListFragment;
-    private TipFragment mTipFragment;
+    private VegetableArticleFragment mVegetableArticleFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mFragmentUtility = new FragmentUtility(this);
         mHomeFragment = new HomeFragment();
         mVegetableListFragment = new VegetableListFragment();
-        mTipFragment = new TipFragment();
+        mVegetableArticleFragment = new VegetableArticleFragment();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnItemReselectedListener(item -> {
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             directionFragment = mVegetableListFragment;
             fragmentTag = FragmentUtility.VegetableListFragmentTag;
         } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_3) {
-            directionFragment = mTipFragment;
+            directionFragment = mVegetableArticleFragment;
             fragmentTag = FragmentUtility.TipListFragmentTag;
         }
 
