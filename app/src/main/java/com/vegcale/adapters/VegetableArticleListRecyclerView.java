@@ -1,6 +1,5 @@
 package com.vegcale.adapters;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,7 @@ public class VegetableArticleListRecyclerView
         holder.title.setText(articleData.getTitle());
         ArrayList<String> tags = articleData.getTag();
         holder.tag1.setText(tags.get(0));
-        holder.tag2.setText(tags.get(1));
+        holder.tag2.setText(tags.get(1).equals("") ? "" : tags.get(1));
         holder.tag3.setText(tags.get(2));
         holder.tag4.setText(tags.get(3));
     }

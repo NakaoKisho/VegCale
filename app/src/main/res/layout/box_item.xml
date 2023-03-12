@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/rectangle_frame"
+    android:paddingBottom="8dp">
 
     <ProgressBar
         android:id="@+id/progress_circle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="100dp"
+        android:layout_margin="70dp"
         android:indeterminate="true"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tag1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +29,8 @@
     <ImageView
         android:id="@+id/title_image"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/article_image"
         app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -36,63 +40,52 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tag1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_image"
         tools:text="test" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/footer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
-
     <TextView
         android:id="@+id/tag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:drawableLeftCompat="@drawable/baseline_tag_24"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="13sp"
+        app:drawableLeftCompat="@drawable/baseline_tag_13"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tag2"
-        app:layout_constraintTop_toBottomOf="@+id/footer"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         tools:text="tag1" />
 
     <TextView
         android:id="@+id/tag2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:drawableLeftCompat="@drawable/baseline_tag_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/tag1"
-        app:layout_constraintRight_toLeftOf="@+id/tag3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/footer"
+        android:textSize="13sp"
+        app:drawableLeftCompat="@drawable/baseline_tag_13"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tag1"
         tools:text="tag2" />
 
     <TextView
         android:id="@+id/tag3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:drawableLeftCompat="@drawable/baseline_tag_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/tag2"
-        app:layout_constraintRight_toLeftOf="@+id/tag4"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/footer"
+        android:textSize="13sp"
+        app:drawableLeftCompat="@drawable/baseline_tag_13"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tag2"
         tools:text="tag3" />
 
     <TextView
         android:id="@+id/tag4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:drawableLeftCompat="@drawable/baseline_tag_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/tag3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/footer"
+        android:textSize="13sp"
+        app:drawableLeftCompat="@drawable/baseline_tag_13"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tag3"
         tools:text="tag4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
