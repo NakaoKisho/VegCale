@@ -21,18 +21,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.vegcale.ItemDetailFragment;
 import com.vegcale.R;
-import com.vegcale.data.Plant;
+import com.vegcale.data.Article;
 import com.vegcale.data.VegcaleDatabase;
-import com.vegcale.utilities.Conversion;
-import com.vegcale.utilities.FragmentUtility;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VegetableListRecyclerViewAdapter
-        extends RecyclerView.Adapter<VegetableListRecyclerViewAdapter.ViewHolder>
+public class VegetableArticleListRecyclerView
+        extends RecyclerView.Adapter<VegetableArticleListRecyclerView.ViewHolder>
         implements OnCompleteListener<DataSnapshot>, ValueEventListener {
 
     private enum ProgressBarVisibility {
@@ -41,28 +38,18 @@ public class VegetableListRecyclerViewAdapter
     }
 
     private final FragmentActivity mFragmentActivity;
-    private final List<Plant> data = new ArrayList<>();
+    private final List<Article> data = new ArrayList<>();
     private final SnackBarCallbackListener mSnackBarCallbackListener;
     private final VegcaleDatabase mVegcaleDatabase;
     private Integer itemCount;
     private int dataFetchCount = 0;
     private String latestDataKey;
 
-    public VegetableListRecyclerViewAdapter(
-            FragmentActivity mFragmentActivity,
-            SnackBarCallbackListener mSnackBarCallbackListener
-    ) {
-        this.mFragmentActivity = mFragmentActivity;
-        this.mSnackBarCallbackListener = mSnackBarCallbackListener;
-        mVegcaleDatabase = new VegcaleDatabase();
-        mVegcaleDatabase.getCount(mVegcaleDatabase.plantsInfoRootPath,  this);
-    }
-
-    private void changeProgressCircleVisibility(@NonNull ViewHolder holder, ProgressBarVisibility visibility) {
+    private void changeProgressCircleVisibility(@NonNull VegetableArticleListRecyclerView.ViewHolder holder, VegetableArticleListRecyclerView.ProgressBarVisibility visibility) {
         int infoGroupVisibility;
         int progressBarVisibility;
 
-        if (visibility == ProgressBarVisibility.Visible) {
+        if (visibility == VegetableArticleListRecyclerView.ProgressBarVisibility.Visible) {
             infoGroupVisibility = View.INVISIBLE;
             progressBarVisibility = View.VISIBLE;
         } else {
@@ -74,59 +61,32 @@ public class VegetableListRecyclerViewAdapter
         holder.progressCircle.setVisibility(progressBarVisibility);
     }
 
-    private void moveToItemDetailFragment(int position) {
-        ItemDetailFragment mItemDetailFragment = new ItemDetailFragment();
-        setDetailItemData(mItemDetailFragment, position);
-
-        new FragmentUtility(mFragmentActivity).changeFragment(
-                mItemDetailFragment,
-                FragmentUtility.ItemDetailFragmentTag,
-                FragmentUtility.SlideAnimation.LeftToRight
-        );
-    }
-
-    private void setDetailItemData(@NonNull ItemDetailFragment mItemDetailFragment, int position) {
-        Bundle mBundle = new Bundle();
-        Plant vegetableData = data.get(position);
-
-        mBundle.putString("detail", vegetableData.getDetail());
-        mBundle.putString("growthDifficulty", vegetableData.getGrowth_Difficulty());
-        mBundle.putInt("harvestMonthFrom", vegetableData.getHarvest_Month().getFrom());
-        mBundle.putInt("harvestMonthTo", vegetableData.getHarvest_Month().getTo());
-        mBundle.putString("hoursOfLight", vegetableData.getHours_Of_Light());
-        mBundle.putString("imageUrl", vegetableData.getImage_Url());
-        mBundle.putString("name", vegetableData.getName());
-        mBundle.putInt("seedingMonthFrom", vegetableData.getSeeding_Month().getFrom());
-        mBundle.putInt("seedingMonthTo", vegetableData.getSeeding_Month().getTo());
-        mBundle.putString("wateringAmount", vegetableData.getWatering_Amount());
-        mBundle.putString("wateringFrequency", vegetableData.getWatering_Frequency());
-        mBundle.putInt("phFrom", vegetableData.getPh().getFrom());
-        mBundle.putInt("phTo", vegetableData.getPh().getTo());
-        mItemDetailFragment.setArguments(mBundle);
-    }
-
-    private void setItemData(@NonNull ViewHolder holder, int position) {
+    private void setItemData(@NonNull VegetableArticleListRecyclerView.ViewHolder holder, int position) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        Plant vegetableData = data.get(position);
-        String imageUrl = vegetableData.getImage_Url();
-        StorageReference imageReference = storage.getReferenceFromUrl(imageUrl);
+        Article articleData = data.get(position);
+        String titleImageUrl = articleData.getTitle_image();
+        StorageReference imageReference = storage.getReferenceFromUrl(titleImageUrl);
 
         Glide.with(holder.itemView)
                 .load(imageReference)
-                .into(holder.vegetableStickingOutImage);
+                .into(holder.titleImage);
 
-        holder.vegetableName.setText(vegetableData.getName());
-        holder.growthDifficulty.setText(vegetableData.getGrowth_Difficulty());
+        holder.title.setText(articleData.getTitle());
+        ArrayList<String> tags = articleData.getTag();
+        holder.tag1.setText(tags.get(0));
+        holder.tag2.setText(tags.get(1));
+        holder.tag3.setText(tags.get(2));
+        holder.tag4.setText(tags.get(3));
+    }
 
-        int harvestMonthFrom = vegetableData.getHarvest_Month().getFrom();
-        int harvestMonthTo = vegetableData.getHarvest_Month().getTo();
-        String harvestMonthText = Conversion.convertMonthNumberToWord(harvestMonthFrom, harvestMonthTo);
-        holder.harvestMonth.setText(harvestMonthText);
-
-        int seedingMonthFrom = vegetableData.getSeeding_Month().getFrom();
-        int seedingMonthTo = vegetableData.getSeeding_Month().getTo();
-        String seedingMonthText = Conversion.convertMonthNumberToWord(seedingMonthFrom, seedingMonthTo);
-        holder.seedingMonth.setText(seedingMonthText);
+    public VegetableArticleListRecyclerView(
+            FragmentActivity mFragmentActivity,
+            SnackBarCallbackListener mSnackBarCallbackListener
+    ) {
+        this.mFragmentActivity = mFragmentActivity;
+        this.mSnackBarCallbackListener = mSnackBarCallbackListener;
+        mVegcaleDatabase = new VegcaleDatabase();
+        mVegcaleDatabase.getCount(mVegcaleDatabase.plantsArticleRootPath, this);
     }
 
     @Override
@@ -141,24 +101,26 @@ public class VegetableListRecyclerViewAdapter
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView growthDifficulty;
-        private final TextView harvestMonth;
-        private final Group infoGroup;
         private final ProgressBar progressCircle;
-        private final TextView seedingMonth;
-        private final ImageView vegetableStickingOutImage;
-        private final TextView vegetableName;
+        private final Group infoGroup;
+        private final ImageView titleImage;
+        private final TextView title;
+        private final TextView tag1;
+        private final TextView tag2;
+        private final TextView tag3;
+        private final TextView tag4;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            growthDifficulty = itemView.findViewById(R.id.growth_difficulty);
-            harvestMonth = itemView.findViewById(R.id.harvest_month);
-            infoGroup = itemView.findViewById(R.id.info_group);
             progressCircle = itemView.findViewById(R.id.progress_circle);
-            seedingMonth = itemView.findViewById(R.id.seeding_month);
-            vegetableStickingOutImage = itemView.findViewById(R.id.sticking_out_image);
-            vegetableName = itemView.findViewById(R.id.vegetable_name);
+            infoGroup = itemView.findViewById(R.id.info_group);
+            titleImage = itemView.findViewById(R.id.title_image);
+            title = itemView.findViewById(R.id.title);
+            tag1 = itemView.findViewById(R.id.tag1);
+            tag2 = itemView.findViewById(R.id.tag2);
+            tag3 = itemView.findViewById(R.id.tag3);
+            tag4 = itemView.findViewById(R.id.tag4);
         }
     }
 
@@ -166,20 +128,20 @@ public class VegetableListRecyclerViewAdapter
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View cardItem = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_item, parent, false);
+                .inflate(R.layout.box_item, parent, false);
 
         return new ViewHolder(cardItem);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final int nextItemCount = 6;
+        final int nextItemCount = 10;
 
         if (itemCount == null) return;
 
         if (data.isEmpty()) {
             changeProgressCircleVisibility(holder, ProgressBarVisibility.Visible);
-            mVegcaleDatabase.fetchPlantsData(
+            mVegcaleDatabase.fetchArticlesData(
                     nextItemCount,
                     true,
                     null,
@@ -193,13 +155,13 @@ public class VegetableListRecyclerViewAdapter
 
         changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
         setItemData(holder, position);
-        holder.itemView.setOnClickListener(view -> moveToItemDetailFragment(position));
+        holder.itemView.setOnClickListener(view -> holder.tag1.setText(position));
 
         if (itemCount <= 0) return;
 
         int nextDataFetchPosition = nextItemCount * dataFetchCount - 1;
         if (position == nextDataFetchPosition) {
-            mVegcaleDatabase.fetchPlantsData(
+            mVegcaleDatabase.fetchArticlesData(
                     nextItemCount,
                     false,
                     latestDataKey,
@@ -246,7 +208,7 @@ public class VegetableListRecyclerViewAdapter
         }
 
         for (DataSnapshot children : snapshot.getChildren()) {
-            data.add(children.getValue(Plant.class));
+            data.add(children.getValue(Article.class));
             latestDataKey = children.getKey();
         }
     }

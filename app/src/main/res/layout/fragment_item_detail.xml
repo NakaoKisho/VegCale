@@ -88,7 +88,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/left_guideline"
                 app:layout_constraintRight_toLeftOf="@+id/end_of_vegetable_image_guideline"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_place_to_put_planters" />
+                tools:src="@tools:sample/backgrounds/scenic" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/end_of_vegetable_image_guideline"
