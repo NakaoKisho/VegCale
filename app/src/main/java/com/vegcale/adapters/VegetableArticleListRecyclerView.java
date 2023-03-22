@@ -1,5 +1,6 @@
 package com.vegcale.adapters;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.vegcale.ArticleContentFragment;
 import com.vegcale.R;
 import com.vegcale.data.Article;
 import com.vegcale.data.VegcaleDatabase;
+import com.vegcale.utilities.FragmentUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +63,29 @@ public class VegetableArticleListRecyclerView
         holder.progressCircle.setVisibility(progressBarVisibility);
     }
 
+    private void moveToArticleContentFragment(int position) {
+        ArticleContentFragment mArticleContentFragment = new ArticleContentFragment();
+        setArticleContentData(mArticleContentFragment, position);
+
+        new FragmentUtility(mFragmentActivity).changeFragment(
+                mArticleContentFragment,
+                FragmentUtility.ArticleContentFragmentTag,
+                FragmentUtility.SlideAnimation.LeftToRight
+        );
+    }
+
+    private void setArticleContentData(@NonNull ArticleContentFragment mArticleContentFragment, int position) {
+        Bundle mBundle = new Bundle();
+        Article articleData = data.get(position);
+
+        mBundle.putString("titleImage", articleData.getTitle_image());
+        mBundle.putString("title", articleData.getTitle());
+        mBundle.putStringArrayList("paragraphs", articleData.getParagraph());
+        mBundle.putStringArrayList("paragraphImages", articleData.getParagraph_image_url());
+        mBundle.putStringArrayList("tags", articleData.getTag());
+        mArticleContentFragment.setArguments(mBundle);
+    }
+
     private void setItemData(@NonNull VegetableArticleListRecyclerView.ViewHolder holder, int position) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         Article articleData = data.get(position);
@@ -72,10 +98,20 @@ public class VegetableArticleListRecyclerView
 
         holder.title.setText(articleData.getTitle());
         ArrayList<String> tags = articleData.getTag();
-        holder.tag1.setText(tags.get(0));
-        holder.tag2.setText(tags.get(1).equals("") ? "" : tags.get(1));
-        holder.tag3.setText(tags.get(2));
-        holder.tag4.setText(tags.get(3));
+        setTags(tags.get(0), holder.tag1);
+        setTags(tags.get(1), holder.tag2);
+        setTags(tags.get(2), holder.tag3);
+        setTags(tags.get(3), holder.tag4);
+    }
+
+    private void setTags(String tagData, TextView tagTextView) {
+        if (tagData.equals("")) {
+            tagTextView.setVisibility(View.GONE);
+            tagTextView.setText("");
+        } else {
+            tagTextView.setVisibility(View.VISIBLE);
+            tagTextView.setText(tagData);
+        }
     }
 
     public VegetableArticleListRecyclerView(
@@ -154,7 +190,7 @@ public class VegetableArticleListRecyclerView
 
         changeProgressCircleVisibility(holder, ProgressBarVisibility.Invisible);
         setItemData(holder, position);
-        holder.itemView.setOnClickListener(view -> holder.tag1.setText(position));
+        holder.itemView.setOnClickListener(view -> moveToArticleContentFragment(position));
 
         if (itemCount <= 0) return;
 

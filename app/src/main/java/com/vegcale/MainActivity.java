@@ -45,13 +45,19 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnItemReselectedListener(item -> {
-            if (!mFragmentUtility.isFragmentVisible(FragmentUtility.ItemDetailFragmentTag)) return;
-
-            mFragmentUtility.changeFragment(
-                    mVegetableListFragment,
-                    FragmentUtility.VegetableListFragmentTag,
-                    FragmentUtility.SlideAnimation.LeftToRight
-            );
+            if (mFragmentUtility.isFragmentVisible(FragmentUtility.ItemDetailFragmentTag)) {
+                mFragmentUtility.changeFragment(
+                        mVegetableListFragment,
+                        FragmentUtility.VegetableListFragmentTag,
+                        FragmentUtility.SlideAnimation.LeftToRight
+                );
+            } else if (mFragmentUtility.isFragmentVisible(FragmentUtility.ArticleContentFragmentTag)) {
+                mFragmentUtility.changeFragment(
+                        mVegetableArticleFragment,
+                        FragmentUtility.VegetableArticleFragmentTag,
+                        FragmentUtility.SlideAnimation.LeftToRight
+                );
+            }
         });
         bottomNavigationView.setOnItemSelectedListener(
                 item -> {
@@ -90,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTag = FragmentUtility.VegetableListFragmentTag;
         } else if (bottomNavigationButtonId == R.id.bottom_navigation_action_3) {
             directionFragment = mVegetableArticleFragment;
-            fragmentTag = FragmentUtility.TipListFragmentTag;
+            fragmentTag = FragmentUtility.VegetableArticleFragmentTag;
         }
 
         assert directionFragment != null : "directionFragment must not be null.";

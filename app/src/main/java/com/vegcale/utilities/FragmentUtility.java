@@ -10,8 +10,9 @@ import com.vegcale.R;
 public class FragmentUtility {
     public static final String HomeFragmentTag = "HomeFragment";
     public static final String VegetableListFragmentTag = "VegetableListFragment";
-    public static final String TipListFragmentTag = "TipListFragment";
+    public static final String VegetableArticleFragmentTag = "VegetableArticleFragment";
     public static final String ItemDetailFragmentTag = "ItemDetailFragment";
+    public static final String ArticleContentFragmentTag = "ArticleContentFragment";
 
     public enum SlideAnimation {
         LeftToRight,
