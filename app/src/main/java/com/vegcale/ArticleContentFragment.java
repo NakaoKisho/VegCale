@@ -55,6 +55,31 @@ public class ArticleContentFragment  extends Fragment {
         return rootView;
     }
 
+    private void addViewsToConstraintLayout(
+            ConstraintLayout articleContentConstraintLayout,
+            ArrayList<View> textViews,
+            ArrayList<View> imageViews
+    ) {
+        int maxArrayListSize = Math.max(textViews.size(), imageViews.size());
+        ConstraintSet mConstraintSet = new ConstraintSet();
+        mConstraintSet.clone(articleContentConstraintLayout);
+
+        int bottomViewId = R.id.article_title_image;
+        for (int i = 0; i < maxArrayListSize; i++) {
+            if (i < textViews.size()) {
+                int viewId = textViews.get(i).getId();
+                setLeftRightAndTopConstraint(mConstraintSet, viewId, bottomViewId);
+                bottomViewId = viewId;
+            }
+            if (i < imageViews.size()) {
+                int viewId = imageViews.get(i).getId();
+                setLeftRightAndTopConstraint(mConstraintSet, viewId, bottomViewId);
+                bottomViewId = viewId;
+            }
+        }
+        mConstraintSet.applyTo(articleContentConstraintLayout);
+    }
+
     private void backToVegetableArticleFragment() {
         mFragmentUtility.changeFragment(
                 mVegetableArticleFragment,
@@ -88,36 +113,6 @@ public class ArticleContentFragment  extends Fragment {
         return views;
     }
 
-    private void addViewsToConstraintLayout(
-            ConstraintLayout articleContentConstraintLayout,
-            ArrayList<View> textViews,
-            ArrayList<View> imageViews
-    ) {
-        int maxArrayListSize = Math.max(textViews.size(), imageViews.size());
-        ConstraintSet mConstraintSet = new ConstraintSet();
-        mConstraintSet.clone(articleContentConstraintLayout);
-
-        int bottomViewId = R.id.article_title_image;
-        for (int i = 0; i < maxArrayListSize; i++) {
-            if (i > textViews.size()) continue;
-
-            int viewId = textViews.get(i).getId();
-            setLeftRightAndTopConstraint(mConstraintSet, viewId, bottomViewId);
-            bottomViewId = viewId;
-
-            viewId = imageViews.get(i).getId();
-            setLeftRightAndTopConstraint(mConstraintSet, viewId, bottomViewId);
-            bottomViewId = viewId;
-        }
-        mConstraintSet.applyTo(articleContentConstraintLayout);
-    }
-
-    private void setLeftRightAndTopConstraint(ConstraintSet mConstraintSet, int viewId, int bottomViewId) {
-        mConstraintSet.connect(viewId, ConstraintSet.LEFT, R.id.article_content, ConstraintSet.LEFT);
-        mConstraintSet.connect(viewId, ConstraintSet.RIGHT, R.id.article_content, ConstraintSet.RIGHT);
-        mConstraintSet.connect(viewId, ConstraintSet.TOP, bottomViewId, ConstraintSet.BOTTOM);
-    }
-
     private void setData() {
         assert getArguments() != null;
 
@@ -138,5 +133,11 @@ public class ArticleContentFragment  extends Fragment {
         ArrayList<View> imageViews = generateViews(ViewType.ImageView, articleContentConstraintLayout, paragraphImages);
 
         addViewsToConstraintLayout(articleContentConstraintLayout, textViews, imageViews);
+    }
+
+    private void setLeftRightAndTopConstraint(ConstraintSet mConstraintSet, int viewId, int bottomViewId) {
+        mConstraintSet.connect(viewId, ConstraintSet.LEFT, R.id.article_content, ConstraintSet.LEFT);
+        mConstraintSet.connect(viewId, ConstraintSet.RIGHT, R.id.article_content, ConstraintSet.RIGHT);
+        mConstraintSet.connect(viewId, ConstraintSet.TOP, bottomViewId, ConstraintSet.BOTTOM);
     }
 }
