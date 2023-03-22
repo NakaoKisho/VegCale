@@ -26,7 +26,7 @@ public class VegcaleDatabase {
 
     public VegcaleDatabase() {
         final String vegcaleDatabaseUrl =
-                "url_to_realtime_database/";
+                "https://vegcale-app-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
         vegcaleDatabase = FirebaseDatabase.getInstance(vegcaleDatabaseUrl);
     }
